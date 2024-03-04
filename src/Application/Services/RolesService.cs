@@ -1,9 +1,7 @@
 ﻿using Core.Repositories.Specific;
 using Core.Services;
-using DataAccessLayer.Repositories;
 using Models.DTOs.Roles.GetRole;
 using Models.DTOs.Roles.GetRoleName;
-using Models.Entities;
 
 namespace Business.Services
 {

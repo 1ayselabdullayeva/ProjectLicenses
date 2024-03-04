@@ -1,4 +1,5 @@
 ﻿using Models.DTOs.User.Login;
+using Models.DTOs.User.Login.AddRefreshToken;
 using Models.DTOs.User.Register;
 using Models.Entities;
 using System;
@@ -11,13 +12,11 @@ namespace Core.Services
 {
     public interface IJWTServices
     {
-        
-        Task<bool> IsValidUserAsync(UserLoginDto users);
-        UserRefreshToken AddUserRefreshTokens(UserRefreshToken user);
 
-        UserRefreshToken GetSavedRefreshTokens(int Id, string refreshtoken);
+        void AddUserRefreshTokens(User user);
         void DeleteUserRefreshTokens(int Id, string refreshToken);
         Task<UserRegisterResponseDto> Register(UserRegisterDto userRegister);
+        void LogOut(int id);
     }
 
 }

@@ -1,56 +1,34 @@
-﻿using Antlr.Runtime;
-using Core.Repositories.Specific;
-using Core.Services;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using Models.DTOs.User.Login;
-using Tokens = Models.DTOs.User.Login.Tokens;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Cryptography;
+﻿using Azure.Core;
 using Core.Repositories;
-using Models.Entities;
-using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Core.Repositories.Specific;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using Models.Entities;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
+using Tokens = Models.DTOs.User.Login.Tokens;
 
 namespace DataAccess.Repositories
 {
-    public class JWTManagerRepository : Repository<UserRefreshToken>,IJWTManagerRepository
+    public class JWTManagerRepository : Repository<User>, IJWTManagerRepository
     {
-        private readonly DbContext _dbContext;
         private readonly IConfiguration _configuration;
 
         public JWTManagerRepository(DbContext dbContext, IConfiguration configuration) : base(dbContext)
         {
-            _dbContext = dbContext;
             _configuration = configuration;
         }
 
-        public Tokens GenerateRefreshToken(int id,string name, string roleName)
-        {
-
-            return GenerateJWTTokens(id,name,roleName);
-        }
-
-        public Tokens GenerateToken(int id,string name,  string roleName)
-        {
-            return GenerateJWTTokens(id,name, roleName);
-        }
-
-       
-
-        public Tokens GenerateJWTTokens(int id,string userName, string roleName)
+        public Tokens GenerateJWTTokens(int id, string userName, string roleName, bool rememberMe)
         {
             try
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var tokenKey = Encoding.ASCII.GetBytes(_configuration["Jwt:SigningKey"]);
+                var refreshkey = Encoding.ASCII.GetBytes(_configuration["Jwt:RefreshKey"]);
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new Claim[]
@@ -59,26 +37,44 @@ namespace DataAccess.Repositories
                    new Claim(ClaimTypes.Name, userName),
                    new Claim(ClaimTypes.Role,roleName)
                   }),
-                    Expires = DateTime.Now.AddMinutes(1),
+                    Expires = DateTime.Now.AddSeconds(10),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
+                };
+
+                DateTime expires;
+                if (rememberMe==false)
+                {
+                    expires = DateTime.UtcNow.AddDays(7);
+                }
+                else
+                {
+                    expires = DateTime.UtcNow.AddDays(30);
+                }
+
+                var refreshTokenDesc = new SecurityTokenDescriptor
+                {
+
+                    Subject = new ClaimsIdentity(new Claim[]
+                  {
+                      new Claim(ClaimTypes.NameIdentifier, id.ToString()),
+                      new Claim(ClaimTypes.Name, userName),
+                      new Claim(ClaimTypes.Role, roleName)
+                  }),
+                    //Expires = DateTime.Now.AddMinutes(2),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
                 };
 
                 var token = tokenHandler.CreateToken(tokenDescriptor);
-                var refreshToken = GenerateRefreshToken();
-                return new Tokens { AccessToken = tokenHandler.WriteToken(token), RefreshToken = refreshToken };
+                var refreshToken = tokenHandler.CreateToken(refreshTokenDesc);
+                return new Tokens
+                {
+                    AccessToken = tokenHandler.WriteToken(token),
+                    RefreshToken = tokenHandler.WriteToken(refreshToken)
+                };
             }
             catch (Exception ex)
             {
                 return null;
-            }
-        }
-        public string GenerateRefreshToken()
-        {
-            var randomNumber = new byte[32];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(randomNumber);
-                return Convert.ToBase64String(randomNumber);
             }
         }
 

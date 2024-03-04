@@ -11,11 +11,11 @@ namespace Models.Entities
 		public string Password { get; set; }
 		public string CompanyName { get; set; }
 		public UserStatus Status { get; set; } = UserStatus.Active;
-		public int RolesId { get; set; } = 2;
+        public string? RefreshToken { get; set; }
+        public int RolesId { get; set; } = 2;
 		public Roles Roles { get; set; }
 		public int? LicensesId { get; set; }
 		public Licenses Licenses { get; set; }
 		public ICollection<Ticket> Tickets { get; set; }
-		public ICollection<UserRefreshToken> RefreshTokens { get; set; }
 	}
 }

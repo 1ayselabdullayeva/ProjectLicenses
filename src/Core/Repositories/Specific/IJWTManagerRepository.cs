@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 
 namespace Core.Repositories.Specific
 {
-    public interface IJWTManagerRepository: IRepository<UserRefreshToken>
+    public interface IJWTManagerRepository : IRepository<User>
     {
-         Tokens GenerateToken(int id,string name, string roleName);
-         Tokens GenerateRefreshToken(int id,string name,  string roleName);
-         ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
+        Tokens GenerateJWTTokens(int id, string name, string roleName,bool rememberMe);
+        ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
     }
 }

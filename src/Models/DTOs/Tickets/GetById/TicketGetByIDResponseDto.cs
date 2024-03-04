@@ -1,7 +1,7 @@
 ﻿using Models.Entities;
 using Models.Enums;
 using System.ComponentModel.DataAnnotations;
-using Models.Entities;
+
 namespace Models.DTOs.Tickets.GetById
 {
     public class TicketGetByIDResponseDto

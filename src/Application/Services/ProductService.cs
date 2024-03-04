@@ -1,18 +1,12 @@
-﻿using Azure.Core;
-using Core.Repositories.Specific;
+﻿using Core.Repositories.Specific;
 using Core.Services;
-using DataAccessLayer.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using Models.DTOs;
 using Models.DTOs.Product.Create;
 using Models.DTOs.Product.Delete;
 using Models.DTOs.Product.GetAll;
 using Models.DTOs.Product.Update;
-using Models.DTOs.Tickets.Create;
-using Models.DTOs.Tickets.Edit;
-using Models.DTOs.Tickets.GetAll;
-using Models.DTOs.Tickets.GetById;
-using Models.DTOs.User.Register;
 using Models.Entities;
-using System.Net.Sockets;
 
 namespace Business.Services
 {
@@ -36,13 +30,7 @@ namespace Business.Services
                 ProductName = newProduct.ProductName
             };
             return responseDto;
-
-            //var entity =request.ToEntity();
-            //var createdTicket= _ticketRepository.AddAsync(entity);
-            //_ticketRepository.Save();
-            
         }
-
         public ProductRemoveResponseDto Delete(int id)
         {
            var product=_productRepository.GetSingle(m=>m.Id==id);
@@ -54,8 +42,6 @@ namespace Business.Services
             };
             return response;
         }
-
-
         public List<ProductGetAllResponseDto> GetAll()
         {
             var product = _productRepository.GetAll();
@@ -65,10 +51,17 @@ namespace Business.Services
                 ProductName = p.ProductName
             }).ToList();
             return products;
-
-            
         }
-
+        public List<ProductGetAllResponseDto> GetProductPagingData([FromQuery] PagedParameters prodParam)
+        {
+            var products = _productRepository.GetProducts(prodParam);
+                var responseDtoList = products.Select(p => new ProductGetAllResponseDto
+                {
+                     Id = p.Id,
+                    ProductName = p.ProductName
+                }).ToList();
+                return responseDtoList;
+        }
         public ProductUpdateResponseDto Update(ProductUpdateDto productUpdateDto)
         {
             var product = _productRepository.GetSingle(m => m.Id == productUpdateDto.Id);
@@ -81,6 +74,5 @@ namespace Business.Services
             };
             return response;
         }
-        
     }
 }

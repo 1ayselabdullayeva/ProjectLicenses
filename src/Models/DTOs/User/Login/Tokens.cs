@@ -8,7 +8,8 @@ namespace Models.DTOs.User.Login
 {
     public class Tokens
     {
-        public string AccessToken { get; set; }
-        public string RefreshToken { get; set; }
+        public string? AccessToken { get; set; }
+        public string? RefreshToken { get; set; }
+        //public DateTime Expiration {  get; set; }
     }
 }

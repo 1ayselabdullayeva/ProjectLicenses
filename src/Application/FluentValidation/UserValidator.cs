@@ -14,7 +14,7 @@ namespace Application.FluentValidation
         {
             RuleFor(u => u.FirstName).NotNull().NotEmpty();
             RuleFor(u => u.LastName).NotNull().NotEmpty();
-            RuleFor(u=>u.Email).NotEmpty().NotNull();
+            RuleFor(u => u.Email).NotEmpty().NotNull().EmailAddress(); ;
             RuleFor(u=>u.Password).NotEmpty().NotNull().WithMessage("Please specify a phone number."); ;
             RuleFor(u=> u.PhoneNumber).NotEmpty().NotNull();
             RuleFor(u=>u.CompanyName).NotEmpty().NotNull();

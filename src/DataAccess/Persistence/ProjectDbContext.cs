@@ -16,7 +16,7 @@ namespace DataAccessLayer.Persistence
 			base.OnModelCreating(modelBuilder);
 			modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
 		}
-		public virtual DbSet<UserRefreshToken> UserRefreshToken { get; set; }
+		//public virtual DbSet<UserRefreshToken> UserRefreshToken { get; set; }
 
 	}
 }

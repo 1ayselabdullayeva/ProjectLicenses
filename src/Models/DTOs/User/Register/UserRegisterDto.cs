@@ -1,7 +1,5 @@
 ﻿using Models.Entities;
 using Models.Enums;
-using Models.Entities;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +17,5 @@ namespace Models.DTOs.User.Register
         public string Password { get; set; }
         public string CompanyName { get; set; }
         public int RolesId { get; set; }
-
-
     }
 }

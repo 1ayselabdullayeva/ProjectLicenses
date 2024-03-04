@@ -1,28 +1,21 @@
-﻿using Application.Services;
-using Core.Exceptions;
-using Core.Repositories.Specific;
+﻿using Core.Repositories.Specific;
 using Core.Services;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Models.DTOs;
 using Models.DTOs.Tickets.Create;
 using Models.DTOs.Tickets.Edit;
 using Models.DTOs.Tickets.GetAll;
 using Models.DTOs.Tickets.GetById;
 using Models.Entities;
-using System.Net.Sockets;
-using System.Security.Claims;
 
 namespace Business.Services
 {
 	public class TicketService : ITicketServices
 	{
         private readonly ITicketRepository _ticketRepository;
-        private readonly IUserRepository _userRepository;
-        private readonly IUserServices _userService;
-        public TicketService(ITicketRepository ticketRepository, IUserRepository userRepository, IUserServices userService)
+        public TicketService(ITicketRepository ticketRepository)
         {
             _ticketRepository = ticketRepository;
-            _userRepository = userRepository;
-            _userService = userService;
 
         }
         public async Task<TicketCreateResponseDto> Create(int id,TicketCreateDto request)
@@ -59,7 +52,7 @@ namespace Business.Services
             return new TicketEditStatusResponseDto
             {
                 Id = existingTicket.Id,
-                TicketStatus = existingTicket.TicketStatus
+                TicketStatus = existingTicket.TicketStatus,
             };
         }
 
@@ -95,6 +88,25 @@ namespace Business.Services
             return response;
         }
 
+        public List<TicketGetAllResponseDto> GetTicketsPagingData([FromQuery] PagedParameters prodParam)
+        {
+            var tickets = _ticketRepository.GetTickets(prodParam);
+
+
+            // products dönüştürülmüş bir şekilde döndürülüyor
+            var responseDtoList = tickets.Select(p => new TicketGetAllResponseDto
+            {
+                Id = p.Id,
+                CreatedAt = p.CreatedAt,
+                Subject = p.Subject,
+                TicketStatus = p.TicketStatus,
+                TicketType= p.TicketType
+
+            }).ToList();
+
+            return responseDtoList;
+
+        }
     }
 }
 

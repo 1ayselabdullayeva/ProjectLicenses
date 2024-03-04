@@ -189,3 +189,7 @@ C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\System.Web.WebPages
 C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\System.Web.WebPages.Razor.dll
 C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\System.Web.WebPages.dll
 C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\Microsoft.Web.Infrastructure.dll
+C:\Users\HP\Desktop\PorjectLicenses\src\Api\obj\Debug\net8.0\Api.sourcelink.json
+C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\MailKit.dll
+C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\MimeKit.dll

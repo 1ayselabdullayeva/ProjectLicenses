@@ -1,4 +1,4 @@
-﻿using Api.Controllers.Pipeline;
+﻿using Api.Pipeline;
 using Application;
 using DataAccessLayer.Persistence;
 using FluentValidation.AspNetCore;
@@ -16,21 +16,9 @@ builder.Services.AddControllers().AddFluentValidation(/*c=>c.RegisterValidatorsF
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddBusinessLogic(builder.Configuration);
-//builder.Services.AddValidationInterceptor();
-//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-//                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
-//                {
-//                    options.TokenValidationParameters = new TokenValidationParameters
-//                    {
-//                        ValidateIssuer = true,
-//                        ValidateAudience = true,
-//                        ValidateLifetime = true,
-//                        ValidateIssuerSigningKey = true,
-//                        ValidIssuer = "example.com",
-//                        ValidAudience = "example.com",
-//                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SigningKey"]))
-//                    };
-//                });
+//builder.Services.Configure<Ma>(builder.Configuration.GetSection("MailSettings"));
+
+
 builder.Services.AddAuthentication(x => {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -50,6 +38,24 @@ builder.Services.AddAuthentication(x => {
     };
 
 });
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer("RefreshTokenScheme", options =>
+    {
+        var tokenKey = Encoding.UTF8.GetBytes(builder.Configuration["JWT:RefreshKey"]);
+
+        options.SaveToken = true;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["JWT:Issuer"],
+            ValidAudience = builder.Configuration["JWT:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(tokenKey),
+            ClockSkew = TimeSpan.Zero
+        };
+    });
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("Admin", policy => policy.RequireClaim(ClaimTypes.Role, "Admin")); 
@@ -57,12 +63,17 @@ builder.Services.AddAuthorization(options =>
 });
 
 var app = builder.Build();
-// Configure the HTTP request pipeline.
+//app.UseGlobalErrorHandlingMiddleware();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(x => x
+               .AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader());
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

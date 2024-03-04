@@ -70,6 +70,19 @@ namespace Core.Repositories
         {
             _dbContext.SaveChanges();
         }
+
+        public IQueryable<T> FindAll()
+        {
+            return _table
+                .AsNoTracking();
+        }
+
+        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
+        {
+            return _table
+                .Where(expression)
+                .AsNoTracking();
+        }
     }
 }
 

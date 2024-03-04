@@ -14,7 +14,7 @@ namespace Application.FluentValidation
         {
             RuleFor(t => t.Description).NotEmpty().NotNull();
             RuleFor(t=>t.Subject).NotEmpty().NotNull();
-            RuleFor(t=>t.TicketStatus);
+            RuleFor(t=>t.TicketType).NotEmpty().NotNull();
         }
     }
 }

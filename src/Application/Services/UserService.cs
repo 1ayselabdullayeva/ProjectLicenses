@@ -2,9 +2,10 @@
 using Core.Services;
 using DataAccessLayer.Repositories;
 using Models.DTOs.Product.Create;
+using Models.DTOs.Tickets.GetById;
 using Models.DTOs.User.Create;
+using Models.DTOs.User.GetById;
 using Models.Entities;
-using System.ComponentModel.DataAnnotations;
 
 namespace Business.Services
 {
@@ -12,8 +13,7 @@ namespace Business.Services
 	{
         private readonly IUserRepository _userRepository;
         private readonly IRolesRepository _rolesRepository;
-
-        public UserService(IUserRepository userRepository, IRolesRepository rolesRepository = null)
+        public UserService(IUserRepository userRepository, IRolesRepository rolesRepository)
         {
             _userRepository = userRepository;
             _rolesRepository = rolesRepository;
@@ -41,6 +41,18 @@ namespace Business.Services
                 PhoneNumber= newProduct.PhoneNumber
             };
             return responseDto;
+        }
+
+        public UserGetByIdResponseDto GetById(int id)
+        {
+            var user = _userRepository.GetSingle(m => m.Id == id);
+            var response = new UserGetByIdResponseDto
+            {
+                FirstName= user.FirstName, 
+                LastName= user.LastName,
+                Email= user.Email
+            };
+            return response;
         }
     }
 }

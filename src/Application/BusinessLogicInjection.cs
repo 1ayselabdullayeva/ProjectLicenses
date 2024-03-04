@@ -17,12 +17,13 @@ namespace Application
         {
             services.AddDataAccess(configuration);
             #region Register Services
-            services.AddTransient<ITicketServices, TicketService>();
             services.AddTransient<IUserServices, UserService>();
+            services.AddTransient<ITicketServices, TicketService>();
             services.AddTransient<IProductServices, ProductService>();
             services.AddTransient<ILicensesServices, LicensesService>();
             services.AddTransient<IRolesServices, RolesService>();
             services.AddScoped<IJWTServices, JWTService>();
+            //services.AddTransient<ITokenHandler, TokenHandler>();
             services.AddScoped<IValidator<User>,UserValidator>();
             services.AddScoped<IValidator<Product>,ProductValidator>();
             services.AddScoped<IValidator<Ticket>, TicketValidator > ();

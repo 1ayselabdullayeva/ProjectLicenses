@@ -1,4 +1,6 @@
-﻿using Models.DTOs.Product.Create;
+﻿using Microsoft.AspNetCore.Mvc;
+using Models.DTOs;
+using Models.DTOs.Product.Create;
 using Models.DTOs.Product.Delete;
 using Models.DTOs.Product.GetAll;
 using Models.DTOs.Product.Update;
@@ -13,5 +15,6 @@ namespace Core.Services
         public ProductRemoveResponseDto Delete(int id);
         public ProductUpdateResponseDto Update(ProductUpdateDto productUpdateDto);
         public List<ProductGetAllResponseDto> GetAll();
+        public List<ProductGetAllResponseDto> GetProductPagingData([FromQuery] PagedParameters prodParam);
     }
 }

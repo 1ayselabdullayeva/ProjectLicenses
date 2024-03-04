@@ -42,6 +42,9 @@ namespace DataAccess.Migrations
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserCount")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
@@ -170,6 +173,9 @@ namespace DataAccess.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar");
 
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("RolesId")
                         .HasColumnType("int");
 
@@ -183,31 +189,6 @@ namespace DataAccess.Migrations
                     b.HasIndex("RolesId");
 
                     b.ToTable("User", (string)null);
-                });
-
-            modelBuilder.Entity("Models.Entities.UserRefreshToken", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("RefreshToken")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserRefreshToken");
                 });
 
             modelBuilder.Entity("Models.Entities.Licenses", b =>
@@ -258,18 +239,6 @@ namespace DataAccess.Migrations
                     b.Navigation("Roles");
                 });
 
-            modelBuilder.Entity("Models.Entities.UserRefreshToken", b =>
-                {
-                    b.HasOne("Models.Entities.User", "User")
-                        .WithMany("RefreshTokens")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_RefreshTokens_User_Id");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Models.Entities.Licenses", b =>
                 {
                     b.Navigation("Ticket");
@@ -289,8 +258,6 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Models.Entities.User", b =>
                 {
-                    b.Navigation("RefreshTokens");
-
                     b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618

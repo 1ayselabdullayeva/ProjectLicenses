@@ -34,3 +34,4 @@ C:\Users\HP\Desktop\PorjectLicenses\src\DataAccess\obj\Debug\net8.0\refint\DataA
 C:\Users\HP\Desktop\PorjectLicenses\src\DataAccess\obj\Debug\net8.0\DataAccess.pdb
 C:\Users\HP\Desktop\PorjectLicenses\src\DataAccess\obj\Debug\net8.0\DataAccess.genruntimeconfig.cache
 C:\Users\HP\Desktop\PorjectLicenses\src\DataAccess\obj\Debug\net8.0\ref\DataAccess.dll
+C:\Users\HP\Desktop\PorjectLicenses\src\DataAccess\obj\Debug\net8.0\DataAccess.sourcelink.json

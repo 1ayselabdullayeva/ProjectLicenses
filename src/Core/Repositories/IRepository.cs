@@ -14,6 +14,8 @@ namespace Core.Repositories
 		T Edit(T entity, Action<EntityEntry<T>> rules = null);
 		void Remove(T entity);
 		void Save();
-	}
+        IQueryable<T> FindAll();
+        IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
+    }
 }
 

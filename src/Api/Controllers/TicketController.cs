@@ -2,24 +2,28 @@
 using Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Models.DTOs.Product.GetAll;
+using Models.DTOs;
 using Models.DTOs.Tickets.Create;
 using Models.DTOs.Tickets.Edit;
 using Models.Entities;
+using Newtonsoft.Json;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Core.Repositories.Specific;
+using Models.DTOs.Tickets.GetAll;
 
 namespace Api.Controllers
 {
     public class TicketController : Controller
     {
         private readonly ITicketServices _ticketService;
-        private readonly IUserServices _userServices;
-
-        public TicketController(ITicketServices ticketService, IUserServices userServices)
+        private readonly ITicketRepository _ticketRepository;
+        public TicketController(ITicketServices ticketService, ITicketRepository ticketRepository)
         {
             _ticketService = ticketService;
-            _userServices = userServices;
+            _ticketRepository = ticketRepository;
         }
-
         [Authorize("Customer")]
         [HttpGet("getbyid")]
         public IActionResult GetTicketById()
@@ -28,7 +32,6 @@ namespace Api.Controllers
             var responseDto = _ticketService.GetById(id);
             return Ok(responseDto);
         }
-
 
         [Authorize("Admin")]
         [HttpPut("edit")]
@@ -53,11 +56,40 @@ namespace Api.Controllers
             var response = _ticketService.GetAll();
             return Ok(response);
         }
+
+        [HttpGet("PaginationTicket")]
+        public ActionResult<List<ProductGetAllResponseDto>> GetProductPagingData([FromQuery] PagedParameters prodParam)
+        {
+            var tickets = _ticketRepository.GetTickets(prodParam);
+
+            var metadata = new
+            {
+                tickets.TotalCount,
+                tickets.PageSize,
+                tickets.CurrentPage,
+                tickets.TotalPages,
+                tickets.HasNext,
+                tickets.HasPrevious
+            };
+
+            HttpContext.Response.Headers.Append("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+            var responseDtoList = tickets.Select(p => new TicketGetAllResponseDto
+            {
+                Id = p.Id,
+                CreatedAt=p.CreatedAt,
+                Description = p.Description,
+                TicketStatus = p.TicketStatus,
+                TicketType = p.TicketType,
+                Subject = p.Subject
+            }).ToList();
+            return Ok(responseDtoList);
+        }
         [Authorize("Customer")]
         [HttpPost("CreateTicket")]
         public async Task<IActionResult> Create(TicketCreateDto request) 
         {
-             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             TicketValidator tv = new TicketValidator();
             var validationResult = tv.Validate(new Ticket
             {

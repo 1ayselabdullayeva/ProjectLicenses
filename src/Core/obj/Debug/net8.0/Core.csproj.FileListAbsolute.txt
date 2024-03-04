@@ -30,3 +30,4 @@ C:\Users\HP\Desktop\PorjectLicenses\src\Core\obj\Debug\net8.0\refint\Core.dll
 C:\Users\HP\Desktop\PorjectLicenses\src\Core\obj\Debug\net8.0\Core.pdb
 C:\Users\HP\Desktop\PorjectLicenses\src\Core\obj\Debug\net8.0\Core.genruntimeconfig.cache
 C:\Users\HP\Desktop\PorjectLicenses\src\Core\obj\Debug\net8.0\ref\Core.dll
+C:\Users\HP\Desktop\PorjectLicenses\src\Core\obj\Debug\net8.0\Core.sourcelink.json
