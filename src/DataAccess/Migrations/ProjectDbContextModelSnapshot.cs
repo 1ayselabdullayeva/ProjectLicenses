@@ -45,9 +45,14 @@ namespace DataAccess.Migrations
                     b.Property<int>("UserCount")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Licenses", (string)null);
                 });
@@ -160,9 +165,6 @@ namespace DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar");
 
-                    b.Property<int?>("LicensesId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -184,8 +186,6 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LicensesId");
-
                     b.HasIndex("RolesId");
 
                     b.ToTable("User", (string)null);
@@ -198,7 +198,14 @@ namespace DataAccess.Migrations
                         .HasForeignKey("ProductId")
                         .HasConstraintName("FK_Licenses_Product_Id");
 
+                    b.HasOne("Models.Entities.User", "User")
+                        .WithMany("Licenses")
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("FK_Licenses_User_Id");
+
                     b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Models.Entities.Ticket", b =>
@@ -222,11 +229,6 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Models.Entities.User", b =>
                 {
-                    b.HasOne("Models.Entities.Licenses", "Licenses")
-                        .WithMany("Users")
-                        .HasForeignKey("LicensesId")
-                        .HasConstraintName("FK_Users_Licenses_Id");
-
                     b.HasOne("Models.Entities.Roles", "Roles")
                         .WithMany("Users")
                         .HasForeignKey("RolesId")
@@ -234,16 +236,12 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_Users_Role_Id");
 
-                    b.Navigation("Licenses");
-
                     b.Navigation("Roles");
                 });
 
             modelBuilder.Entity("Models.Entities.Licenses", b =>
                 {
                     b.Navigation("Ticket");
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Models.Entities.Product", b =>
@@ -258,6 +256,8 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Models.Entities.User", b =>
                 {
+                    b.Navigation("Licenses");
+
                     b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618

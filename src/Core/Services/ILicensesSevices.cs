@@ -7,7 +7,7 @@ namespace Core.Services
 {
     public interface ILicensesServices
 	{
-       public GetLicensesResponseDto GetById (int id);
+        //public GetLicensesResponseDto GetById(int id);
         public Task<LicensesCreateResponseDto> CreateLicenses(int id, LicensesCreateDto request);
     }
 }

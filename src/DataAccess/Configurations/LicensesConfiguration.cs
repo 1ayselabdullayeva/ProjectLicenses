@@ -13,7 +13,9 @@ namespace DataAccessLayer.Configurations
 			builder.Property(p => p.ActivationDate).HasColumnType("date");
 			builder.HasOne(p=>p.Product).WithMany(p => p.Licenses).HasForeignKey(p => p.ProductId)
 				.HasConstraintName("FK_Licenses_Product_Id");
-			builder.ToTable("Licenses");
+            builder.HasOne(p => p.User).WithMany(p => p.Licenses).HasForeignKey(p => p.UserId)
+                .HasConstraintName("FK_Licenses_User_Id");
+            builder.ToTable("Licenses");
 		}
 	}
 }

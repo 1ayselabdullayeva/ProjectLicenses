@@ -25,6 +25,7 @@ namespace DataAccessLayer
 			services.AddScoped<IProductRepository, ProductRepository>();
 			services.AddScoped<ILicensesRepository, LicensesRepository>();
 			services.AddScoped<IRolesRepository, RolesRepository>();
+			//services.AddScoped<IUserLicensesRepository, UserLicensesRepository>();
 			services.AddScoped<IJWTManagerRepository, JWTManagerRepository>();
 			#endregion
 

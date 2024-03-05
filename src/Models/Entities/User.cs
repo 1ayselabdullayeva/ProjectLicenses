@@ -14,8 +14,10 @@ namespace Models.Entities
         public string? RefreshToken { get; set; }
         public int RolesId { get; set; } = 2;
 		public Roles Roles { get; set; }
-		public int? LicensesId { get; set; }
-		public Licenses Licenses { get; set; }
-		public ICollection<Ticket> Tickets { get; set; }
+        //public int? LicensesId { get; set; }
+        //public Licenses Licenses { get; set; }
+        //public ICollection<UserLicenses> UserLicenses { get; set; }
+        public ICollection<Ticket> Tickets { get; set; }
+		public ICollection<Licenses> Licenses { get; set; }
 	}
 }

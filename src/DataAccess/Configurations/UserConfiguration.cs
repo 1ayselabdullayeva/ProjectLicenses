@@ -17,8 +17,8 @@ namespace DataAccessLayer.Configurations
 			builder.Property(p => p.CompanyName).HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
 			builder.HasOne(p => p.Roles).WithMany(p => p.Users).HasForeignKey(p => p.RolesId)
 			   .HasConstraintName("FK_Users_Role_Id");
-			builder.HasOne(p => p.Licenses).WithMany(p => p.Users).HasForeignKey(p => p.LicensesId)
-				 .HasConstraintName("FK_Users_Licenses_Id");
+			//builder.HasOne(p => p.Licenses).WithMany(p => p.Users).HasForeignKey(p => p.LicensesId)
+			//	 .HasConstraintName("FK_Users_Licenses_Id");
 			builder.ToTable("User");
 
 		}

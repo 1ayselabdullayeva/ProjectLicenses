@@ -12,7 +12,9 @@ namespace Models.Entities
 		public int? ProductId { get; set; }
 		public Product Product { get; set; }
 		public ICollection<Ticket> Ticket { get; set; }
-		public ICollection<User> Users { get; set; }
+		//public ICollection<User> Users { get; set; }
+		public int? UserId { get; set; }
+		public User User { get; set; }
 
 	}
 }

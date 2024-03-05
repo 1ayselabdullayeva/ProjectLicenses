@@ -5,6 +5,7 @@ using Models.DTOs.Product.Create;
 using Models.DTOs.Tickets.GetById;
 using Models.DTOs.User.Create;
 using Models.DTOs.User.GetById;
+using Models.DTOs.User.GetLicenses;
 using Models.Entities;
 
 namespace Business.Services
@@ -54,5 +55,12 @@ namespace Business.Services
             };
             return response;
         }
+        //public UserGetLicensesResponseDto GetLicensesStatus(int id)
+        //{
+        //    var user = _userRepository.GetSingle(m => m.Id == id);
+        //    var LicensesId =user.LicensesId;
+           
+
+        //}
     }
 }

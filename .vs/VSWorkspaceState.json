@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\Application",
+    "\\src\\Application\\FluentValidation",
+    "\\src\\DataAccess",
+    "\\src\\DataAccess\\Configurations"
+  ],
+  "SelectedNode": "\\src\\Application\\FluentValidation\\ProductValidator.cs",
+  "PreviewInSolutionExplorer": false
+}

@@ -13,9 +13,6 @@ namespace DataAccessLayer.Repositories
 		{
 			_dbContext = dbContext;
 		}
-
-        
-        
     }
 
 }
