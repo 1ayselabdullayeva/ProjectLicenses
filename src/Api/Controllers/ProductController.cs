@@ -10,10 +10,11 @@ using Models.DTOs.Product.GetAll;
 using Models.DTOs.Product.Update;
 using Models.Entities;
 using Newtonsoft.Json;
+using System.Security.Claims;
 
 namespace Api.Controllers
 {
-    [Authorize("Admin")]
+    //[Authorize("Admin")]
     [Route("api/[controller]")]
     [ApiController]
     
@@ -31,6 +32,13 @@ namespace Api.Controllers
         public IActionResult GetAll()
         {
             var products = _productService.GetAll();
+            return Ok(products);
+        }
+        [HttpGet("GetById")]
+        public IActionResult GetById()
+        {
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var products = _productService.GetById(userId);
             return Ok(products);
         }
         [HttpGet("PaginationProduct")]

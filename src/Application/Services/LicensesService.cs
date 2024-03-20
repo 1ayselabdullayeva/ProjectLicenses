@@ -1,9 +1,12 @@
-﻿using Core.Repositories.Specific;
+﻿using Core.Exceptions;
+using Core.Repositories.Specific;
 using Core.Services;
 using DataAccessLayer.Repositories;
 using Models.DTOs.Licenses.Create;
 using Models.DTOs.Licenses.GetById;
+using Models.DTOs.Licenses.GetByIdLicenses;
 using Models.Entities;
+using Models.Enums;
 
 namespace Business.Services
 {
@@ -12,14 +15,12 @@ namespace Business.Services
 		private readonly ILicensesRepository _licensesRepository;
         private readonly IUserRepository _userRepository;
         private readonly IProductRepository _productRepository;
-        //private readonly IUserLicensesRepository _userLicensesRepository;
 
-        public LicensesService(ILicensesRepository licensesRepository, IUserRepository userRepository, IProductRepository productRepository/*, IUserLicensesRepository userLicensesRepository*/)
+        public LicensesService(ILicensesRepository licensesRepository, IUserRepository userRepository, IProductRepository productRepository)
         {
             _licensesRepository = licensesRepository;
             _userRepository = userRepository;
             _productRepository = productRepository;
-            //_userLicensesRepository = userLicensesRepository;
         }
 
         public async Task<LicensesCreateResponseDto> CreateLicenses(int id, LicensesCreateDto request)
@@ -29,16 +30,10 @@ namespace Business.Services
             {
                 ProductId = ProductId,
                 UserCount = request.UserCount,
-                ExpireDate = DateTime.Now.AddYears(request.Year)
+                ExpireDate = DateTime.Now.AddYears(request.Year),
+                UserId=id
             };
             await _licensesRepository.AddAsync(NewLicenses);
-            //var userLicense = new UserLicenses
-            //{
-            //    UserId = id,
-            //    LicensesId = NewLicenses.Id
-            //};
-            //await _userLicensesRepository.AddAsync(userLicense);
-            //_userRepository.Save();
             var response = new LicensesCreateResponseDto
             {
                 ProductId = ProductId,
@@ -48,20 +43,43 @@ namespace Business.Services
             return response;
         }
 
-        //public GetLicensesResponseDto GetById(int id)
-        //{
-        //    var LicensesId = _userRepository.GetSingle(x => x.Id == id).LicensesId;
-        //    var ProductId = _licensesRepository.GetSingle(x => x.Id == LicensesId).ProductId;
-        //    var ProductName = _productRepository.GetSingle(x => x.Id == ProductId).ProductName;
-        //    var Licenses = _licensesRepository.GetSingle(x => x.Id == LicensesId);
-        //    var LicenseStatus = _licensesRepository.GetSingle(x => x.Id == LicensesId).LicenseStatus.ToString();
-        //    var response = new GetLicensesResponseDto
-        //    {
-        //        ProductName = ProductName,
-        //        ExpireDate = Licenses.ExpireDate,
-        //        licenseStatus = LicenseStatus,
-        //    };
-        //    return response;
-        //}
-}
+        public List<GetLicensesResponseDto> GetById(int id)
+        {
+            var userLicenses = _licensesRepository.GetAll(x => x.UserId == id).ToList();
+            var responseList = new List<GetLicensesResponseDto>();
+            foreach (var item in userLicenses)
+            {
+                var productName = _productRepository.GetSingle(x => x.Id == item.ProductId)?.ProductName;
+
+                var response = new GetLicensesResponseDto
+                {
+                    ProductName = productName,
+                    ExpireDate = item.ExpireDate,
+                    UserCount= item.UserCount,
+                    licenseStatus = item.LicenseStatus.ToString()
+                };
+                responseList.Add(response);
+            }
+
+            return responseList;
+        }
+
+        public GetByIdLicensesResponseDto GetByIdLicenses(int id, int LicensesId)
+        {
+            var user = _userRepository.GetSingle(x=>x.Id == id);
+           
+                var license = _licensesRepository.GetSingle(x => x.Id == LicensesId);
+                var ProductName = _productRepository.GetSingle(x => x.Id == license.ProductId).ProductName;
+
+                var response = new GetByIdLicensesResponseDto
+                {
+                    ProductName = ProductName,
+                    UsersCount = license.UserCount,
+                    ExpiryDate = license.ExpireDate,
+                    ActivationDate = license.ActivationDate,
+                    LiscenseStatus=license.LicenseStatus
+                };
+                return response;
+        }
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using Models.DTOs.User.Login;
+using Models.DTOs.User.Login.UserRefreshTokenDto;
 using Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,6 @@ namespace Core.Repositories.Specific
     {
         Tokens GenerateJWTTokens(int id, string name, string roleName,bool rememberMe);
         ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
+        UserAccessTokenDto GetTokenByRefreshToken(string refreshToken);
     }
 }

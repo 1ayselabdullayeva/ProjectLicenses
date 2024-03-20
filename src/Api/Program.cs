@@ -8,8 +8,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.IdentityModel.Logging;
 var builder = WebApplication.CreateBuilder(args);
-// Add services to the container.
 
 builder.Services.AddControllers().AddFluentValidation(/*c=>c.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly())*/);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -38,20 +38,23 @@ builder.Services.AddAuthentication(x => {
     };
 
 });
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer("RefreshTokenScheme", options =>
+builder.Services.AddAuthentication(y =>
+{
+    y.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    y.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer("refreshscheme",options =>
     {
-        var tokenKey = Encoding.UTF8.GetBytes(builder.Configuration["JWT:RefreshKey"]);
-
+        var tokenKey = Encoding.UTF8.GetBytes(builder.Configuration["JWT1:RefreshKey"]);
         options.SaveToken = true;
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuer = true,
-            ValidateAudience = true,
+            ValidateIssuer = false,
+            ValidateAudience = false,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["JWT:Issuer"],
-            ValidAudience = builder.Configuration["JWT:Audience"],
+            ValidIssuer = builder.Configuration["JWT1:Issuer"],
+            ValidAudience = builder.Configuration["JWT1:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(tokenKey),
             ClockSkew = TimeSpan.Zero
         };
@@ -68,15 +71,14 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+
+app.UseHttpsRedirection();    app.UseSwaggerUI();
 }
 app.UseCors(x => x
                .AllowAnyOrigin()
                .AllowAnyMethod()
                .AllowAnyHeader());
-app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
 app.Run();

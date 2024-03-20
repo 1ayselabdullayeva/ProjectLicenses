@@ -22,7 +22,6 @@ namespace Application
             services.AddTransient<IProductServices, ProductService>();
             services.AddTransient<ILicensesServices, LicensesService>();
             services.AddTransient<IRolesServices, RolesService>();
-            //services.AddTransient<IUserLicensesServices, UserLicensesService>();
             services.AddScoped<IJWTServices, JWTService>();
             services.AddScoped<IValidator<User>,UserValidator>();
             services.AddScoped<IValidator<Product>,ProductValidator>();

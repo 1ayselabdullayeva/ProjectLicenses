@@ -1,5 +1,73 @@
 [
   {
+    "ContainingType": "Api.Controllers.AuthController",
+    "Method": "GetTokenByRefreshToken",
+    "RelativePath": "api/Auth/get-token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "refreshToken",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Models.DTOs.User.Login.UserRefreshTokenDto.UserRefreshTokenDto, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usersdata",
+        "Type": "Models.DTOs.User.Login.UserLoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.AuthController",
+    "Method": "Logout",
+    "RelativePath": "api/Auth/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/Auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userRegister",
+        "Type": "Models.DTOs.User.Register.UserRegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Api.Controllers.LicensesController",
     "Method": "CreateLicenses",
     "RelativePath": "api/Licenses/Buy",
@@ -13,6 +81,32 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.LicensesController",
+    "Method": "GetById",
+    "RelativePath": "api/Licenses/GetByIdLicenses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "LicensesId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.LicensesController",
+    "Method": "GetLicenses",
+    "RelativePath": "api/Licenses/getLicenses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -51,6 +145,16 @@
     "ContainingType": "Api.Controllers.ProductController",
     "Method": "GetAll",
     "RelativePath": "api/Product/GetAllProducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.ProductController",
+    "Method": "GetById",
+    "RelativePath": "api/Product/GetById",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -105,94 +209,22 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Api.Controllers.UserController",
-    "Method": "GetById",
-    "RelativePath": "api/User/GetUser",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Api.Controllers.UserLoginController",
-    "Method": "Login",
-    "RelativePath": "api/UserLogin/Login",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "usersdata",
-        "Type": "Models.DTOs.User.Login.UserLoginDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Api.Controllers.UserLoginController",
-    "Method": "Logout",
-    "RelativePath": "api/UserLogin/logout",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Api.Controllers.UserLoginController",
-    "Method": "Register",
-    "RelativePath": "api/UserLogin/register",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userRegister",
-        "Type": "Models.DTOs.User.Register.UserRegisterDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "Api.Controllers.TicketController",
     "Method": "Create",
-    "RelativePath": "CreateTicket",
+    "RelativePath": "api/Ticket/CreateTicket",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "CreatedAt",
-        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "Subject",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Description",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "TicketType",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "TicketStatus",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "UserId",
+        "Name": "LicenseId",
         "Type": "System.Int32",
         "IsRequired": false
+      },
+      {
+        "Name": "request",
+        "Type": "Models.DTOs.Tickets.Create.TicketCreateDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -200,7 +232,7 @@
   {
     "ContainingType": "Api.Controllers.TicketController",
     "Method": "EditTicketStatus",
-    "RelativePath": "edit",
+    "RelativePath": "api/Ticket/edit",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -216,7 +248,7 @@
   {
     "ContainingType": "Api.Controllers.TicketController",
     "Method": "GetAllTickets",
-    "RelativePath": "getAllTickets",
+    "RelativePath": "api/Ticket/getAllTickets",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -226,7 +258,7 @@
   {
     "ContainingType": "Api.Controllers.TicketController",
     "Method": "GetTicketById",
-    "RelativePath": "getbyid",
+    "RelativePath": "api/Ticket/getbyid",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -236,7 +268,7 @@
   {
     "ContainingType": "Api.Controllers.TicketController",
     "Method": "GetProductPagingData",
-    "RelativePath": "PaginationTicket",
+    "RelativePath": "api/Ticket/PaginationTicket",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -263,5 +295,25 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Api.Controllers.UserController",
+    "Method": "GetByIdLicenses",
+    "RelativePath": "api/User/GetLicenses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.UserController",
+    "Method": "GetById",
+    "RelativePath": "api/User/GetUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

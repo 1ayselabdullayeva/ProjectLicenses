@@ -10,7 +10,7 @@ namespace Core.Services
 	{
 		public Task<UserCreateResponseDto> Create(UserCreateDto request);
         public UserGetByIdResponseDto GetById(int id);
-        //public UserGetLicensesResponseDto GetLicensesStatus(int id)
+        public UserGetLicensesResponseDto GetLicensesStatus(int id);
 
     }
 }

@@ -1,7 +1,9 @@
-﻿using Core.Repositories.Specific;
+﻿using Azure;
+using Core.Repositories.Specific;
 using Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Models.DTOs;
+using Models.DTOs.Licenses.GetById;
 using Models.DTOs.Tickets.Create;
 using Models.DTOs.Tickets.Edit;
 using Models.DTOs.Tickets.GetAll;
@@ -13,19 +15,22 @@ namespace Business.Services
 	public class TicketService : ITicketServices
 	{
         private readonly ITicketRepository _ticketRepository;
-        public TicketService(ITicketRepository ticketRepository)
+        private readonly ILicensesRepository _licensesRepository;
+        public TicketService(ITicketRepository ticketRepository, ILicensesRepository licensesRepository)
         {
             _ticketRepository = ticketRepository;
-
+            _licensesRepository = licensesRepository;
         }
-        public async Task<TicketCreateResponseDto> Create(int id,TicketCreateDto request)
+        public async Task<TicketCreateResponseDto> Create(int id,int LicenseId,TicketCreateDto request)
 		{
-            //var userId = User.FindFirst(ClaimTypes.Name)?.Value;
+            var LicensesId = _licensesRepository.GetSingle(x=>x.Id== LicenseId);
             var newTicket = new Ticket
             {
                 Subject = request.Subject,
                 Description = request.Description,
-                UserId=id
+                UserId=id,
+                LicensesId= LicensesId.Id,
+
             };
              await _ticketRepository.AddAsync(newTicket);
             var responseDto = new TicketCreateResponseDto
@@ -40,12 +45,6 @@ namespace Business.Services
         public TicketEditStatusResponseDto Edit(TicketEditStatusDto request)
         {
             var existingTicket = _ticketRepository.GetSingle(t => t.Id == request.Id);
-
-            //if (existingTicket == null)
-            //{
-
-                
-            //}
             existingTicket.TicketStatus = request.TicketStatus;
             _ticketRepository.Edit(existingTicket);
             _ticketRepository.Save();
@@ -55,7 +54,6 @@ namespace Business.Services
                 TicketStatus = existingTicket.TicketStatus,
             };
         }
-
         public List<TicketGetAllResponseDto> GetAll()
         {
            var ticket=_ticketRepository.GetAll();
@@ -72,28 +70,27 @@ namespace Business.Services
             return tickets;
 
         }
-
-
-        public TicketGetByIDResponseDto GetById(int id)
-		{
-			var ticket = _ticketRepository.GetSingle(m=>m.UserId==id);
-            var response = new TicketGetByIDResponseDto
+        public List<TicketGetByIDResponseDto> GetById(int id)
+        {
+            var ticket = _ticketRepository.GetAll(m => m.UserId == id);
+            var responseList = new List<TicketGetByIDResponseDto>();
+            foreach(var item in ticket)
             {
-               CreatedAt = ticket.CreatedAt,
-               Description = ticket.Description,
-               Subject = ticket.Subject,
-               TicketStatus = ticket.TicketStatus,
-               TicketType= ticket.TicketType
+                var response = new TicketGetByIDResponseDto {
+                    CreatedAt = item.CreatedAt,
+                    Description = item.Description,
+                    Subject = item.Subject,
+                    TicketStatus = item.TicketStatus,
+                    TicketType = item.TicketType
+                };
+                responseList.Add(response); 
             };
-            return response;
+            return responseList;
         }
 
         public List<TicketGetAllResponseDto> GetTicketsPagingData([FromQuery] PagedParameters prodParam)
         {
             var tickets = _ticketRepository.GetTickets(prodParam);
-
-
-            // products dönüştürülmüş bir şekilde döndürülüyor
             var responseDtoList = tickets.Select(p => new TicketGetAllResponseDto
             {
                 Id = p.Id,
@@ -103,7 +100,6 @@ namespace Business.Services
                 TicketType= p.TicketType
 
             }).ToList();
-
             return responseDtoList;
 
         }

@@ -6,17 +6,22 @@ using Models.DTOs.Product.Create;
 using Models.DTOs.Product.Delete;
 using Models.DTOs.Product.GetAll;
 using Models.DTOs.Product.Update;
+using Models.DTOs.Tickets.GetById;
 using Models.Entities;
+using System.ComponentModel;
 
 namespace Business.Services
 {
     public class ProductService : IProductServices
     {
         private readonly IProductRepository _productRepository;
-
-        public ProductService(IProductRepository productRepository)
+        private readonly ILicensesRepository _licenseRepository;
+        private readonly ITicketRepository _ticketRepository;
+        public ProductService(IProductRepository productRepository, ITicketRepository ticketRepository, ILicensesRepository licenseRepository)
         {
             _productRepository = productRepository;
+            _ticketRepository = ticketRepository;
+            _licenseRepository = licenseRepository;
         }
         public async Task<ProductCreateResponseDto> Create(ProductCreateDto request)
         {
@@ -52,6 +57,30 @@ namespace Business.Services
             }).ToList();
             return products;
         }
+
+        public List<ProductGetAllResponseDto> GetById(int id)
+        {
+            var licenses = _licenseRepository.GetAll(x => x.UserId == id);
+            var responseList = new List<ProductGetAllResponseDto>();
+            
+            foreach (var item in licenses)
+            {
+                var productId = _licenseRepository.GetSingle(x => x.Id == item.Id)?.ProductId;
+                var productName = _productRepository.GetSingle(x => x.Id == productId).ProductName;
+
+                if (!responseList.Any(p => p.ProductName == productName))
+                {
+                    var productDto = new ProductGetAllResponseDto
+                    {
+                        ProductName = productName
+                    };
+                    responseList.Add(productDto);
+                }
+            }
+            return responseList;
+
+        }
+
         public List<ProductGetAllResponseDto> GetProductPagingData([FromQuery] PagedParameters prodParam)
         {
             var products = _productRepository.GetProducts(prodParam);

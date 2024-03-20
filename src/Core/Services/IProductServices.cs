@@ -15,6 +15,7 @@ namespace Core.Services
         public ProductRemoveResponseDto Delete(int id);
         public ProductUpdateResponseDto Update(ProductUpdateDto productUpdateDto);
         public List<ProductGetAllResponseDto> GetAll();
+        public List<ProductGetAllResponseDto> GetById(int id);
         public List<ProductGetAllResponseDto> GetProductPagingData([FromQuery] PagedParameters prodParam);
     }
 }

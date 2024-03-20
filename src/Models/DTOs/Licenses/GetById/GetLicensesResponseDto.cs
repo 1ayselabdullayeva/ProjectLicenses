@@ -11,6 +11,7 @@ namespace Models.DTOs.Licenses.GetById
     {
         public string ProductName { get; set; }
         public DateTime ExpireDate { get; set; }
+        public int UserCount { get; set; }
         public string licenseStatus { get; set; }
 
     }

@@ -15,6 +15,8 @@ using Models.DTOs.Tickets.GetAll;
 
 namespace Api.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class TicketController : Controller
     {
         private readonly ITicketServices _ticketService;
@@ -87,7 +89,7 @@ namespace Api.Controllers
         }
         [Authorize("Customer")]
         [HttpPost("CreateTicket")]
-        public async Task<IActionResult> Create(TicketCreateDto request) 
+        public async Task<IActionResult> Create(int LicenseId,TicketCreateDto request) 
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             TicketValidator tv = new TicketValidator();
@@ -97,14 +99,14 @@ namespace Api.Controllers
                 TicketStatus = request.TicketStatus,
                 TicketType = request.TicketType,
                 CreatedAt = request.CreatedAt,
-                UserId= userId
+                UserId = userId
             });
             if (!validationResult.IsValid)
             {
                 return BadRequest(validationResult.Errors);
             }
-            
-            var response = await _ticketService.Create(userId, request);
+
+            var response = await _ticketService.Create(userId,LicenseId, request);
             return Ok(response);
         }
     }

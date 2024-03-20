@@ -16,6 +16,7 @@ namespace Core.Services
         void AddUserRefreshTokens(User user);
         void DeleteUserRefreshTokens(int Id, string refreshToken);
         Task<UserRegisterResponseDto> Register(UserRegisterDto userRegister);
+        Tokens Login(UserLoginDto login);
         void LogOut(int id);
     }
 
