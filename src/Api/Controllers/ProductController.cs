@@ -14,7 +14,7 @@ using System.Security.Claims;
 
 namespace Api.Controllers
 {
-    //[Authorize("Admin")]
+    [Authorize("Admin")]
     [Route("api/[controller]")]
     [ApiController]
     

@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using Core.Repositories;
 using Core.Repositories.Specific;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Logging;
@@ -10,6 +11,7 @@ using Models.Entities;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Security.Principal;
 using System.Text;
 using Tokens = Models.DTOs.User.Login.Tokens;
 
@@ -39,20 +41,9 @@ namespace DataAccess.Repositories
                    new Claim(ClaimTypes.Name, userName),
                    new Claim(ClaimTypes.Role,roleName)
                   }),
-                    Expires = DateTime.Now.AddMinutes(2),
+                    Expires = DateTime.Now.AddSeconds(30),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
                 };
-
-                DateTime expires;
-                if (rememberMe==false)
-                {
-                    expires = DateTime.UtcNow.AddDays(7);
-                }
-                else
-                {
-                    expires = DateTime.UtcNow.AddDays(30);
-                }
-
                 var refreshTokenDesc = new SecurityTokenDescriptor
                 {
 
@@ -62,7 +53,8 @@ namespace DataAccess.Repositories
                       new Claim(ClaimTypes.Name, userName),
                       new Claim(ClaimTypes.Role, roleName)
                   }),
-                    //Expires = DateTime.Now.AddMinutes(2),
+
+                    Expires = rememberMe ? DateTime.Now.AddSeconds(30) : DateTime.Now.AddMinutes(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(refreshkey), SecurityAlgorithms.HmacSha256Signature)
                 };
 
@@ -83,10 +75,10 @@ namespace DataAccess.Repositories
         public UserAccessTokenDto GetTokenByRefreshToken(string refreshToken)
         {
                var principal = GetPrincipalFromExpiredToken(refreshToken);
-                var username = principal.Identity.Name; 
                 var userId = principal.FindFirst(ClaimTypes.NameIdentifier).Value; 
                 var roleName = principal.FindFirst(ClaimTypes.Role).Value;
-                var newAccessToken = GenerateJWTTokens(int.Parse(userId), username, roleName,false);
+              var username= principal.FindFirst(ClaimTypes.Name).Value;
+            var newAccessToken = GenerateJWTTokens(int.Parse(userId), username, roleName,false);
 
                 var response = new UserAccessTokenDto
                 {
@@ -94,10 +86,23 @@ namespace DataAccess.Repositories
                 };
                 return response;
         }
+        public bool IsValid(string token)
+        {
+            JwtSecurityToken jwtSecurityToken;
+            try
+            {
+                jwtSecurityToken = new JwtSecurityToken(token);
+                return jwtSecurityToken.ValidTo > DateTime.UtcNow;
 
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
         {
-           
+
             var Key = Encoding.UTF8.GetBytes(_configuration["JWT1:RefreshKey"]);
             IdentityModelEventSource.ShowPII = true;
             IdentityModelEventSource.LogCompleteSecurityArtifact = true;
@@ -108,10 +113,9 @@ namespace DataAccess.Repositories
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(Key),
-                ClockSkew = TimeSpan.Zero,
-               
-        };
-
+                ClockSkew = TimeSpan.Zero
+            };
+            
             var tokenHandler = new JwtSecurityTokenHandler();
             var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
             JwtSecurityToken jwtSecurityToken = securityToken as JwtSecurityToken;
@@ -119,7 +123,13 @@ namespace DataAccess.Repositories
             {
                 throw new SecurityTokenException("Invalid token");
             }
-            return principal;
+            else
+            {
+                return null;
+            }
+
+
+
         }
     }
 }

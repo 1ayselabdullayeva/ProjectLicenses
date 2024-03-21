@@ -3,28 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|c:\\users\\hp\\desktop\\porjectlicenses\\src\\api\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|solutionrelative:src\\api\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\api\\controllers\\licensescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|solutionrelative:src\\api\\controllers\\licensescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|c:\\users\\hp\\desktop\\porjectlicenses\\src\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|solutionrelative:src\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\application\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|solutionrelative:src\\application\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C77139EE-DA4D-46DC-9E05-F49B2D5F96AF}|src\\DataAccess\\DataAccess.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\dataaccess\\repositories\\jwtmanagerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C77139EE-DA4D-46DC-9E05-F49B2D5F96AF}|src\\DataAccess\\DataAccess.csproj|solutionrelative:src\\dataaccess\\repositories\\jwtmanagerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|solutionrelative:src\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F43EC0CE-D6E3-4AA9-AA95-F8C9C5F2EE59}|src\\Core\\Core.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\core\\repositories\\specific\\ijwtmanagerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F43EC0CE-D6E3-4AA9-AA95-F8C9C5F2EE59}|src\\Core\\Core.csproj|solutionrelative:src\\core\\repositories\\specific\\ijwtmanagerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\api\\controllers\\licensescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|solutionrelative:src\\api\\controllers\\licensescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{732AAB1B-87A5-414C-B19F-C3A7147801C2}|src\\Models\\Models.csproj|c:\\users\\hp\\desktop\\porjectlicenses\\src\\models\\dtos\\user\\login\\useraccesstokendto\\useraccesstokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{732AAB1B-87A5-414C-B19F-C3A7147801C2}|src\\Models\\Models.csproj|solutionrelative:src\\models\\dtos\\user\\login\\useraccesstokendto\\useraccesstokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\application\\services\\userlicensesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|solutionrelative:src\\application\\services\\userlicensesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\api\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|solutionrelative:src\\api\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\application\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|solutionrelative:src\\application\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|solutionrelative:src\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\api\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,14 +51,6 @@
       "RelativeMoniker": "D:0:0:{F43EC0CE-D6E3-4AA9-AA95-F8C9C5F2EE59}|src\\Core\\Core.csproj|solutionrelative:src\\core\\services\\ijwtservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F43EC0CE-D6E3-4AA9-AA95-F8C9C5F2EE59}|src\\Core\\Core.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\core\\repositories\\specific\\ijwtmanagerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F43EC0CE-D6E3-4AA9-AA95-F8C9C5F2EE59}|src\\Core\\Core.csproj|solutionrelative:src\\core\\repositories\\specific\\ijwtmanagerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{732AAB1B-87A5-414C-B19F-C3A7147801C2}|src\\Models\\Models.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\models\\dtos\\user\\login\\useraccesstokendto\\useraccesstokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{732AAB1B-87A5-414C-B19F-C3A7147801C2}|src\\Models\\Models.csproj|solutionrelative:src\\models\\dtos\\user\\login\\useraccesstokendto\\useraccesstokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\api\\api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
       "RelativeMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|solutionrelative:src\\api\\api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     }
@@ -58,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,45 +78,58 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "src\\Api\\Controllers\\ProductController.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "src\\Api\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAAEAAAAAAAAAAAAAkwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T20:45:22.576Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LicensesController.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\Controllers\\LicensesController.cs",
-              "RelativeDocumentMoniker": "src\\Api\\Controllers\\LicensesController.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\Controllers\\LicensesController.cs",
-              "RelativeToolTip": "src\\Api\\Controllers\\LicensesController.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T20:21:37.755Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "src\\Api\\Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\Controllers\\AuthController.cs",
               "RelativeToolTip": "src\\Api\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAAGIAAAAAAAAAAAAgwHEAAAAMAAAA",
+              "ViewState": "AQIAAFgAAAAAAAAAAAAswIoAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-15T09:55:00.999Z",
+              "WhenOpened": "2024-03-21T12:41:44.651Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 5,
+              "Title": "UserLicensesService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Application\\Services\\UserLicensesService.cs",
+              "RelativeDocumentMoniker": "src\\Application\\Services\\UserLicensesService.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Application\\Services\\UserLicensesService.cs",
+              "RelativeToolTip": "src\\Application\\Services\\UserLicensesService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-21T12:35:57.007Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "JWTManagerRepository.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\DataAccess\\Repositories\\JWTManagerRepository.cs",
+              "RelativeDocumentMoniker": "src\\DataAccess\\Repositories\\JWTManagerRepository.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\DataAccess\\Repositories\\JWTManagerRepository.cs",
+              "RelativeToolTip": "src\\DataAccess\\Repositories\\JWTManagerRepository.cs",
+              "ViewState": "AQIAAG0AAAAAAAAAAAAMwGcAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-15T10:26:00.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LicensesController.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\Controllers\\LicensesController.cs",
+              "RelativeDocumentMoniker": "src\\Api\\Controllers\\LicensesController.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\Controllers\\LicensesController.cs",
+              "RelativeToolTip": "src\\Api\\Controllers\\LicensesController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAB4AAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T20:21:37.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "IJWTManagerRepository.cs",
               "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Core\\Repositories\\Specific\\IJWTManagerRepository.cs",
               "RelativeDocumentMoniker": "src\\Core\\Repositories\\Specific\\IJWTManagerRepository.cs",
@@ -120,11 +137,12 @@
               "RelativeToolTip": "src\\Core\\Repositories\\Specific\\IJWTManagerRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-14T12:22:23.204Z"
+              "WhenOpened": "2024-03-14T12:22:23.204Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "JWTService.cs",
               "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Application\\Services\\JWTService.cs",
               "RelativeDocumentMoniker": "src\\Application\\Services\\JWTService.cs",
@@ -132,23 +150,37 @@
               "RelativeToolTip": "src\\Application\\Services\\JWTService.cs",
               "ViewState": "AQIAAFAAAAAAAAAAAAAQwGEAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T10:11:22.16Z"
+              "WhenOpened": "2024-03-12T10:11:22.16Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "JWTManagerRepository.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\DataAccess\\Repositories\\JWTManagerRepository.cs",
-              "RelativeDocumentMoniker": "src\\DataAccess\\Repositories\\JWTManagerRepository.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\DataAccess\\Repositories\\JWTManagerRepository.cs",
-              "RelativeToolTip": "src\\DataAccess\\Repositories\\JWTManagerRepository.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAAABgAAAAIAAAA",
+              "DocumentIndex": 4,
+              "Title": "UserAccessTokenDto.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Models\\DTOs\\User\\Login\\UserAccessTokenDto\\UserAccessTokenDto.cs",
+              "RelativeDocumentMoniker": "src\\Models\\DTOs\\User\\Login\\UserAccessTokenDto\\UserAccessTokenDto.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Models\\DTOs\\User\\Login\\UserAccessTokenDto\\UserAccessTokenDto.cs",
+              "RelativeToolTip": "src\\Models\\DTOs\\User\\Login\\UserAccessTokenDto\\UserAccessTokenDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-15T10:26:00.74Z"
+              "WhenOpened": "2024-03-15T10:36:41.614Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "src\\Api\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "src\\Api\\Controllers\\ProductController.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAkwBAAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T20:45:22.576Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\appsettings.json",
               "RelativeDocumentMoniker": "src\\Api\\appsettings.json",
@@ -160,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\Program.cs",
               "RelativeDocumentMoniker": "src\\Api\\Program.cs",
@@ -172,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "TicketController.cs",
               "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\Controllers\\TicketController.cs",
               "RelativeDocumentMoniker": "src\\Api\\Controllers\\TicketController.cs",
@@ -184,19 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "UserAccessTokenDto.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Models\\DTOs\\User\\Login\\UserAccessTokenDto\\UserAccessTokenDto.cs",
-              "RelativeDocumentMoniker": "src\\Models\\DTOs\\User\\Login\\UserAccessTokenDto\\UserAccessTokenDto.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Models\\DTOs\\User\\Login\\UserAccessTokenDto\\UserAccessTokenDto.cs",
-              "RelativeToolTip": "src\\Models\\DTOs\\User\\Login\\UserAccessTokenDto\\UserAccessTokenDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwA0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-15T10:36:41.614Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "IJWTServices.cs",
               "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Core\\Services\\IJWTServices.cs",
               "RelativeDocumentMoniker": "src\\Core\\Services\\IJWTServices.cs",
@@ -208,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Api.http",
               "DocumentMoniker": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\Api.http",
               "RelativeDocumentMoniker": "src\\Api\\Api.http",
