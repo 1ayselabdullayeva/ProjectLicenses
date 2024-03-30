@@ -9,7 +9,9 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
+using Models.DTOs.User.ForgotPassword;
 using Models.DTOs.User.Login;
 using Models.DTOs.User.Login.AddRefreshToken;
 using Models.DTOs.User.Login.UserRefreshTokenDto;
@@ -39,45 +41,12 @@ namespace Api.Controllers
             _rolesService = rolesService;
             _userRepository = userRepository;
         }
-
         [AllowAnonymous]
         [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login(UserLoginDto usersdata)
         {
-            //try
-            //{
-            //    var user = _userRepository.GetAll(
-            //    u => u.Email == usersdata.Email.ToLower()).FirstOrDefault();
-            //    var sha = SHA256.Create();
-            //    var asByteArray = Encoding.UTF8.GetBytes(usersdata.Password);
-            //    var hasherPassword = sha.ComputeHash(asByteArray);
-            //    var hashedPasswordString = Convert.ToBase64String(hasherPassword);
-            //    if (user.Password != hashedPasswordString)
-            //        throw new UserNotFoundException();
-            //    var userRoles = _rolesService.GetRoleName(user.RolesId);
-
-            //    var token = _jWTManager.GenerateJWTTokens(user.Id, user.FirstName, userRoles.RoleName,usersdata.RememberMe);
-
-            //    if (token == null)
-            //    {
-            //        return Unauthorized("Invalid Attempt..");
-            //    }
-
-            //    User users = new User
-            //    {
-            //        Id = user.Id,
-            //        RefreshToken = token.RefreshToken
-            //    };
-
-            //    _jWTServices.AddUserRefreshTokens(users);
-            //    return Ok(token);
-            //}
-            //catch (Exception ex)
-            //{
-            //    return BadRequest("Istifadeci tapilmadi");
-            //}
-            try
+           try
             {
                 var tokens = _jWTServices.Login(usersdata);
                 return Ok(tokens);
@@ -87,12 +56,10 @@ namespace Api.Controllers
                 return BadRequest("Istifadeci tapilmadi");
             }
         }
-       
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserRegisterDto userRegister)
         {
-            
             UserValidator userValidator = new UserValidator();
 
             var validator = userValidator.Validate(new User
@@ -109,8 +76,6 @@ namespace Api.Controllers
             {
                 return BadRequest(validator.Errors);
             }
-
-
             var response = await _jWTServices.Register(userRegister);
             return Ok(response);
         }
@@ -139,5 +104,22 @@ namespace Api.Controllers
                 return BadRequest(new { message = "Error" });
             }
         }
+
+        [HttpPost]
+        [Route("Reset password")]
+        public IActionResult ResetPassword(ResetPasswordDto request)
+        {
+            _jWTManager.ResetPassword(request);
+            return Ok();
+        }
+
+        [HttpPost("forgot-password")]
+        public ActionResult ForgotPassword(ForgotPasswordDto model)
+        {
+            _jWTManager.ForgotPassword(model, Request.Headers["origin"]);
+            return Ok(new { message = "Please check your email for password reset instructions" });
+        }
+      
+
     }
 }

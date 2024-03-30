@@ -12,29 +12,31 @@ using Models.Entities;
 using Newtonsoft.Json;
 using System.Security.Claims;
 
-namespace Api.Controllers
 {
-    [Authorize("Admin")]
     [Route("api/[controller]")]
     [ApiController]
-    
+   
     public class ProductController : ControllerBase
     {
         private readonly IProductServices _productService;
         private readonly IProductRepository _productRepository;
-        public ProductController(IProductServices productService, IProductRepository productRepository)
+        private readonly ILogger<ProductController> _logger;
+        public ProductController(IProductServices productService, IProductRepository productRepository, ILogger<ProductController> logger)
         {
             _productService = productService;
             _productRepository = productRepository;
+            _logger = logger;
         }
-
+        [AllowAnonymous]
         [HttpGet("GetAllProducts")]
         public IActionResult GetAll()
         {
+            _logger.LogDebug("GetAll Products");
             var products = _productService.GetAll();
             return Ok(products);
         }
         [HttpGet("GetById")]
+
         public IActionResult GetById()
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
@@ -42,6 +44,8 @@ namespace Api.Controllers
             return Ok(products);
         }
         [HttpGet("PaginationProduct")]
+        [Authorize("Admin")]
+
         public ActionResult<List<ProductGetAllResponseDto>> GetProductPagingData([FromQuery] PagedParameters prodParam)
         {
             var products = _productRepository.GetProducts(prodParam);
@@ -68,6 +72,7 @@ namespace Api.Controllers
         }
 
         [HttpPost("Create")]
+        [Authorize("Admin")]
         public async Task<IActionResult> Create([FromBody] ProductCreateDto request)
         {
             if (!ModelState.IsValid)
@@ -79,12 +84,14 @@ namespace Api.Controllers
 
         }
         [HttpDelete("DeleteProduct")]
+        [Authorize("Admin")]
         public IActionResult Delete(int id)
         {
             var product = _productService.Delete(id);
             return Ok(product);
         }
         [HttpPut("UpdateProduct")]
+        [Authorize("Admin")]
         public IActionResult Update([FromBody]ProductUpdateDto request)
         {
             ProductValidator pv = new ProductValidator();
@@ -100,8 +107,5 @@ namespace Api.Controllers
           
             return Ok(product);
         }
-
-        
-
     }
 }

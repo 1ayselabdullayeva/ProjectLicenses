@@ -1,0 +1,13 @@
+2024-03-30 21:57:28.4743 INFO Now listening on: http://0.0.0.0:5274
+2024-03-30 21:57:28.4829 INFO Application started. Press Ctrl+C to shut down.
+2024-03-30 21:57:28.4908 INFO Hosting environment: Development
+2024-03-30 21:57:28.4908 INFO Content root path: C:\Users\HP\Desktop\PorjectLicenses\src\Api
+2024-03-30 21:57:29.5786 WARN Failed to determine the https port for redirect.
+2024-03-30 23:02:55.7381 INFO Now listening on: http://0.0.0.0:5274
+2024-03-30 23:02:55.7586 INFO Application started. Press Ctrl+C to shut down.
+2024-03-30 23:02:55.7586 INFO Hosting environment: Development
+2024-03-30 23:02:55.7586 INFO Content root path: C:\Users\HP\Desktop\PorjectLicenses\src\Api
+2024-03-30 23:02:56.8887 WARN Failed to determine the https port for redirect.
+2024-03-30 23:03:09.0701 INFO Executed DbCommand (74ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[ProductName]
+FROM [Product] AS [p]

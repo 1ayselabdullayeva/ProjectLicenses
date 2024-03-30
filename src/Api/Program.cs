@@ -1,29 +1,40 @@
 ﻿using Api.Pipeline;
 using Application;
-using DataAccessLayer.Persistence;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Reflection;
+using NLog.Extensions.Logging;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.IdentityModel.Logging;
 var builder = WebApplication.CreateBuilder(args);
+// Configure NLog
 
+
+//Add NLog as the logger provider
+
+builder.Services.AddLogging(logging =>
+{
+    logging.ClearProviders();
+    logging.SetMinimumLevel(LogLevel.Information);
+});
+builder.Services.AddSingleton<ILoggerProvider, NLogLoggerProvider>();
 builder.Services.AddControllers().AddFluentValidation(/*c=>c.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly())*/);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddBusinessLogic(builder.Configuration);
-//builder.Services.Configure<Ma>(builder.Configuration.GetSection("MailSettings"));
 
 
-builder.Services.AddAuthentication(x => {
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(o => {
-    var Key = Encoding.UTF8.GetBytes(builder.Configuration["JWT:SigningKey"]);
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(o =>
+{
+    o.RequireHttpsMetadata = false;
+
+    var key = Encoding.UTF8.GetBytes(builder.Configuration["JWT:SigningKey"]);
     o.SaveToken = true;
     o.TokenValidationParameters = new TokenValidationParameters
     {
@@ -33,32 +44,27 @@ builder.Services.AddAuthentication(x => {
         ValidateIssuerSigningKey = true,
         ValidIssuer = builder.Configuration["JWT:Issuer"],
         ValidAudience = builder.Configuration["JWT:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Key),
+        IssuerSigningKey = new SymmetricSecurityKey(key),
         ClockSkew = TimeSpan.Zero
     };
-
-});
-builder.Services.AddAuthentication(y =>
-{
-    y.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    y.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 })
-    .AddJwtBearer("refreshscheme",options =>
+.AddJwtBearer("Refresh", options =>
+{
+    options.RequireHttpsMetadata = false;
+    var refreshKey = Encoding.UTF8.GetBytes(builder.Configuration["JWT1:RefreshKey"]);
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
     {
-        var tokenKey = Encoding.UTF8.GetBytes(builder.Configuration["JWT1:RefreshKey"]);
-        options.SaveToken = true;
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = false,
-            ValidateAudience = false,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["JWT1:Issuer"],
-            ValidAudience = builder.Configuration["JWT1:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(tokenKey),
-            ClockSkew = TimeSpan.Zero
-        };
-    });
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["JWT1:Issuer"],
+        ValidAudience = builder.Configuration["JWT1:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(refreshKey),
+        ClockSkew = TimeSpan.Zero
+    };
+});
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("Admin", policy => policy.RequireClaim(ClaimTypes.Role, "Admin")); 

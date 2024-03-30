@@ -10,10 +10,11 @@ namespace Core.Services
 {
 	public interface ITicketServices
 	{
-		public List<TicketGetByIDResponseDto> GetById(int id);
-		public Task<TicketCreateResponseDto> Create(int id,int LicenseId,TicketCreateDto request);
-		public TicketEditStatusResponseDto Edit(TicketEditStatusDto request);
-		public List<TicketGetAllResponseDto> GetAll();
-        public List<TicketGetAllResponseDto> GetTicketsPagingData([FromQuery] PagedParameters prodParam);
+		 List<TicketGetByIDResponseDto> GetById(int id);
+		 Task<TicketCreateResponseDto> Create(int id,int LicenseId,TicketCreateDto request);
+		 TicketEditStatusResponseDto Edit(TicketEditStatusDto request);
+		 List<TicketGetAllResponseDto> GetAll();
+         List<TicketGetAllResponseDto> GetTicketsPagingData([FromQuery] PagedParameters prodParam);
+		List<string> GetTicketTypes();
     }
 }

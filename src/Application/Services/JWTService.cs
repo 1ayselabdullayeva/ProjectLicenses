@@ -4,6 +4,7 @@ using Core.Repositories.Specific;
 using Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Models.DTOs.User.ForgotPassword;
 using Models.DTOs.User.Login;
 using Models.DTOs.User.Register;
 using Models.Entities;
@@ -15,12 +16,14 @@ namespace Application.Services
     {   private readonly IUserRepository _userRepository;
         private readonly IRolesServices _rolesServices;
         private readonly IJWTManagerRepository _jwtManagerRepository;
+        private readonly IEmailSenderServices _emailSenderServices;
 
-        public JWTService(IUserRepository userRepository, IRolesServices rolesServices, IJWTManagerRepository jwtManagerRepository)
+        public JWTService(IUserRepository userRepository, IRolesServices rolesServices, IJWTManagerRepository jwtManagerRepository, IEmailSenderServices emailSenderServices)
         {
             _userRepository = userRepository;
             _rolesServices = rolesServices;
             _jwtManagerRepository = jwtManagerRepository;
+            _emailSenderServices = emailSenderServices;
         }
         public void AddUserRefreshTokens(User user)
         {
@@ -94,16 +97,8 @@ namespace Application.Services
              _userRepository.Save();
         }
         public async Task<UserRegisterResponseDto> Register(UserRegisterDto userRegister)
+        
         {
-            bool existingUser = _userRepository.GetSingle(x => x.Email == userRegister.Email.ToLower()).Email.IsNullOrEmpty();
-            if (existingUser)
-            {
-                return null;
-            }
-            else
-            {
-
-
                 var sha = SHA256.Create();
                 var asByteArray = Encoding.UTF8.GetBytes(userRegister.Password);
                 var hasherPassword = sha.ComputeHash(asByteArray);
@@ -122,6 +117,8 @@ namespace Application.Services
                     PhoneNumber = userRegister.PhoneNumber
                 };
                 await _userRepository.AddAsync(userEntity);
+                //await _emailSenderServices.SendEmail(userEntity.Email, "User Registered","Welcome to Aysel's web site");
+                 
                 var userToReturn = new UserRegisterResponseDto
                 {
                     FirstName = userEntity.FirstName,
@@ -132,8 +129,17 @@ namespace Application.Services
                     PhoneNumber = userEntity.PhoneNumber
                 };
                 return userToReturn;
+        }
+
+        public async Task ResetPassword(ForgotPasswordDto request)
+        {
+               var user = _userRepository.GetSingle(x => x.Email == request.Email);
+             if(user != null)
+            {
+                await _emailSenderServices.SendEmail(user.Email, "Parolunuzu yenileyin", "Salam");
             }
 
+            
         }
     }
 }

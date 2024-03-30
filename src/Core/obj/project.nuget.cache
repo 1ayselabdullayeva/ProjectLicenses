@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dkJKUujjiwAeU1QoKHOEtv2OmeyRa9e93GBGTF1Tny0noAWfBGN+drLQeRjhALOdPaax9cpRW1oalMQPDC2NPA==",
+  "dgSpecHash": "471YP9TBnMT8rp4n11xkNEvqozuBO1F3jq5MvVJb4Pviphw/FRT3lYYoDCnZ464KFKPofN1Q6XU0uf+NWzjUlA==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Core\\Core.csproj",
   "expectedPackageFiles": [
@@ -62,6 +62,9 @@
     "C:\\Users\\HP\\.nuget\\packages\\mimekit\\4.3.0\\mimekit.4.3.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\nlog\\5.2.8\\nlog.5.2.8.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\nlog.extensions.logging\\5.3.8\\nlog.extensions.logging.5.3.8.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\nlog.web.aspnetcore\\5.3.8\\nlog.web.aspnetcore.5.3.8.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\npgsql\\8.0.2\\npgsql.8.0.2.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\8.0.2\\npgsql.entityframeworkcore.postgresql.8.0.2.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql.design\\1.1.0\\npgsql.entityframeworkcore.postgresql.design.1.1.0.nupkg.sha512",

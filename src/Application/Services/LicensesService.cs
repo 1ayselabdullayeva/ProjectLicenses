@@ -25,18 +25,19 @@ namespace Business.Services
 
         public async Task<LicensesCreateResponseDto> CreateLicenses(int id, LicensesCreateDto request)
         {
-            var ProductId = _productRepository.GetSingle(x => x.ProductName == request.ProductName).Id;
+            //var ProductId = _productRepository.GetSingle(x => x.ProductName == request.ProductName).Id;
             var NewLicenses = new Licenses
             {
-                ProductId = ProductId,
+                ProductId = request.ProductId,
                 UserCount = request.UserCount,
+                LicenseStatus=LiscenseStatus.Active,
                 ExpireDate = DateTime.Now.AddYears(request.Year),
                 UserId=id
             };
             await _licensesRepository.AddAsync(NewLicenses);
             var response = new LicensesCreateResponseDto
             {
-                ProductId = ProductId,
+                ProductId = request.ProductId,
                 UserCount = NewLicenses.UserCount,
                 ExpireDate = NewLicenses.ExpireDate
             };
@@ -53,6 +54,7 @@ namespace Business.Services
 
                 var response = new GetLicensesResponseDto
                 {
+                    Id = item.Id,
                     ProductName = productName,
                     ExpireDate = item.ExpireDate,
                     UserCount= item.UserCount,
@@ -71,13 +73,13 @@ namespace Business.Services
                 var license = _licensesRepository.GetSingle(x => x.Id == LicensesId);
                 var ProductName = _productRepository.GetSingle(x => x.Id == license.ProductId).ProductName;
 
-                var response = new GetByIdLicensesResponseDto
-                {
-                    ProductName = ProductName,
-                    UsersCount = license.UserCount,
-                    ExpiryDate = license.ExpireDate,
-                    ActivationDate = license.ActivationDate,
-                    LiscenseStatus=license.LicenseStatus
+            var response = new GetByIdLicensesResponseDto
+            {
+                ProductName = ProductName,
+                UsersCount = license.UserCount,
+                ExpiryDate = license.ExpireDate,
+                ActivationDate = license.ActivationDate,
+                LiscenseStatus = license.LicenseStatus.ToString()
                 };
                 return response;
         }

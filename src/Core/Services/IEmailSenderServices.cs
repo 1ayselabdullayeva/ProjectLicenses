@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Core.Services
 {
-    public interface IUserLicensesServices
+    public interface IEmailSenderServices
     {
+        Task SendEmail(string toEmail, string subject, string message);
     }
 }

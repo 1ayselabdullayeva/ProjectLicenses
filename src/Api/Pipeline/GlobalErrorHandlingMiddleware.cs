@@ -36,9 +36,9 @@ namespace Api.Pipeline
                         break;
                     case BadRequestException badRequestException:
                         apiResponse = BaseApiResponse.FailCondition(badRequestException.Errors, exception.Message, HttpStatusCode.BadRequest);
-                        break;
-                        //case UnHandledException:
-                        //default:
+                    //    break;
+                    //case UnHandledException:
+                    //default:
                         apiResponse = BaseApiResponse.FailCondition("System can't handle this operation, Try a few minutes later!", HttpStatusCode.BadRequest);
 
                         break;

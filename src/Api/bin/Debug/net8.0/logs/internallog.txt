@@ -1,0 +1,342 @@
+2024-03-30 21:57:27.8226 Debug Message Template Auto Format enabled
+2024-03-30 21:57:27.8960 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2024-03-30 21:57:27.8960 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2024-03-30 21:57:27.8960 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2024-03-30 21:57:27.8960 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2024-03-30 21:57:27.8960 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2024-03-30 21:57:27.8960 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2024-03-30 21:57:27.8960 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2024-03-30 21:57:27.8960 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2024-03-30 21:57:27.8960 Debug Adding target NLog.Targets.FileTarget(Name=logfile)
+2024-03-30 21:57:27.8960 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-03-30 21:57:27.8960 Trace ParseRulesElement
+2024-03-30 21:57:27.9452 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-03-30 21:57:27.9452 Debug Start watching file-filter 'NLog.config' in directory: C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0
+2024-03-30 21:57:27.9452 Debug --- NLog configuration dump ---
+2024-03-30 21:57:27.9452 Debug Targets:
+2024-03-30 21:57:27.9452 Debug FileTarget(Name=logfile)
+2024-03-30 21:57:27.9452 Debug Rules:
+2024-03-30 21:57:27.9452 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2024-03-30 21:57:27.9584 Debug --- End of NLog configuration dump ---
+2024-03-30 21:57:27.9584 Trace FindReachableObject<System.Object>:
+2024-03-30 21:57:27.9584 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2024-03-30 21:57:27.9584 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic.IList`1[NLog.Targets.Target]
+2024-03-30 21:57:27.9584 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2024-03-30 21:57:27.9584 Trace   Scanning Property FileName 'C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2024-03-30 21:57:27.9584 Trace   Scanning SimpleLayout 'C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\logs\${shortdate}_logfile.txt'
+2024-03-30 21:57:27.9584 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2024-03-30 21:57:27.9584 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2024-03-30 21:57:27.9584 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2024-03-30 21:57:27.9584 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2024-03-30 21:57:27.9584 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2024-03-30 21:57:27.9584 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2024-03-30 21:57:27.9584 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2024-03-30 21:57:27.9584 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2024-03-30 21:57:27.9584 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2024-03-30 21:57:27.9584 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2024-03-30 21:57:27.9584 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2024-03-30 21:57:27.9584 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2024-03-30 21:57:27.9584 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic.IList`1[NLog.Config.LoggingRule]
+2024-03-30 21:57:27.9739 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic.IList`1[NLog.Filters.Filter]
+2024-03-30 21:57:27.9739 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\NLog.config
+2024-03-30 21:57:27.9739 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2024-03-30 21:57:27.9739 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2024-03-30 21:57:27.9739 Trace Initializing Layout Renderer: ${message}
+2024-03-30 21:57:27.9739 Trace Initializing Layout Renderer: ${literal}
+2024-03-30 21:57:27.9739 Trace Initializing Layout Renderer: ${level}
+2024-03-30 21:57:27.9739 Trace Initializing Layout Renderer: ${literal}
+2024-03-30 21:57:27.9739 Trace Initializing Layout Renderer: ${longdate}
+2024-03-30 21:57:27.9739 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2024-03-30 21:57:27.9739 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2024-03-30 21:57:27.9739 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2024-03-30 21:57:27.9903 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2024-03-30 21:57:27.9903 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2024-03-30 21:57:27.9903 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2024-03-30 21:57:27.9903 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2024-03-30 21:57:27.9903 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2024-03-30 21:57:27.9903 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2024-03-30 21:57:27.9903 Trace Initializing Layout Renderer: ${literal}
+2024-03-30 21:57:27.9903 Trace Initializing Layout Renderer: ${shortdate}
+2024-03-30 21:57:27.9903 Trace Initializing Layout Renderer: ${literal}
+2024-03-30 21:57:27.9903 Trace Initializing C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\logs\${shortdate}_logfile.txt
+2024-03-30 21:57:27.9903 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2024-03-30 21:57:27.9903 Trace Scanning SimpleLayout 'C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\logs\${shortdate}_logfile.txt'
+2024-03-30 21:57:27.9903 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2024-03-30 21:57:27.9903 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2024-03-30 21:57:27.9903 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2024-03-30 21:57:27.9903 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2024-03-30 21:57:27.9903 Trace Initializing FileTarget(Name=logfile)
+2024-03-30 21:57:27.9903 Trace FindReachableObject<NLog.Layouts.Layout>:
+2024-03-30 21:57:27.9903 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2024-03-30 21:57:27.9903 Trace  Scanning Property FileName 'C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2024-03-30 21:57:27.9903 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2024-03-30 21:57:27.9903 Trace FileTarget(Name=logfile) has 2 layouts
+2024-03-30 21:57:28.0054 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2024-03-30 21:57:28.0054 Info Configuration initialized.
+2024-03-30 21:57:28.0054 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.Extensions.Hosting.Internal.ApplicationLifetime
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Extensions.Hosting.Internal.ApplicationLifetime [Debug] => logfile
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Extensions.Hosting.Internal.ApplicationLifetime [Info] => logfile
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Extensions.Hosting.Internal.ApplicationLifetime [Warn] => logfile
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Extensions.Hosting.Internal.ApplicationLifetime [Error] => logfile
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Extensions.Hosting.Internal.ApplicationLifetime [Fatal] => logfile
+2024-03-30 21:57:28.0054 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.Extensions.Hosting.Internal.Host
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Extensions.Hosting.Internal.Host [Debug] => logfile
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Extensions.Hosting.Internal.Host [Info] => logfile
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Extensions.Hosting.Internal.Host [Warn] => logfile
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Extensions.Hosting.Internal.Host [Error] => logfile
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Extensions.Hosting.Internal.Host [Fatal] => logfile
+2024-03-30 21:57:28.0054 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.Hosting.Lifetime
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Hosting.Lifetime [Debug] => logfile
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Hosting.Lifetime [Info] => logfile
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Hosting.Lifetime [Warn] => logfile
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Hosting.Lifetime [Error] => logfile
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.Hosting.Lifetime [Fatal] => logfile
+2024-03-30 21:57:28.0054 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer [Debug] => logfile
+2024-03-30 21:57:28.0054 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer [Info] => logfile
+2024-03-30 21:57:28.0209 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer [Warn] => logfile
+2024-03-30 21:57:28.0209 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer [Error] => logfile
+2024-03-30 21:57:28.0209 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer [Fatal] => logfile
+2024-03-30 21:57:28.0209 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware
+2024-03-30 21:57:28.0209 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware [Debug] => logfile
+2024-03-30 21:57:28.0209 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware [Info] => logfile
+2024-03-30 21:57:28.0209 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware [Warn] => logfile
+2024-03-30 21:57:28.0209 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware [Error] => logfile
+2024-03-30 21:57:28.0209 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware [Fatal] => logfile
+2024-03-30 21:57:28.0209 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.CertificatePathWatcher
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Core.Internal.CertificatePathWatcher [Debug] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Core.Internal.CertificatePathWatcher [Info] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Core.Internal.CertificatePathWatcher [Warn] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Core.Internal.CertificatePathWatcher [Error] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Core.Internal.CertificatePathWatcher [Fatal] => logfile
+2024-03-30 21:57:28.0366 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Server.Kestrel
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel [Debug] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel [Info] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel [Warn] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel [Error] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel [Fatal] => logfile
+2024-03-30 21:57:28.0366 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Server.Kestrel.BadRequests
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.BadRequests [Debug] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.BadRequests [Info] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.BadRequests [Warn] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.BadRequests [Error] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.BadRequests [Fatal] => logfile
+2024-03-30 21:57:28.0366 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Server.Kestrel.Connections
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Connections [Debug] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Connections [Info] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Connections [Warn] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Connections [Error] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Connections [Fatal] => logfile
+2024-03-30 21:57:28.0366 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Server.Kestrel.Http2
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Http2 [Debug] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Http2 [Info] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Http2 [Warn] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Http2 [Error] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Http2 [Fatal] => logfile
+2024-03-30 21:57:28.0366 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Server.Kestrel.Http3
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Http3 [Debug] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Http3 [Info] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Http3 [Warn] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Http3 [Error] => logfile
+2024-03-30 21:57:28.0366 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Http3 [Fatal] => logfile
+2024-03-30 21:57:28.0529 Debug Targets configured when LogLevel >= Debug for Logger: Api
+2024-03-30 21:57:28.0529 Debug Logger Api [Debug] => logfile
+2024-03-30 21:57:28.0529 Debug Logger Api [Info] => logfile
+2024-03-30 21:57:28.0529 Debug Logger Api [Warn] => logfile
+2024-03-30 21:57:28.0529 Debug Logger Api [Error] => logfile
+2024-03-30 21:57:28.0529 Debug Logger Api [Fatal] => logfile
+2024-03-30 21:57:28.1156 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter
+2024-03-30 21:57:28.1156 Debug Logger Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter [Debug] => logfile
+2024-03-30 21:57:28.1156 Debug Logger Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter [Info] => logfile
+2024-03-30 21:57:28.1156 Debug Logger Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter [Warn] => logfile
+2024-03-30 21:57:28.1156 Debug Logger Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter [Error] => logfile
+2024-03-30 21:57:28.1156 Debug Logger Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter [Fatal] => logfile
+2024-03-30 21:57:28.1641 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider [Debug] => logfile
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider [Info] => logfile
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider [Warn] => logfile
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider [Error] => logfile
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider [Fatal] => logfile
+2024-03-30 21:57:28.1641 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory [Debug] => logfile
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory [Info] => logfile
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory [Warn] => logfile
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory [Error] => logfile
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory [Fatal] => logfile
+2024-03-30 21:57:28.1641 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder [Debug] => logfile
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder [Info] => logfile
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder [Warn] => logfile
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder [Error] => logfile
+2024-03-30 21:57:28.1641 Debug Logger Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder [Fatal] => logfile
+2024-03-30 21:57:28.1786 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker
+2024-03-30 21:57:28.1786 Debug Logger Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker [Debug] => logfile
+2024-03-30 21:57:28.1786 Debug Logger Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker [Info] => logfile
+2024-03-30 21:57:28.1786 Debug Logger Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker [Warn] => logfile
+2024-03-30 21:57:28.1786 Debug Logger Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker [Error] => logfile
+2024-03-30 21:57:28.1786 Debug Logger Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker [Fatal] => logfile
+2024-03-30 21:57:28.2332 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.DataProtection.TypeForwardingActivator
+2024-03-30 21:57:28.2332 Debug Logger Microsoft.AspNetCore.DataProtection.TypeForwardingActivator [Debug] => logfile
+2024-03-30 21:57:28.2332 Debug Logger Microsoft.AspNetCore.DataProtection.TypeForwardingActivator [Info] => logfile
+2024-03-30 21:57:28.2332 Debug Logger Microsoft.AspNetCore.DataProtection.TypeForwardingActivator [Warn] => logfile
+2024-03-30 21:57:28.2332 Debug Logger Microsoft.AspNetCore.DataProtection.TypeForwardingActivator [Error] => logfile
+2024-03-30 21:57:28.2332 Debug Logger Microsoft.AspNetCore.DataProtection.TypeForwardingActivator [Fatal] => logfile
+2024-03-30 21:57:28.2431 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager [Debug] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager [Info] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager [Warn] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager [Error] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager [Fatal] => logfile
+2024-03-30 21:57:28.2431 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngGcmAuthenticatedEncryptorFactory
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngGcmAuthenticatedEncryptorFactory [Debug] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngGcmAuthenticatedEncryptorFactory [Info] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngGcmAuthenticatedEncryptorFactory [Warn] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngGcmAuthenticatedEncryptorFactory [Error] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngGcmAuthenticatedEncryptorFactory [Fatal] => logfile
+2024-03-30 21:57:28.2431 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngCbcAuthenticatedEncryptorFactory
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngCbcAuthenticatedEncryptorFactory [Debug] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngCbcAuthenticatedEncryptorFactory [Info] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngCbcAuthenticatedEncryptorFactory [Warn] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngCbcAuthenticatedEncryptorFactory [Error] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngCbcAuthenticatedEncryptorFactory [Fatal] => logfile
+2024-03-30 21:57:28.2431 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ManagedAuthenticatedEncryptorFactory
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ManagedAuthenticatedEncryptorFactory [Debug] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ManagedAuthenticatedEncryptorFactory [Info] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ManagedAuthenticatedEncryptorFactory [Warn] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ManagedAuthenticatedEncryptorFactory [Error] => logfile
+2024-03-30 21:57:28.2431 Debug Logger Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ManagedAuthenticatedEncryptorFactory [Fatal] => logfile
+2024-03-30 21:57:28.2560 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlEncryptor
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlEncryptor [Debug] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlEncryptor [Info] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlEncryptor [Warn] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlEncryptor [Error] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlEncryptor [Fatal] => logfile
+2024-03-30 21:57:28.2560 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository [Debug] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository [Info] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository [Warn] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository [Error] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository [Fatal] => logfile
+2024-03-30 21:57:28.2560 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver [Debug] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver [Info] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver [Warn] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver [Error] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver [Fatal] => logfile
+2024-03-30 21:57:28.2560 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingProvider
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingProvider [Debug] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingProvider [Info] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingProvider [Warn] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingProvider [Error] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingProvider [Fatal] => logfile
+2024-03-30 21:57:28.2560 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.DataProtection.Internal.DataProtectionHostedService
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.Internal.DataProtectionHostedService [Debug] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.Internal.DataProtectionHostedService [Info] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.Internal.DataProtectionHostedService [Warn] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.Internal.DataProtectionHostedService [Error] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.DataProtection.Internal.DataProtectionHostedService [Fatal] => logfile
+2024-03-30 21:57:28.2560 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Hosting.Diagnostics
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.Hosting.Diagnostics [Debug] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.Hosting.Diagnostics [Info] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.Hosting.Diagnostics [Warn] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.Hosting.Diagnostics [Error] => logfile
+2024-03-30 21:57:28.2560 Debug Logger Microsoft.AspNetCore.Hosting.Diagnostics [Fatal] => logfile
+2024-03-30 21:57:28.3002 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor
+2024-03-30 21:57:28.3002 Debug Logger Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor [Debug] => logfile
+2024-03-30 21:57:28.3002 Debug Logger Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor [Info] => logfile
+2024-03-30 21:57:28.3002 Debug Logger Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor [Warn] => logfile
+2024-03-30 21:57:28.3002 Debug Logger Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor [Error] => logfile
+2024-03-30 21:57:28.3002 Debug Logger Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor [Fatal] => logfile
+2024-03-30 21:57:28.3430 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Routing.EndpointMiddleware
+2024-03-30 21:57:28.3430 Debug Logger Microsoft.AspNetCore.Routing.EndpointMiddleware [Debug] => logfile
+2024-03-30 21:57:28.3430 Debug Logger Microsoft.AspNetCore.Routing.EndpointMiddleware [Info] => logfile
+2024-03-30 21:57:28.3430 Debug Logger Microsoft.AspNetCore.Routing.EndpointMiddleware [Warn] => logfile
+2024-03-30 21:57:28.3430 Debug Logger Microsoft.AspNetCore.Routing.EndpointMiddleware [Error] => logfile
+2024-03-30 21:57:28.3430 Debug Logger Microsoft.AspNetCore.Routing.EndpointMiddleware [Fatal] => logfile
+2024-03-30 21:57:28.3430 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Authorization.AuthorizationMiddleware
+2024-03-30 21:57:28.3430 Debug Logger Microsoft.AspNetCore.Authorization.AuthorizationMiddleware [Debug] => logfile
+2024-03-30 21:57:28.3430 Debug Logger Microsoft.AspNetCore.Authorization.AuthorizationMiddleware [Info] => logfile
+2024-03-30 21:57:28.3430 Debug Logger Microsoft.AspNetCore.Authorization.AuthorizationMiddleware [Warn] => logfile
+2024-03-30 21:57:28.3430 Debug Logger Microsoft.AspNetCore.Authorization.AuthorizationMiddleware [Error] => logfile
+2024-03-30 21:57:28.3430 Debug Logger Microsoft.AspNetCore.Authorization.AuthorizationMiddleware [Fatal] => logfile
+2024-03-30 21:57:28.3517 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+2024-03-30 21:57:28.3517 Debug Logger Microsoft.AspNetCore.Cors.Infrastructure.CorsService [Debug] => logfile
+2024-03-30 21:57:28.3517 Debug Logger Microsoft.AspNetCore.Cors.Infrastructure.CorsService [Info] => logfile
+2024-03-30 21:57:28.3517 Debug Logger Microsoft.AspNetCore.Cors.Infrastructure.CorsService [Warn] => logfile
+2024-03-30 21:57:28.3517 Debug Logger Microsoft.AspNetCore.Cors.Infrastructure.CorsService [Error] => logfile
+2024-03-30 21:57:28.3517 Debug Logger Microsoft.AspNetCore.Cors.Infrastructure.CorsService [Fatal] => logfile
+2024-03-30 21:57:28.3517 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware
+2024-03-30 21:57:28.3517 Debug Logger Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware [Debug] => logfile
+2024-03-30 21:57:28.3517 Debug Logger Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware [Info] => logfile
+2024-03-30 21:57:28.3517 Debug Logger Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware [Warn] => logfile
+2024-03-30 21:57:28.3517 Debug Logger Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware [Error] => logfile
+2024-03-30 21:57:28.3517 Debug Logger Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware [Fatal] => logfile
+2024-03-30 21:57:28.3849 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware [Debug] => logfile
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware [Info] => logfile
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware [Warn] => logfile
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware [Error] => logfile
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware [Fatal] => logfile
+2024-03-30 21:57:28.3849 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware [Debug] => logfile
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware [Info] => logfile
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware [Warn] => logfile
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware [Error] => logfile
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware [Fatal] => logfile
+2024-03-30 21:57:28.3849 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware [Debug] => logfile
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware [Info] => logfile
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware [Warn] => logfile
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware [Error] => logfile
+2024-03-30 21:57:28.3849 Debug Logger Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware [Fatal] => logfile
+2024-03-30 21:57:28.3973 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware [Debug] => logfile
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware [Info] => logfile
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware [Warn] => logfile
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware [Error] => logfile
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware [Fatal] => logfile
+2024-03-30 21:57:28.3973 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.HostFiltering.HostFilteringMiddleware
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.AspNetCore.HostFiltering.HostFilteringMiddleware [Debug] => logfile
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.AspNetCore.HostFiltering.HostFilteringMiddleware [Info] => logfile
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.AspNetCore.HostFiltering.HostFilteringMiddleware [Warn] => logfile
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.AspNetCore.HostFiltering.HostFilteringMiddleware [Error] => logfile
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.AspNetCore.HostFiltering.HostFilteringMiddleware [Fatal] => logfile
+2024-03-30 21:57:28.3973 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.WebTools.BrowserLink.Net.BrowserLinkMiddleware
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.WebTools.BrowserLink.Net.BrowserLinkMiddleware [Debug] => logfile
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.WebTools.BrowserLink.Net.BrowserLinkMiddleware [Info] => logfile
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.WebTools.BrowserLink.Net.BrowserLinkMiddleware [Warn] => logfile
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.WebTools.BrowserLink.Net.BrowserLinkMiddleware [Error] => logfile
+2024-03-30 21:57:28.3973 Debug Logger Microsoft.WebTools.BrowserLink.Net.BrowserLinkMiddleware [Fatal] => logfile
+2024-03-30 21:57:28.4156 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.WebTools.BrowserLink.Net.VsContentMiddleware
+2024-03-30 21:57:28.4156 Debug Logger Microsoft.WebTools.BrowserLink.Net.VsContentMiddleware [Debug] => logfile
+2024-03-30 21:57:28.4156 Debug Logger Microsoft.WebTools.BrowserLink.Net.VsContentMiddleware [Info] => logfile
+2024-03-30 21:57:28.4156 Debug Logger Microsoft.WebTools.BrowserLink.Net.VsContentMiddleware [Warn] => logfile
+2024-03-30 21:57:28.4156 Debug Logger Microsoft.WebTools.BrowserLink.Net.VsContentMiddleware [Error] => logfile
+2024-03-30 21:57:28.4156 Debug Logger Microsoft.WebTools.BrowserLink.Net.VsContentMiddleware [Fatal] => logfile
+2024-03-30 21:57:28.4156 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware
+2024-03-30 21:57:28.4156 Debug Logger Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware [Debug] => logfile
+2024-03-30 21:57:28.4156 Debug Logger Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware [Info] => logfile
+2024-03-30 21:57:28.4156 Debug Logger Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware [Warn] => logfile
+2024-03-30 21:57:28.4156 Debug Logger Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware [Error] => logfile
+2024-03-30 21:57:28.4156 Debug Logger Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware [Fatal] => logfile
+2024-03-30 21:57:28.4473 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets
+2024-03-30 21:57:28.4473 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets [Debug] => logfile
+2024-03-30 21:57:28.4473 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets [Info] => logfile
+2024-03-30 21:57:28.4473 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets [Warn] => logfile
+2024-03-30 21:57:28.4473 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets [Error] => logfile
+2024-03-30 21:57:28.4473 Debug Logger Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets [Fatal] => logfile
+2024-03-30 21:57:28.4829 Debug FileTarget(Name=logfile): Preparing for new file: 'C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\logs\2024-03-30_logfile.txt'
+2024-03-30 21:57:28.4829 Debug FileTarget(Name=logfile): Creating file appender: 'C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\logs\2024-03-30_logfile.txt'
+2024-03-30 21:57:28.4829 Trace FileTarget(Name=logfile): Opening C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\logs\2024-03-30_logfile.txt with allowFileSharedWriting=False
+2024-03-30 21:57:29.5646 Debug Targets configured when LogLevel >= Debug for Logger: Microsoft.AspNetCore.Routing.Matching.DfaMatcher
+2024-03-30 21:57:29.5646 Debug Logger Microsoft.AspNetCore.Routing.Matching.DfaMatcher [Debug] => logfile
+2024-03-30 21:57:29.5646 Debug Logger Microsoft.AspNetCore.Routing.Matching.DfaMatcher [Info] => logfile
+2024-03-30 21:57:29.5646 Debug Logger Microsoft.AspNetCore.Routing.Matching.DfaMatcher [Warn] => logfile
+2024-03-30 21:57:29.5646 Debug Logger Microsoft.AspNetCore.Routing.Matching.DfaMatcher [Error] => logfile
+2024-03-30 21:57:29.5646 Debug Logger Microsoft.AspNetCore.Routing.Matching.DfaMatcher [Fatal] => logfile
+2024-03-30 22:58:12.7047 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-03-30 22:58:12.7302 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'Info' not found for logging rule: *.
+2024-03-30 22:58:12.7428 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-03-30 22:58:12.7577 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\NLog.config
+2024-03-30 22:58:12.7577 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: logfile
+2024-03-30 22:58:12.7737 Info Configuration initialized.

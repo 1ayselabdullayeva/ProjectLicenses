@@ -1,4 +1,5 @@
-﻿using Models.DTOs.User.Login;
+﻿using Models.DTOs.User.ForgotPassword;
+using Models.DTOs.User.Login;
 using Models.DTOs.User.Login.AddRefreshToken;
 using Models.DTOs.User.Register;
 using Models.Entities;
@@ -18,6 +19,7 @@ namespace Core.Services
         Task<UserRegisterResponseDto> Register(UserRegisterDto userRegister);
         Tokens Login(UserLoginDto login);
         void LogOut(int id);
+       Task ResetPassword(ForgotPasswordDto resetPassword);
     }
 
 }

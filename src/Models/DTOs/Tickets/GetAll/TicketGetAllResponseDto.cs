@@ -15,8 +15,8 @@ namespace Models.DTOs.Tickets.GetAll
         public DateTime? CreatedAt { get; set; } = DateTime.Now;
         public string Subject { get; set; }
         public string Description { get; set; }
-        public TicketType TicketType { get; set; }
-        public TicketStatus TicketStatus { get; set; }
+        public string TicketType { get; set; }
+        public string TicketStatus { get; set; }
         public int? UserId { get; set; }
     }
 }

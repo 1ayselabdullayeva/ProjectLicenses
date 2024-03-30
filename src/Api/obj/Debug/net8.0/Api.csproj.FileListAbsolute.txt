@@ -517,3 +517,7 @@ C:\Users\HP\Desktop\PorjectLicenses\src\Api\obj\Debug\net8.0\refint\Api.dll
 C:\Users\HP\Desktop\PorjectLicenses\src\Api\obj\Debug\net8.0\Api.pdb
 C:\Users\HP\Desktop\PorjectLicenses\src\Api\obj\Debug\net8.0\Api.genruntimeconfig.cache
 C:\Users\HP\Desktop\PorjectLicenses\src\Api\obj\Debug\net8.0\ref\Api.dll
+C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\NLog.dll
+C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\NLog.Extensions.Logging.dll
+C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\NLog.Web.AspNetCore.dll

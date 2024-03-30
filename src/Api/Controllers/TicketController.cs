@@ -9,7 +9,6 @@ using Models.DTOs.Tickets.Edit;
 using Models.Entities;
 using Newtonsoft.Json;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Core.Repositories.Specific;
 using Models.DTOs.Tickets.GetAll;
 
@@ -26,8 +25,8 @@ namespace Api.Controllers
             _ticketService = ticketService;
             _ticketRepository = ticketRepository;
         }
-        [Authorize("Customer")]
         [HttpGet("getbyid")]
+        [Authorize("Customer")]
         public IActionResult GetTicketById()
         {
             var id = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
@@ -35,8 +34,9 @@ namespace Api.Controllers
             return Ok(responseDto);
         }
 
-        [Authorize("Admin")]
         [HttpPut("edit")]
+        [Authorize("Admin")]
+
         public IActionResult EditTicketStatus([FromBody] TicketEditStatusDto request)
         {
             TicketValidator tv= new TicketValidator();
@@ -51,7 +51,6 @@ namespace Api.Controllers
             var responseDto = _ticketService.Edit(request);
             return Ok(responseDto);
         }
-        [Authorize("Admin")]
         [HttpGet("getAllTickets")]
         public IActionResult GetAllTickets()
         {
@@ -60,6 +59,8 @@ namespace Api.Controllers
         }
 
         [HttpGet("PaginationTicket")]
+        [Authorize("Admin")]
+
         public ActionResult<List<ProductGetAllResponseDto>> GetProductPagingData([FromQuery] PagedParameters prodParam)
         {
             var tickets = _ticketRepository.GetTickets(prodParam);
@@ -81,14 +82,15 @@ namespace Api.Controllers
                 Id = p.Id,
                 CreatedAt=p.CreatedAt,
                 Description = p.Description,
-                TicketStatus = p.TicketStatus,
-                TicketType = p.TicketType,
+                TicketStatus = p.TicketStatus.ToString(),
+                TicketType = p.TicketType.ToString(),
                 Subject = p.Subject
             }).ToList();
             return Ok(responseDtoList);
         }
-        [Authorize("Customer")]
         [HttpPost("CreateTicket")]
+        [Authorize("Customer")]
+
         public async Task<IActionResult> Create(int LicenseId,TicketCreateDto request) 
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
@@ -108,6 +110,14 @@ namespace Api.Controllers
 
             var response = await _ticketService.Create(userId,LicenseId, request);
             return Ok(response);
+        }
+        [HttpGet]
+        [Route("types")]
+        [AllowAnonymous]
+        public IActionResult GetTicketTypes()
+        {
+            var types = _ticketService.GetTicketTypes();
+            return Ok(types);
         }
     }
 }

@@ -9,6 +9,7 @@ using Models.DTOs.Tickets.Edit;
 using Models.DTOs.Tickets.GetAll;
 using Models.DTOs.Tickets.GetById;
 using Models.Entities;
+using Models.Enums;
 
 namespace Business.Services
 {
@@ -28,9 +29,11 @@ namespace Business.Services
             {
                 Subject = request.Subject,
                 Description = request.Description,
+                CreatedAt = DateTime.Now,
+                TicketStatus = TicketStatus.ToDo,
+                TicketType = request.TicketType,
                 UserId=id,
-                LicensesId= LicensesId.Id,
-
+                LicensesId= LicensesId.Id
             };
              await _ticketRepository.AddAsync(newTicket);
             var responseDto = new TicketCreateResponseDto
@@ -38,7 +41,6 @@ namespace Business.Services
                 Subject = newTicket.Subject,
                 Description = newTicket.Description
             };
-
             return responseDto;
         }
 
@@ -59,20 +61,18 @@ namespace Business.Services
            var ticket=_ticketRepository.GetAll();
            var tickets= ticket.Select(t => new TicketGetAllResponseDto
            {
-                Id = t.Id,
+               Id = t.Id,
                 CreatedAt = t.CreatedAt,
                 Subject = t.Subject,
                 Description = t.Description,
                 UserId = t.UserId,
-                TicketStatus = t.TicketStatus
+                TicketStatus = t.TicketStatus.ToString(),
             }).ToList();
-
             return tickets;
-
         }
         public List<TicketGetByIDResponseDto> GetById(int id)
         {
-            var ticket = _ticketRepository.GetAll(m => m.UserId == id);
+            var ticket = _ticketRepository.GetAll(m => m.UserId == id).ToList();
             var responseList = new List<TicketGetByIDResponseDto>();
             foreach(var item in ticket)
             {
@@ -80,8 +80,8 @@ namespace Business.Services
                     CreatedAt = item.CreatedAt,
                     Description = item.Description,
                     Subject = item.Subject,
-                    TicketStatus = item.TicketStatus,
-                    TicketType = item.TicketType
+                    TicketStatus = item.TicketStatus.ToString(),
+                    TicketType = item.TicketType.ToString(),
                 };
                 responseList.Add(response); 
             };
@@ -96,12 +96,15 @@ namespace Business.Services
                 Id = p.Id,
                 CreatedAt = p.CreatedAt,
                 Subject = p.Subject,
-                TicketStatus = p.TicketStatus,
-                TicketType= p.TicketType
+                TicketStatus = p.TicketStatus.ToString(),
+                TicketType= p.TicketType.ToString()
 
             }).ToList();
             return responseDtoList;
-
+        }
+        public List<string> GetTicketTypes()
+        {
+            return Enum.GetNames(typeof(TicketType)).ToList();
         }
     }
 }
