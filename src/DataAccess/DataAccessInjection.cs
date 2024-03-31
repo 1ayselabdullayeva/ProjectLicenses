@@ -15,7 +15,7 @@ namespace DataAccessLayer
 			services.AddScoped<DbContext, ProjectDbContext>();
 			services.AddDbContext<ProjectDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("Default"));
+                options.UseNpgsql(configuration.GetConnectionString("Default"));
             });
            
             services.AddAutoMapper(typeof(DataAccessInjection));
@@ -25,7 +25,6 @@ namespace DataAccessLayer
 			services.AddScoped<IProductRepository, ProductRepository>();
 			services.AddScoped<ILicensesRepository, LicensesRepository>();
 			services.AddScoped<IRolesRepository, RolesRepository>();
-			//services.AddScoped<IUserLicensesRepository, UserLicensesRepository>();
 			services.AddScoped<IJWTManagerRepository, JWTManagerRepository>();
 			#endregion
 

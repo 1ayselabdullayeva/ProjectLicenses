@@ -95,18 +95,18 @@ namespace Api.Controllers
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             TicketValidator tv = new TicketValidator();
-            var validationResult = tv.Validate(new Ticket
-            {
-                Description = request.Description,
-                TicketStatus = request.TicketStatus,
-                TicketType = request.TicketType,
-                CreatedAt = request.CreatedAt,
-                UserId = userId
-            });
-            if (!validationResult.IsValid)
-            {
-                return BadRequest(validationResult.Errors);
-            }
+            //var validationResult = tv.Validate(new Ticket
+            //{
+            //    Description = request.Description,
+            //    TicketStatus = request.TicketStatus,
+            //    TicketType = request.TicketType,
+            //    CreatedAt = request.CreatedAt,
+            //    UserId = userId
+            //});
+            //if (!validationResult.IsValid)
+            //{
+            //    return BadRequest(validationResult.Errors);
+            //}
 
             var response = await _ticketService.Create(userId,LicenseId, request);
             return Ok(response);

@@ -29,7 +29,7 @@ namespace Business.Services
             {
                 Subject = request.Subject,
                 Description = request.Description,
-                CreatedAt = DateTime.Now,
+                CreatedAt = request.CreatedAt,
                 TicketStatus = TicketStatus.ToDo,
                 TicketType = request.TicketType,
                 UserId=id,

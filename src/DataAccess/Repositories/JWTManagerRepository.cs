@@ -3,6 +3,7 @@ using Core.Repositories;
 using Core.Repositories.Specific;
 using Core.Services;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -47,7 +48,7 @@ namespace DataAccess.Repositories
                    new Claim(ClaimTypes.Name, userName),
                    new Claim(ClaimTypes.Role,roleName)
                   }),
-                    Expires = DateTime.Now.AddMinutes(30),
+                    Expires = DateTime.Now.AddDays(30),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
                 };
                 var refreshTokenDesc = new SecurityTokenDescriptor
@@ -142,7 +143,6 @@ namespace DataAccess.Repositories
             var hashedPassword = sha.ComputeHash(asByteArray);
             var hashedPasswordString = Convert.ToBase64String(hashedPassword);
 
-            // Kullanıcıyı e-posta adresine göre bul
             var account = _userRepository.GetSingle(x => x.Id == model.Id);
 
             if (account != null)
@@ -151,6 +151,17 @@ namespace DataAccess.Repositories
                 _userRepository.Edit(account);
                 _userRepository.Save();
             }
+            //var hashedPasswordString = PasswordHasherDto.Hasher(model.Password);
+
+            //// Kullanıcıyı e-posta adresine göre bul
+            //var account = _userRepository.GetSingle(x => x.Id == model.Id);
+
+            //if (account != null)
+            //{
+            //    account.Password = hashedPasswordString;
+            //    _userRepository.Edit(account);
+            //    _userRepository.Save();
+            //}
         }
         //public string randomTokenString()
         //{

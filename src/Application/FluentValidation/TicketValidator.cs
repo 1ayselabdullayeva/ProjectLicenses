@@ -12,8 +12,8 @@ namespace Application.FluentValidation
     {
         public TicketValidator()
         {
-            RuleFor(t => t.Description).NotEmpty().NotNull();
-            RuleFor(t=>t.Subject).NotEmpty().NotNull();
+            RuleFor(t => t.Description).NotEmpty().NotNull().MinimumLength(5).MaximumLength(100);
+            RuleFor(t=>t.Subject).NotEmpty().NotNull().MinimumLength(5);
             RuleFor(t=>t.TicketType).NotEmpty().NotNull();
         }
     }

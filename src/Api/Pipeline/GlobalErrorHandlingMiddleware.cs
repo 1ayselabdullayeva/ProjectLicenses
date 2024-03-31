@@ -9,9 +9,11 @@ namespace Api.Pipeline
     public class GlobalErrorHandlingMiddleware
     {
         private readonly RequestDelegate _next;
-        public GlobalErrorHandlingMiddleware(RequestDelegate next)
+        private readonly ILogger<GlobalErrorHandlingMiddleware> _logger;
+        public GlobalErrorHandlingMiddleware(RequestDelegate next, ILogger<GlobalErrorHandlingMiddleware> logger)
         {
             _next = next;
+            _logger = logger;
         }
 
         public async Task Invoke(HttpContext context)
@@ -33,13 +35,18 @@ namespace Api.Pipeline
                 {
                     case ResourceNotFoundException:
                         apiResponse = BaseApiResponse.FailCondition(exception.Message, HttpStatusCode.NotFound);
+                        _logger.LogInformation(exception.Message.ToString());
                         break;
                     case BadRequestException badRequestException:
                         apiResponse = BaseApiResponse.FailCondition(badRequestException.Errors, exception.Message, HttpStatusCode.BadRequest);
-                    //    break;
-                    //case UnHandledException:
-                    //default:
+                        _logger.LogInformation(exception.Message.ToString());
+
+                          break;
+
+                        //case UnHandledException:
+                        default:
                         apiResponse = BaseApiResponse.FailCondition("System can't handle this operation, Try a few minutes later!", HttpStatusCode.BadRequest);
+                        _logger.LogInformation(exception.Message.ToString());
 
                         break;
                 }

@@ -72,13 +72,13 @@ builder.Services.AddAuthorization(options =>
 });
 
 var app = builder.Build();
-//app.UseGlobalErrorHandlingMiddleware();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-
-app.UseHttpsRedirection();    app.UseSwaggerUI();
+    app.UseGlobalErrorHandlingMiddleware();
+    app.UseHttpsRedirection(); 
+    app.UseSwaggerUI();
 }
 app.UseCors(x => x
                .AllowAnyOrigin()

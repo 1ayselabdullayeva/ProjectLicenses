@@ -8,7 +8,7 @@ namespace DataAccessLayer.Configurations
 	{
 		public void Configure(EntityTypeBuilder<Roles> builder)
 		{
-			builder.Property(p => p.RoleName).HasColumnType("nvarchar").HasMaxLength(25);
+			builder.Property(p => p.RoleName).HasColumnType("VARCHAR(25)");
 			builder.ToTable("Roles");
 		}
 

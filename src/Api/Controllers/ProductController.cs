@@ -12,7 +12,7 @@ using Models.Entities;
 using Newtonsoft.Json;
 using System.Security.Claims;
 
-{
+
     [Route("api/[controller]")]
     [ApiController]
    
@@ -36,8 +36,9 @@ using System.Security.Claims;
             return Ok(products);
         }
         [HttpGet("GetById")]
+       [Authorize("Admin")]
 
-        public IActionResult GetById()
+    public IActionResult GetById()
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             var products = _productService.GetById(userId);
@@ -75,11 +76,16 @@ using System.Security.Claims;
         [Authorize("Admin")]
         public async Task<IActionResult> Create([FromBody] ProductCreateDto request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            var product = await _productService.Create(request);
+        ProductValidator pv= new ProductValidator();
+        var validator = pv.Validate(new Product
+        {
+          ProductName = request.ProductName,
+        });
+        if (!validator.IsValid)
+        {
+            return BadRequest(validator);
+        }
+        var product = await _productService.Create(request);
             return Ok(product);
 
         }
@@ -108,4 +114,4 @@ using System.Security.Claims;
             return Ok(product);
         }
     }
-}
+

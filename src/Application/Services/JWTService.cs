@@ -1,4 +1,5 @@
-﻿using Business.Services;
+﻿using Application.Helper.Hasher;
+using Business.Services;
 using Core.Exceptions;
 using Core.Repositories.Specific;
 using Core.Services;
@@ -99,14 +100,15 @@ namespace Application.Services
         public async Task<UserRegisterResponseDto> Register(UserRegisterDto userRegister)
         
         {
-                var sha = SHA256.Create();
-                var asByteArray = Encoding.UTF8.GetBytes(userRegister.Password);
-                var hasherPassword = sha.ComputeHash(asByteArray);
-                var hashedPasswordString = Convert.ToBase64String(hasherPassword);
-                var defaultRole = _rolesServices.GetDefaultRole();
-                userRegister.RolesId = defaultRole.Id;
+            //var sha = SHA256.Create();
+            //var asByteArray = Encoding.UTF8.GetBytes(userRegister.Password);
+            //var hasherPassword = sha.ComputeHash(asByteArray);
+            //var hashedPasswordString = Convert.ToBase64String(hasherPassword);
+            var defaultRole = _rolesServices.GetDefaultRole();
+            userRegister.RolesId = defaultRole.Id;
+            var hashedPasswordString = PasswordHasherDto.Hasher(userRegister.Password);
 
-                var userEntity = new User
+            var userEntity = new User
                 {
                     FirstName = userRegister.FirstName,
                     LastName = userRegister.LastName,
@@ -117,9 +119,9 @@ namespace Application.Services
                     PhoneNumber = userRegister.PhoneNumber
                 };
                 await _userRepository.AddAsync(userEntity);
-                //await _emailSenderServices.SendEmail(userEntity.Email, "User Registered","Welcome to Aysel's web site");
-                 
-                var userToReturn = new UserRegisterResponseDto
+            await _emailSenderServices.SendEmail(userEntity.Email, "User Registered", "Welcome to Aysel's web site");
+
+            var userToReturn = new UserRegisterResponseDto
                 {
                     FirstName = userEntity.FirstName,
                     LastName = userEntity.LastName,
@@ -133,10 +135,10 @@ namespace Application.Services
 
         public async Task ResetPassword(ForgotPasswordDto request)
         {
-               var user = _userRepository.GetSingle(x => x.Email == request.Email);
+             var user = _userRepository.GetSingle(x => x.Email == request.Email);
              if(user != null)
             {
-                await _emailSenderServices.SendEmail(user.Email, "Parolunuzu yenileyin", "Salam");
+                await _emailSenderServices.SendEmail(user.Email, "Salam", "Parolunuzu yenileyin");
             }
 
             

@@ -31,10 +31,10 @@ namespace DataAccess.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("ActivationDate")
-                        .HasColumnType("date");
+                        .HasColumnType("DATE");
 
                     b.Property<DateTime>("ExpireDate")
-                        .HasColumnType("date");
+                        .HasColumnType("DATE");
 
                     b.Property<int>("LicenseStatus")
                         .HasColumnType("integer");
@@ -67,8 +67,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("ProductName")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("VARCHAR(25)");
 
                     b.HasKey("Id");
 
@@ -85,8 +84,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("RoleName")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("VARCHAR(25)");
 
                     b.HasKey("Id");
 
@@ -104,20 +102,18 @@ namespace DataAccess.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("date");
+                        .HasColumnType("DATE");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<int?>("LicensesId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Subject")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("VARCHAR(50)");
 
                     b.Property<int>("TicketStatus")
                         .HasColumnType("integer");
@@ -147,33 +143,27 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("CompanyName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("VARCHAR(50)");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("VARCHAR(50)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("VARCHAR(25)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("VARCHAR(50)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("VARCHAR(50)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("VARCHAR(20)");
 
                     b.Property<string>("RefreshToken")
                         .HasColumnType("text");

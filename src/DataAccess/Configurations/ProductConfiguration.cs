@@ -8,8 +8,8 @@ namespace DataAccessLayer.Configurations
 	{
 		public void Configure(EntityTypeBuilder<Product> builder)
 		{
-			builder.Property(p => p.ProductName).HasColumnType("nvarchar").HasMaxLength(30);
-			builder.ToTable("Product");
+			builder.Property(p => p.ProductName).HasColumnType("VARCHAR(25)");
+            builder.ToTable("Product");
 		}
 	}
 }
