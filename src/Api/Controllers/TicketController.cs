@@ -89,26 +89,23 @@ namespace Api.Controllers
             return Ok(responseDtoList);
         }
         [HttpPost("CreateTicket")]
-        [Authorize("Customer")]
-
-        public async Task<IActionResult> Create(int LicenseId,TicketCreateDto request) 
+        //[Authorize("Customer")]
+        public async Task<IActionResult> Create(TicketCreateDto request) 
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             TicketValidator tv = new TicketValidator();
-            //var validationResult = tv.Validate(new Ticket
-            //{
-            //    Description = request.Description,
-            //    TicketStatus = request.TicketStatus,
-            //    TicketType = request.TicketType,
-            //    CreatedAt = request.CreatedAt,
-            //    UserId = userId
-            //});
-            //if (!validationResult.IsValid)
-            //{
-            //    return BadRequest(validationResult.Errors);
-            //}
+            var validationResult = tv.Validate(new Ticket
+            {
+                Description = request.Description,
+                Subject = request.Subject,
+                TicketType = request.TicketType
+            });
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
 
-            var response = await _ticketService.Create(userId,LicenseId, request);
+            var response = await _ticketService.Create(userId, request);
             return Ok(response);
         }
         [HttpGet]

@@ -19,7 +19,7 @@ namespace Core.Services
         Task<UserRegisterResponseDto> Register(UserRegisterDto userRegister);
         Tokens Login(UserLoginDto login);
         void LogOut(int id);
-       Task ResetPassword(ForgotPasswordDto resetPassword);
+       //Task ResetPassword(ForgotPasswordDto resetPassword);
     }
 
 }

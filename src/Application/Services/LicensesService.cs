@@ -5,6 +5,8 @@ using DataAccessLayer.Repositories;
 using Models.DTOs.Licenses.Create;
 using Models.DTOs.Licenses.GetById;
 using Models.DTOs.Licenses.GetByIdLicenses;
+using Models.DTOs.Licenses.Update;
+using Models.DTOs.Tickets.Edit;
 using Models.Entities;
 using Models.Enums;
 
@@ -44,23 +46,45 @@ namespace Business.Services
             return response;
         }
 
-        public List<GetLicensesResponseDto> GetById(int id)
+        public LicensesUpdateStatusResponseDto Edit(LicensesUpdateStatusDto request)
         {
+            var existingLicense = _licensesRepository.GetSingle(t => t.Id == request.Id);
+            existingLicense.LicenseStatus = request.LicensesStatus;
+            _licensesRepository.Edit(existingLicense);
+            _licensesRepository.Save();
+            return new LicensesUpdateStatusResponseDto
+            {
+                Id = existingLicense.Id,
+                LicensesStatus = existingLicense.LicenseStatus,
+            };
+        }
+
+        public List<GetLicensesResponseDto> GetById(int id)
+       {
             var userLicenses = _licensesRepository.GetAll(x => x.UserId == id).ToList();
             var responseList = new List<GetLicensesResponseDto>();
             foreach (var item in userLicenses)
             {
                 var productName = _productRepository.GetSingle(x => x.Id == item.ProductId)?.ProductName;
-
-                var response = new GetLicensesResponseDto
+                if(item.ExpireDate < DateTime.Now)
                 {
-                    Id = item.Id,
-                    ProductName = productName,
-                    ExpireDate = item.ExpireDate,
-                    UserCount= item.UserCount,
-                    licenseStatus = item.LicenseStatus.ToString()
-                };
-                responseList.Add(response);
+                   item.LicenseStatus=Models.Enums.LiscenseStatus.Expired;
+                    _licensesRepository.Edit(item);
+                    _licensesRepository.Save();
+                }
+                    
+                    var response = new GetLicensesResponseDto
+                    {
+                        Id = item.Id,
+                        ProductName = productName,
+                        ExpireDate = item.ExpireDate,
+                        UserCount = item.UserCount,
+                        licenseStatus = item.LicenseStatus.ToString()
+                    };
+                    responseList.Add(response);
+                
+                
+              
             }
 
             return responseList;
@@ -82,6 +106,11 @@ namespace Business.Services
                 LiscenseStatus = license.LicenseStatus.ToString()
                 };
                 return response;
+        }
+
+        public List<string> GetLicensesStatus()
+        {
+            return Enum.GetNames(typeof(LiscenseStatus)).ToList();
         }
     }
 }

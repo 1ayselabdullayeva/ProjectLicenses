@@ -14,11 +14,22 @@ namespace Business.Services
         }
         public RolesGetRoleDbo GetDefaultRole()
         {
-            var defaultvalue = _rolesRepository.GetSingle(role => role.Id == 2);
+            var defaultvalue = _rolesRepository.GetSingle(role => role.RoleName == "Customer").Id;
             var response = new RolesGetRoleDbo
             {
-                Id = defaultvalue.Id,
+                Id = defaultvalue,
             };
+            return response;
+        }
+
+        public List<GetRoleNameResponeDbo> GeTRole()
+        {
+           var role = _rolesRepository.GetAll();
+           var response=role.Select(role =>new GetRoleNameResponeDbo
+           {
+               Id=role.Id,
+               RoleName=role.RoleName,
+           }).ToList();
             return response;
         }
 

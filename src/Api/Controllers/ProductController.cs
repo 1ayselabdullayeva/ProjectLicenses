@@ -1,5 +1,6 @@
 ﻿using Application.FluentValidation;
 using Application.Services;
+using Business.Services;
 using Core.Repositories.Specific;
 using Core.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -20,18 +21,18 @@ using System.Security.Claims;
     {
         private readonly IProductServices _productService;
         private readonly IProductRepository _productRepository;
-        private readonly ILogger<ProductController> _logger;
-        public ProductController(IProductServices productService, IProductRepository productRepository, ILogger<ProductController> logger)
-        {
-            _productService = productService;
-            _productRepository = productRepository;
-            _logger = logger;
-        }
-        [AllowAnonymous]
+        private  readonly ILogger<ProductController> _logger;
+    public ProductController(IProductServices productService, IProductRepository productRepository, ILogger<ProductController> logger)
+    {
+        _productService = productService;
+        _productRepository = productRepository;
+        _logger = logger;
+    }
+    [AllowAnonymous]
         [HttpGet("GetAllProducts")]
         public IActionResult GetAll()
         {
-            _logger.LogDebug("GetAll Products");
+        _logger.LogError("GetAll Products started");
             var products = _productService.GetAll();
             return Ok(products);
         }
@@ -113,5 +114,6 @@ using System.Security.Claims;
           
             return Ok(product);
         }
-    }
+
+}
 

@@ -14,5 +14,6 @@ namespace Models.DTOs.User.Create
         public string Email { get; set; }
         public string Password { get; set; }
         public string CompanyName { get; set; }
+        public int RolesId { get; set; }
     }
 }

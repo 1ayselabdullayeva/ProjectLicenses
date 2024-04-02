@@ -7,17 +7,7 @@ using NLog.Extensions.Logging;
 using System.Security.Claims;
 using System.Text;
 var builder = WebApplication.CreateBuilder(args);
-// Configure NLog
-
-
-//Add NLog as the logger provider
-
-builder.Services.AddLogging(logging =>
-{
-    logging.ClearProviders();
-    logging.SetMinimumLevel(LogLevel.Information);
-});
-builder.Services.AddSingleton<ILoggerProvider, NLogLoggerProvider>();
+builder.Services.AddLogging(x=>x.AddNLog("nlog.config"));
 builder.Services.AddControllers().AddFluentValidation(/*c=>c.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly())*/);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -88,3 +78,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
+app.UseMiddleware<RequestResponseLoggingMiddleware>();
+

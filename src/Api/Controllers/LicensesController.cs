@@ -1,4 +1,5 @@
-﻿using Core.Services;
+﻿using Application.FluentValidation;
+using Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.DTOs.Licenses.Create;
@@ -28,6 +29,17 @@ namespace Api.Controllers
         public async Task<IActionResult>CreateLicenses(LicensesCreateDto request)
         {
             var id = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            LicensesValidator lv = new LicensesValidator();
+            var validator = lv.Validate(new Models.Entities.Licenses
+            {
+                ProductId=request.ProductId,
+                UserCount=request.UserCount,
+                ExpireDate = DateTime.Now.AddYears(request.Year)
+            });
+            if (!validator.IsValid)
+            {
+                return BadRequest(validator);
+            }
             var response =await _licensesServices.CreateLicenses(id, request);
             return Ok(response);
         }
@@ -37,6 +49,15 @@ namespace Api.Controllers
             var id = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             var response =_licensesServices.GetByIdLicenses(id, LicensesId);
             return Ok(response);
+        }
+
+        [HttpGet]
+        [Route("types")]
+        [AllowAnonymous]
+        public IActionResult GetTicketTypes()
+        {
+            var types = _licensesServices.GetLicensesStatus();
+            return Ok(types);
         }
 
     }

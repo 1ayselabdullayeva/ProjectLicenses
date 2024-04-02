@@ -1,4 +1,5 @@
-﻿using Azure;
+﻿using Application.FluentValidation;
+using Azure;
 using Core.Repositories.Specific;
 using Core.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -22,14 +23,15 @@ namespace Business.Services
             _ticketRepository = ticketRepository;
             _licensesRepository = licensesRepository;
         }
-        public async Task<TicketCreateResponseDto> Create(int id,int LicenseId,TicketCreateDto request)
+        public async Task<TicketCreateResponseDto> Create(int id,TicketCreateDto request)
 		{
-            var LicensesId = _licensesRepository.GetSingle(x=>x.Id== LicenseId);
+            var LicensesId = _licensesRepository.GetSingle(x=>x.Id== request.LicensesId);
+            
             var newTicket = new Ticket
             {
                 Subject = request.Subject,
                 Description = request.Description,
-                CreatedAt = request.CreatedAt,
+                CreatedAt =request.CreatedAt ,
                 TicketStatus = TicketStatus.ToDo,
                 TicketType = request.TicketType,
                 UserId=id,
@@ -39,7 +41,8 @@ namespace Business.Services
             var responseDto = new TicketCreateResponseDto
             {
                 Subject = newTicket.Subject,
-                Description = newTicket.Description
+                Description = newTicket.Description,
+                CreatedAt= request.CreatedAt,
             };
             return responseDto;
         }

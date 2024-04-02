@@ -7,5 +7,6 @@ namespace Core.Services
 	{
 		public RolesGetRoleDbo GetDefaultRole();
 		public GetRoleNameResponeDbo GetRoleName(int id);
+		public List<GetRoleNameResponeDbo> GeTRole();
 	}
 }

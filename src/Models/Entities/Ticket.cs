@@ -8,8 +8,7 @@ namespace Models.Entities
 	{
 		public int UserId { get; set; }
 		public User User { get; set; }
-		[Timestamp]
-		public DateTime? CreatedAt { get; set; } = DateTime.Now;
+		public DateTime CreatedAt { get; set; } = DateTime.Now;
 		public string Subject { get; set; }
 		public string Description { get; set; }
 		public TicketType TicketType { get; set; }

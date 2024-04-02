@@ -8,6 +8,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -64,12 +65,12 @@ namespace Api.Controllers
 
             var validator = userValidator.Validate(new User
             {
-                FirstName= userRegister.FirstName,
-                LastName= userRegister.LastName,
-                Email= userRegister.Email,
-                Password= userRegister.Password,
-                PhoneNumber= userRegister.PhoneNumber,
-                CompanyName= userRegister.CompanyName
+                FirstName = userRegister.FirstName,
+                LastName = userRegister.LastName,
+                Email = userRegister.Email,
+                Password = userRegister.Password,
+                PhoneNumber = userRegister.PhoneNumber,
+                CompanyName = userRegister.CompanyName
             }
             );
             if (!validator.IsValid)
@@ -106,7 +107,7 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        [Route("Reset password")]
+        [Route("Resetpassword")]
         public IActionResult ResetPassword(ResetPasswordDto request)
         {
             _jWTManager.ResetPassword(request);
@@ -114,10 +115,11 @@ namespace Api.Controllers
         }
 
         [HttpPost("forgot-password")]
-        public ActionResult ForgotPassword(ForgotPasswordDto model)
+        public async Task<ActionResult> ForgotPassword(ForgotPasswordDto model)
         {
-            _jWTManager.ForgotPassword(model, Request.Headers["origin"]);
-            return Ok(new { message = "Please check your email for password reset instructions" });
+          
+            await _jWTManager.ForgotPassword(model, Request.Headers["origin"]);
+            return Ok();
         }
       
 

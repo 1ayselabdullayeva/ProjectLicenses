@@ -36,7 +36,8 @@ namespace Business.Services
                 Email = request.Email,
                 Password = request.Password,
                 CompanyName = request.CompanyName,
-                PhoneNumber = request.PhoneNumber
+                PhoneNumber = request.PhoneNumber,
+                RolesId = request.RolesId,
             };
             await _userRepository.AddAsync(newProduct);
             var responseDto = new UserCreateResponseDto
@@ -46,7 +47,8 @@ namespace Business.Services
                 Email= newProduct.Email,
                 Password= newProduct.Password,
                 CompanyName= newProduct.CompanyName,
-                PhoneNumber= newProduct.PhoneNumber
+                PhoneNumber= newProduct.PhoneNumber,
+                RolesId = request.RolesId,
             };
             return responseDto;
         }

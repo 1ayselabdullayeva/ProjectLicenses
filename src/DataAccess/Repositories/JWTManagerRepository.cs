@@ -2,9 +2,6 @@
 using Core.Repositories;
 using Core.Repositories.Specific;
 using Core.Services;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Logging;
@@ -15,7 +12,6 @@ using Models.Entities;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using System.Security.Principal;
 using System.Text;
 using Tokens = Models.DTOs.User.Login.Tokens;
 
@@ -136,6 +132,37 @@ namespace DataAccess.Repositories
             }
         }
 
+
+        public ForgotTokenDto GenerateJWTTokenForResetPassword(int id)
+        {
+            try
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var tokenKey = Encoding.UTF8.GetBytes(_configuration["Jwt2:Forgot"]);
+
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                  {
+                   new Claim(ClaimTypes.NameIdentifier, id.ToString()),
+
+                  }),
+                    Expires = DateTime.Now.AddDays(30),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
+                };
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                var response = new ForgotTokenDto
+                {
+                    Token = tokenHandler.WriteToken(token)
+                };
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public void ResetPassword(ResetPasswordDto model)
         {
             var sha = SHA256.Create();
@@ -151,7 +178,7 @@ namespace DataAccess.Repositories
                 _userRepository.Edit(account);
                 _userRepository.Save();
             }
-            //var hashedPasswordString = PasswordHasherDto.Hasher(model.Password);
+            //var hashedPasswordString1 = PasswordHasherDto.Hasher(model.Password);
 
             //// Kullanıcıyı e-posta adresine göre bul
             //var account = _userRepository.GetSingle(x => x.Id == model.Id);
@@ -172,18 +199,12 @@ namespace DataAccess.Repositories
         //}
         public async Task ForgotPassword(ForgotPasswordDto model, string origin)
         {
-            try
-            {
                 var account = _userRepository.GetSingle(x => x.Email == model.Email);
-
-                await SendPasswordResetEmail(account.Id, account.Email, origin);
-            }
-            catch(Exception ex)
-            {
-                throw;
-            }
-            
-            
+                if (account != null)
+                {
+                    await SendPasswordResetEmail(account.Id, account.Email, origin);
+                }
+                            
         }
         //public async Task sendPasswordResetEmail(string email, string origin)
         //{
@@ -210,29 +231,23 @@ namespace DataAccess.Repositories
         public async Task SendPasswordResetEmail(int userId, string email,string origin)
         {
             string message;
-
+            var responseToken = GenerateJWTTokenForResetPassword(userId).Token;
             if (!string.IsNullOrEmpty(origin))
             {
-                var resetUrl = $"{origin}/account/reset-password/{userId}";
-                message = $@"<p>Please click the below link to reset your password, the link will be valid for 1 day:</p>
-                     <p><a href=""{resetUrl}"">{resetUrl}</a></p>";
+                var resetUrl = $"{origin}/account/reset-password/{responseToken}";
+                //message = $@"<p>Please click the below link to reset your password, the link will be valid for 1 day:</p>
+                //     <p><a href=""{resetUrl}"">{resetUrl}</a></p>";
+                message = resetUrl;
             }
+
             else
             {
                 message = $@"<p>Please navigate to the following URL to reset your password:</p>
-                     <p>/account/reset-password/{userId}</p>";
+                     <p>/account/reset-password/{responseToken}</p>";
             }
 
             await _emailSenderServices.SendEmail(email, "Sign-up Verification API - Reset Password", message);
-            //    toEmail: email,
-            //    subject: "Sign-up Verification API - Reset Password",
-            //    message: $"{message}"
-            //);
+            
         }
-
-        //void IJWTManagerRepository.sendPasswordResetEmail(string email, string origin)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }
