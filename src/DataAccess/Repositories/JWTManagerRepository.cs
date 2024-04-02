@@ -57,7 +57,7 @@ namespace DataAccess.Repositories
                       new Claim(ClaimTypes.Role, roleName)
                   }),
 
-                    Expires = rememberMe ? DateTime.Now.AddDays(30) : DateTime.Now.AddDays(7),
+                    Expires = rememberMe ? DateTime.Now.AddSeconds(30) : DateTime.Now.AddSeconds(7),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(refreshkey), SecurityAlgorithms.HmacSha256Signature)
                 };
 
@@ -147,7 +147,7 @@ namespace DataAccess.Repositories
                    new Claim(ClaimTypes.NameIdentifier, id.ToString()),
 
                   }),
-                    Expires = DateTime.Now.AddDays(30),
+                    Expires = DateTime.Now.AddDays(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
                 };
                 var token = tokenHandler.CreateToken(tokenDescriptor);
@@ -169,8 +169,10 @@ namespace DataAccess.Repositories
             var asByteArray = Encoding.UTF8.GetBytes(model.Password);
             var hashedPassword = sha.ComputeHash(asByteArray);
             var hashedPasswordString = Convert.ToBase64String(hashedPassword);
+            var userid=GetUserIdFromToken(model.Token);
 
-            var account = _userRepository.GetSingle(x => x.Id == model.Id);
+
+            var account = _userRepository.GetSingle(x => x.Id == userid);
 
             if (account != null)
             {
@@ -178,7 +180,7 @@ namespace DataAccess.Repositories
                 _userRepository.Edit(account);
                 _userRepository.Save();
             }
-            //var hashedPasswordString1 = PasswordHasherDto.Hasher(model.Password);
+            //var hashedPasswordString1 = HelperPasswordHasherDto.Hasher(model.Password);
 
             //// Kullanıcıyı e-posta adresine göre bul
             //var account = _userRepository.GetSingle(x => x.Id == model.Id);
@@ -206,28 +208,7 @@ namespace DataAccess.Repositories
                 }
                             
         }
-        //public async Task sendPasswordResetEmail(string email, string origin)
-        //{
-        //    var ResetToken = randomTokenString();
-        //    string message;
-        //    if (!string.IsNullOrEmpty(origin))
-        //    {
-        //        var resetUrl = $"{origin}/account/reset-password?token={ResetToken}";
-        //        message = $@"<p>Please click the below link to reset your password, the link will be valid for 1 day:</p>
-        //                     <p><a href=""{resetUrl}"">{resetUrl}</a></p>";
-        //    }
-        //    else
-        //    {
-        //        message = $@"<p>Please use the below token to reset your password with the <code>/accounts/reset-password</code> api route:</p>
-        //                     <p><code>{ResetToken}</code></p>";
-        //    }
-
-        //    await _emailSenderServices.SendEmail(
-        //        toEmail: email,
-        //        subject: "Sign-up Verification API - Reset Password",
-        //        message: $"{message}"
-        //    );      
-        //}
+        
         public async Task SendPasswordResetEmail(int userId, string email,string origin)
         {
             string message;
@@ -248,6 +229,33 @@ namespace DataAccess.Repositories
 
             await _emailSenderServices.SendEmail(email, "Sign-up Verification API - Reset Password", message);
             
+        }
+
+        public int GetUserIdFromToken(string token)
+        {
+            var Key = Encoding.UTF8.GetBytes(_configuration["JWT2:Forgot"]);
+            IdentityModelEventSource.ShowPII = true;
+            IdentityModelEventSource.LogCompleteSecurityArtifact = true;
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Key),
+                ClockSkew = TimeSpan.Zero
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
+            JwtSecurityToken jwtSecurityToken = securityToken as JwtSecurityToken;
+            //var userId = int.Parse(principal.Claims.First(x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value);
+            var userid = int.Parse(jwtSecurityToken.Claims.First(x=>x.Type=="nameid").Value);
+            if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new SecurityTokenException("Invalid token");
+            }
+            return userid;
         }
     }
 }

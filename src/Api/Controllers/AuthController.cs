@@ -121,7 +121,21 @@ namespace Api.Controllers
             await _jWTManager.ForgotPassword(model, Request.Headers["origin"]);
             return Ok();
         }
-      
+
+        [HttpPost("getIdfromToken")]
+        public IActionResult GetIdFromToken(string token)
+        {
+            try
+            {
+                
+                var userId = _jWTManager.GetUserIdFromToken(token);
+                return Ok(userId);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Failed to reset password." });
+            }
+        }
 
     }
 }

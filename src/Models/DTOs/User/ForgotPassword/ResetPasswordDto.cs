@@ -10,10 +10,10 @@ namespace Models.DTOs.User.ForgotPassword
     public class ResetPasswordDto
     {
         [Required]
-        public int Id { get; set; }
+        public string Token { get; set; }
 
         [Required]
-        [MinLength(6)]
+        [MinLength(5)]
         public string Password { get; set; }
 
         [Required]

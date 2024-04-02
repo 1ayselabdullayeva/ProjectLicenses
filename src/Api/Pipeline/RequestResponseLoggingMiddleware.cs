@@ -31,7 +31,6 @@ namespace Api.Pipeline
         private void LogRequest(HttpContext context)
         {
             var request = context.Request;
-
             var requestLog = new StringBuilder();
             requestLog.AppendLine("Incoming Request:");
             requestLog.AppendLine($"HTTP {request.Method} {request.Path}");

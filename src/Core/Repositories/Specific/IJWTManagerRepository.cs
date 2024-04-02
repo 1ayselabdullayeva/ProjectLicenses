@@ -22,5 +22,6 @@ namespace Core.Repositories.Specific
         Task ForgotPassword(ForgotPasswordDto model, string origin);
         Task SendPasswordResetEmail(int userId, string email, string origin);
         ForgotTokenDto GenerateJWTTokenForResetPassword(int id);
+        int GetUserIdFromToken(string token);
     }
 }
