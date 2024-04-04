@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using NLog.Extensions.Logging;
 using System.Security.Claims;
 using System.Text;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddLogging(x=>x.AddNLog("nlog.config"));
 builder.Services.AddControllers().AddFluentValidation();

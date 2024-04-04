@@ -72,7 +72,6 @@ namespace Business.Services
               CreatedAt = ticket.CreatedAt,
               Subject = ticket.Subject,
               Description = ticket.Description,
-              //UserId = ticket.UserId,
               TicketStatus = ticket.TicketStatus.ToString(),
               UserEmail = user.Email
           })
@@ -99,18 +98,7 @@ namespace Business.Services
 
         public List<TicketGetAllResponseDto> GetTicketsPagingData([FromQuery] PagedParameters prodParam)
         {
-            //var tickets = _ticketRepository.GetTickets(prodParam);
-            //var responseDtoList = tickets.Select(p => new TicketGetAllResponseDto
-            //{
-            //    Id = p.Id,
-            //    CreatedAt = p.CreatedAt,
-            //    Subject = p.Subject,
-            //    TicketStatus = p.TicketStatus.ToString(),
-            //    TicketType= p.TicketType.ToString()
-
-            //}).ToList();
-            //return responseDtoList;
-            var ticketsWithUser = _ticketRepository.GetTickets(prodParam)
+             var ticketsWithUser = _ticketRepository.GetTickets(prodParam)
                 .Join(_userRepository.GetAll(),
               ticket => ticket.UserId,
               user => user.Id,

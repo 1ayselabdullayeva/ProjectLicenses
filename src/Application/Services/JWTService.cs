@@ -44,7 +44,6 @@ namespace Application.Services
                 _userRepository.Remove(item);
                 _userRepository.Save();
             }
-
         }
 
         public Tokens Login(UserLoginDto usersdata)
@@ -52,12 +51,7 @@ namespace Application.Services
             var user = _userRepository.GetAll(u => u.Email == usersdata.Email.ToLower()).FirstOrDefault();
             if (user == null)
                 throw new UserNotFoundException();
-
-            var sha = SHA256.Create();
-            var asByteArray = Encoding.UTF8.GetBytes(usersdata.Password);
-            var hasherPassword = sha.ComputeHash(asByteArray);
-            var hashedPasswordString = Convert.ToBase64String(hasherPassword);
-
+            var hashedPasswordString = PasswordHasherDto.Hasher(usersdata.Password);
             if (user.Password != hashedPasswordString)
                 throw new UserNotFoundException();
 
@@ -102,7 +96,7 @@ namespace Application.Services
             {
                 if (item.Email == userRegister.Email)
                 {
-                    throw new Exception("Istifadeci qeydiyyatdan kecib");
+                    throw new Exception("Istifadeci sistemde movcuddur");
                 }
             };
             var defaultRole = _rolesServices.GetDefaultRole();
@@ -120,7 +114,7 @@ namespace Application.Services
                     PhoneNumber = userRegister.PhoneNumber
                 };
                 await _userRepository.AddAsync(userEntity);
-                await _emailSenderServices.SendEmail(userEntity.Email, "User Registered", "Welcome to Aysel's web site");
+                await _emailSenderServices.SendEmail(userEntity.Email, "User Registered", "Welcome to our web site");
 
                 var userToReturn = new UserRegisterResponseDto
                 {
@@ -134,17 +128,6 @@ namespace Application.Services
                 return userToReturn;
             
         }
-
-        //public async Task ResetPassword(ForgotPasswordDto request)
-        //{
-        //     var user = _userRepository.GetSingle(x => x.Email == request.Email);
-        //     if(user != null)
-        //    {
-        //        await _emailSenderServices.SendEmail(user.Email, "Salam", "Parolunuzu yenileyin");
-        //    }
-
-            
-        //}
     }
 }
 
