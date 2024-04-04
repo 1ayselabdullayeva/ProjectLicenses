@@ -3,11 +3,10 @@ using Core.Repositories.Specific;
 using Microsoft.EntityFrameworkCore;
 using Models.DTOs;
 using Models.Entities;
-using System.Security.Cryptography;
 
 namespace DataAccessLayer.Repositories
 {
-	public class ProductRepository : Repository<Product>, IProductRepository
+    public class ProductRepository : Repository<Product>, IProductRepository
 	{
 		private readonly DbContext _dbContext;
 

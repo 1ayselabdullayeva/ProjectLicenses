@@ -1,10 +1,8 @@
-﻿using Application.FluentValidation;
-using Azure;
-using Core.Repositories.Specific;
+﻿using Core.Repositories.Specific;
 using Core.Services;
+using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Models.DTOs;
-using Models.DTOs.Licenses.GetById;
 using Models.DTOs.Tickets.Create;
 using Models.DTOs.Tickets.Edit;
 using Models.DTOs.Tickets.GetAll;
@@ -14,14 +12,16 @@ using Models.Enums;
 
 namespace Business.Services
 {
-	public class TicketService : ITicketServices
+    public class TicketService : ITicketServices
 	{
         private readonly ITicketRepository _ticketRepository;
         private readonly ILicensesRepository _licensesRepository;
-        public TicketService(ITicketRepository ticketRepository, ILicensesRepository licensesRepository)
+        private readonly IUserRepository _userRepository;
+        public TicketService(ITicketRepository ticketRepository, ILicensesRepository licensesRepository, IUserRepository userRepository)
         {
             _ticketRepository = ticketRepository;
             _licensesRepository = licensesRepository;
+            _userRepository = userRepository;
         }
         public async Task<TicketCreateResponseDto> Create(int id,TicketCreateDto request)
 		{
@@ -61,17 +61,23 @@ namespace Business.Services
         }
         public List<TicketGetAllResponseDto> GetAll()
         {
-           var ticket=_ticketRepository.GetAll();
-           var tickets= ticket.Select(t => new TicketGetAllResponseDto
-           {
-               Id = t.Id,
-                CreatedAt = t.CreatedAt,
-                Subject = t.Subject,
-                Description = t.Description,
-                UserId = t.UserId,
-                TicketStatus = t.TicketStatus.ToString(),
-            }).ToList();
-            return tickets;
+          
+            var ticketsWithUser = _ticketRepository.GetAll()
+                .Join(_userRepository.GetAll(),
+          ticket => ticket.UserId,
+          user => user.Id,
+          (ticket, user) => new TicketGetAllResponseDto
+          {
+              Id = ticket.Id,
+              CreatedAt = ticket.CreatedAt,
+              Subject = ticket.Subject,
+              Description = ticket.Description,
+              //UserId = ticket.UserId,
+              TicketStatus = ticket.TicketStatus.ToString(),
+              UserEmail = user.Email
+          })
+         .ToList();
+            return ticketsWithUser;
         }
         public List<TicketGetByIDResponseDto> GetById(int id)
         {
@@ -93,17 +99,33 @@ namespace Business.Services
 
         public List<TicketGetAllResponseDto> GetTicketsPagingData([FromQuery] PagedParameters prodParam)
         {
-            var tickets = _ticketRepository.GetTickets(prodParam);
-            var responseDtoList = tickets.Select(p => new TicketGetAllResponseDto
-            {
-                Id = p.Id,
-                CreatedAt = p.CreatedAt,
-                Subject = p.Subject,
-                TicketStatus = p.TicketStatus.ToString(),
-                TicketType= p.TicketType.ToString()
+            //var tickets = _ticketRepository.GetTickets(prodParam);
+            //var responseDtoList = tickets.Select(p => new TicketGetAllResponseDto
+            //{
+            //    Id = p.Id,
+            //    CreatedAt = p.CreatedAt,
+            //    Subject = p.Subject,
+            //    TicketStatus = p.TicketStatus.ToString(),
+            //    TicketType= p.TicketType.ToString()
 
-            }).ToList();
-            return responseDtoList;
+            //}).ToList();
+            //return responseDtoList;
+            var ticketsWithUser = _ticketRepository.GetTickets(prodParam)
+                .Join(_userRepository.GetAll(),
+              ticket => ticket.UserId,
+              user => user.Id,
+              (ticket, user) => new TicketGetAllResponseDto
+              {
+                  Id = ticket.Id,
+                  CreatedAt = ticket.CreatedAt,
+                  Subject = ticket.Subject,
+                  Description = ticket.Description,
+                  TicketStatus = ticket.TicketStatus.ToString(),
+                  UserEmail = user.Email
+              })
+              .ToList();
+
+            return ticketsWithUser;
         }
         public List<string> GetTicketTypes()
         {

@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using Core.Repositories;
+﻿using Core.Repositories;
 using Core.Repositories.Specific;
 using Core.Services;
 using Microsoft.EntityFrameworkCore;
@@ -57,7 +56,7 @@ namespace DataAccess.Repositories
                       new Claim(ClaimTypes.Role, roleName)
                   }),
 
-                    Expires = rememberMe ? DateTime.Now.AddSeconds(30) : DateTime.Now.AddSeconds(7),
+                    Expires = rememberMe ? DateTime.Now.AddDays(30) : DateTime.Now.AddDays(7),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(refreshkey), SecurityAlgorithms.HmacSha256Signature)
                 };
 
@@ -180,25 +179,9 @@ namespace DataAccess.Repositories
                 _userRepository.Edit(account);
                 _userRepository.Save();
             }
-            //var hashedPasswordString1 = HelperPasswordHasherDto.Hasher(model.Password);
 
-            //// Kullanıcıyı e-posta adresine göre bul
-            //var account = _userRepository.GetSingle(x => x.Id == model.Id);
-
-            //if (account != null)
-            //{
-            //    account.Password = hashedPasswordString;
-            //    _userRepository.Edit(account);
-            //    _userRepository.Save();
-            //}
         }
-        //public string randomTokenString()
-        //{
-        //    using var rngCryptoServiceProvider = new RNGCryptoServiceProvider();
-        //    var randomBytes = new byte[40];
-        //    rngCryptoServiceProvider.GetBytes(randomBytes);
-        //    return BitConverter.ToString(randomBytes).Replace("-", "");
-        //}
+      
         public async Task ForgotPassword(ForgotPasswordDto model, string origin)
         {
                 var account = _userRepository.GetSingle(x => x.Email == model.Email);
@@ -249,7 +232,6 @@ namespace DataAccess.Repositories
             var tokenHandler = new JwtSecurityTokenHandler();
             var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
             JwtSecurityToken jwtSecurityToken = securityToken as JwtSecurityToken;
-            //var userId = int.Parse(principal.Claims.First(x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value);
             var userid = int.Parse(jwtSecurityToken.Claims.First(x=>x.Type=="nameid").Value);
             if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
             {

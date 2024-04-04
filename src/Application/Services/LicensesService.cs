@@ -1,12 +1,14 @@
-﻿using Core.Exceptions;
-using Core.Repositories.Specific;
+﻿using Core.Repositories.Specific;
 using Core.Services;
 using DataAccessLayer.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using Models.DTOs;
 using Models.DTOs.Licenses.Create;
+using Models.DTOs.Licenses.GetAll;
 using Models.DTOs.Licenses.GetById;
 using Models.DTOs.Licenses.GetByIdLicenses;
 using Models.DTOs.Licenses.Update;
-using Models.DTOs.Tickets.Edit;
+using Models.DTOs.Tickets.GetAll;
 using Models.Entities;
 using Models.Enums;
 
@@ -27,7 +29,6 @@ namespace Business.Services
 
         public async Task<LicensesCreateResponseDto> CreateLicenses(int id, LicensesCreateDto request)
         {
-            //var ProductId = _productRepository.GetSingle(x => x.ProductName == request.ProductName).Id;
             var NewLicenses = new Licenses
             {
                 ProductId = request.ProductId,
@@ -59,6 +60,41 @@ namespace Business.Services
             };
         }
 
+        public List<LicensesGetAllResponseDto> GetAll()
+        {
+            var licensesWithUser = _licensesRepository.GetAll()
+                .Join(_userRepository.GetAll(),
+          l => l.UserId,
+          user => user.Id,
+          (l, user) => new LicensesGetAllResponseDto
+          {
+              ActivationDate = l.ActivationDate,
+              UserCount = l.UserCount,
+              ExpireDate = l.ExpireDate,
+              licenseStatus = l.LicenseStatus.ToString(),
+              UserEmail = user.Email
+          })
+         .ToList();
+            return licensesWithUser;
+        }
+        public List<LicensesGetAllResponseDto> GetLicensesPagingData([FromQuery] PagedParameters prodParam)
+        {
+            var licensesWithUser = _licensesRepository.GetLicenses(prodParam)
+                .Join(_userRepository.GetAll(),
+          l => l.UserId,
+          user => user.Id,
+          (l, user) => new LicensesGetAllResponseDto
+          {
+              ActivationDate = l.ActivationDate,
+              UserCount = l.UserCount,
+              ExpireDate = l.ExpireDate,
+              licenseStatus = l.LicenseStatus.ToString(),
+              UserEmail = user.Email
+          })
+         .ToList();
+            return licensesWithUser;
+        }
+
         public List<GetLicensesResponseDto> GetById(int id)
        {
             var userLicenses = _licensesRepository.GetAll(x => x.UserId == id).ToList();
@@ -72,7 +108,6 @@ namespace Business.Services
                     _licensesRepository.Edit(item);
                     _licensesRepository.Save();
                 }
-                    
                     var response = new GetLicensesResponseDto
                     {
                         Id = item.Id,
@@ -82,11 +117,7 @@ namespace Business.Services
                         licenseStatus = item.LicenseStatus.ToString()
                     };
                     responseList.Add(response);
-                
-                
-              
             }
-
             return responseList;
         }
 
@@ -104,9 +135,11 @@ namespace Business.Services
                 ExpiryDate = license.ExpireDate,
                 ActivationDate = license.ActivationDate,
                 LiscenseStatus = license.LicenseStatus.ToString()
-                };
+            };
                 return response;
         }
+
+       
 
         public List<string> GetLicensesStatus()
         {

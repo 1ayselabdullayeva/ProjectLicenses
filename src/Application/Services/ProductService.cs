@@ -6,9 +6,7 @@ using Models.DTOs.Product.Create;
 using Models.DTOs.Product.Delete;
 using Models.DTOs.Product.GetAll;
 using Models.DTOs.Product.Update;
-using Models.DTOs.Tickets.GetById;
 using Models.Entities;
-using System.ComponentModel;
 
 namespace Business.Services
 {

@@ -2,7 +2,6 @@
 using Core.Exceptions;
 using Core.Repositories.Specific;
 using Core.Services;
-using Models.DTOs.User.ForgotPassword;
 using Models.DTOs.User.Login;
 using Models.DTOs.User.Register;
 using Models.Entities;
@@ -45,6 +44,7 @@ namespace Application.Services
                 _userRepository.Remove(item);
                 _userRepository.Save();
             }
+
         }
 
         public Tokens Login(UserLoginDto usersdata)
@@ -104,12 +104,7 @@ namespace Application.Services
                 {
                     throw new Exception("Istifadeci qeydiyyatdan kecib");
                 }
-            }
-            //var user = _userRepository.GetSingle(x => x.Email == userRegister.Email);
-            //if (user != null)
-            //{
-            //    throw new Exception("Istifadeci qeydiyyatdan kecib");
-            //}
+            };
             var defaultRole = _rolesServices.GetDefaultRole();
                 userRegister.RolesId = defaultRole.Id;
                 var hashedPasswordString = PasswordHasherDto.Hasher(userRegister.Password);

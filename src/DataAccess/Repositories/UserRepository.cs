@@ -5,7 +5,7 @@ using Models.Entities;
 
 namespace DataAccessLayer.Repositories
 {
-	public class UserRepository : Repository<User>, IUserRepository
+    public class UserRepository : Repository<User>, IUserRepository
 	{
 		private readonly DbContext _dbContext;
 

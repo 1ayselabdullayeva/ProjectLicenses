@@ -1,21 +1,14 @@
 ﻿using Core.Repositories.Specific;
 using Core.Services;
-using DataAccessLayer.Repositories;
-using Microsoft.EntityFrameworkCore.Storage;
-using Models.DTOs.Licenses.GetById;
-using Models.DTOs.Product.Create;
-using Models.DTOs.Tickets.GetById;
 using Models.DTOs.User.Create;
 using Models.DTOs.User.GetById;
 using Models.DTOs.User.GetLicenses;
 using Models.Entities;
 using Models.Enums;
-using System.ComponentModel;
-using System.Numerics;
 
 namespace Business.Services
 {
-	public class UserService : IUserServices
+    public class UserService : IUserServices
 	{
         private readonly IUserRepository _userRepository;
         private readonly IRolesRepository _rolesRepository;

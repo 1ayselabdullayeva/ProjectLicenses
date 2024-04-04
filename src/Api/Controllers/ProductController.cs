@@ -1,6 +1,4 @@
 ﻿using Application.FluentValidation;
-using Application.Services;
-using Business.Services;
 using Core.Repositories.Specific;
 using Core.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -11,10 +9,9 @@ using Models.DTOs.Product.GetAll;
 using Models.DTOs.Product.Update;
 using Models.Entities;
 using Newtonsoft.Json;
-using System.Security.Claims;
 
 
-    [Route("api/[controller]")]
+[Route("api/[controller]")]
     [ApiController]
    
     public class ProductController : ControllerBase
@@ -28,7 +25,8 @@ using System.Security.Claims;
         _productRepository = productRepository;
         _logger = logger;
     }
-    [AllowAnonymous]
+    
+        [Authorize("AdminOrUser")]
         [HttpGet("GetAllProducts")]
         public IActionResult GetAll()
         {
@@ -36,15 +34,8 @@ using System.Security.Claims;
             var products = _productService.GetAll();
             return Ok(products);
         }
-        [HttpGet("GetById")]
-       [Authorize("Admin")]
 
-    public IActionResult GetById()
-        {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-            var products = _productService.GetById(userId);
-            return Ok(products);
-        }
+
         [HttpGet("PaginationProduct")]
         [Authorize("Admin")]
 
@@ -64,18 +55,14 @@ using System.Security.Claims;
 
             HttpContext.Response.Headers.Append("X-Pagination", JsonConvert.SerializeObject(metadata));
 
-            var responseDtoList = products.Select(p => new ProductGetAllResponseDto
-            {
-                Id = p.Id,
-                ProductName = p.ProductName
-
-            }).ToList();
-            return responseDtoList;
+        
+        var responese = _productService.GetProductPagingData(prodParam);
+            return responese;
         }
 
         [HttpPost("Create")]
         [Authorize("Admin")]
-        public async Task<IActionResult> Create([FromBody] ProductCreateDto request)
+    public async Task<IActionResult> Create([FromBody] ProductCreateDto request)
         {
         ProductValidator pv= new ProductValidator();
         var validator = pv.Validate(new Product

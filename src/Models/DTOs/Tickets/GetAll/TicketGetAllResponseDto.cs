@@ -1,10 +1,4 @@
-﻿using Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Models.DTOs.Tickets.GetAll
 {
@@ -18,5 +12,6 @@ namespace Models.DTOs.Tickets.GetAll
         public string TicketType { get; set; }
         public string TicketStatus { get; set; }
         public int? UserId { get; set; }
+        public string UserEmail { get; set; }
     }
 }

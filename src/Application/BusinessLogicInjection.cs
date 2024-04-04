@@ -1,11 +1,9 @@
 ﻿using Application.FluentValidation;
 using Application.Services;
 using Business.Services;
-using Core.Repositories.Specific;
 using Core.Services;
 using DataAccessLayer;
 using FluentValidation;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Models.Entities;
@@ -22,7 +20,7 @@ namespace Application
             services.AddTransient<IProductServices, ProductService>();
             services.AddTransient<ILicensesServices, LicensesService>();
             services.AddTransient<IRolesServices, RolesService>();
-            services.AddScoped<IJWTServices, JWTService>();
+            services.AddTransient<IJWTServices, JWTService>();
             services.AddScoped<IEmailSenderServices, EmailSenderService>();
             services.AddScoped<IValidator<User>,UserValidator>();
             services.AddScoped<IValidator<Product>,ProductValidator>();

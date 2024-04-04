@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Models.DTOs.User.Login;
-using Models.DTOs.User.Register;
-using Models.Entities;
 
 namespace DataAccessLayer.Persistence
 {
-	public class ProjectDbContext : DbContext
+    public class ProjectDbContext : DbContext
 	{
 		public ProjectDbContext(DbContextOptions options) : base(options)
 		{

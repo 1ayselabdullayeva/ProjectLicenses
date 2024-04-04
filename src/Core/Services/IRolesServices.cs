@@ -5,8 +5,8 @@ namespace Core.Services
 {
 	public interface IRolesServices
 	{
-		public RolesGetRoleDbo GetDefaultRole();
-		public GetRoleNameResponeDbo GetRoleName(int id);
-		public List<GetRoleNameResponeDbo> GeTRole();
+		 RolesGetRoleDbo GetDefaultRole();
+		 GetRoleNameResponeDbo GetRoleName(int id);
+		 List<GetRoleNameResponeDbo> GeTRole();
 	}
 }

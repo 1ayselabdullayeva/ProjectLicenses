@@ -1,12 +1,4 @@
-﻿using Models.Entities;
-using Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Models.DTOs.User.Register
+﻿namespace Models.DTOs.User.Register
 {
     public class UserRegisterDto
     {

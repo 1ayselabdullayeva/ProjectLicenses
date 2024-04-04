@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Models.DTOs.User.Login.AddRefreshToken
+﻿namespace Models.DTOs.User.Login.AddRefreshToken
 {
     public class AddRefreshTokenDto
     {

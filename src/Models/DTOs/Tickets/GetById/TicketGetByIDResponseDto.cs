@@ -1,6 +1,4 @@
-﻿using Models.Entities;
-using Models.Enums;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Models.DTOs.Tickets.GetById
 {

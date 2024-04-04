@@ -2,13 +2,11 @@
 using Core.Repositories.Specific;
 using Microsoft.EntityFrameworkCore;
 using Models.DTOs;
-using Models.DTOs.Tickets.Create;
 using Models.Entities;
-using System.Linq;
 
 namespace DataAccessLayer.Repositories
 {
-	public class TicketRepository : Repository<Ticket>, ITicketRepository
+    public class TicketRepository : Repository<Ticket>, ITicketRepository
 	{
 		private readonly DbContext _dbContext;
 

@@ -3,7 +3,7 @@ using Models.Enums;
 
 namespace Models.Entities
 {
-	public class User : BaseEntity<int> { 
+    public class User : BaseEntity<int> { 
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
 		public string PhoneNumber { get; set; }
@@ -12,12 +12,9 @@ namespace Models.Entities
 		public string CompanyName { get; set; }
 		public UserStatus Status { get; set; } = UserStatus.Active;
         public string? RefreshToken { get; set; }
-        public int RolesId { get; set; } = 2;
+        public int RolesId { get; set; }
 		public Roles Roles { get; set; }
-        //public int? LicensesId { get; set; }
-        //public Licenses Licenses { get; set; }
-        //public ICollection<UserLicenses> UserLicenses { get; set; }
         public ICollection<Ticket> Tickets { get; set; }
-		public ICollection<Licenses> Licenses { get; set; }
+        public ICollection<Licenses> Licenses { get; set; }
 	}
 }

@@ -35,19 +35,16 @@ namespace Api.Pipeline
                 {
                     case ResourceNotFoundException:
                         apiResponse = BaseApiResponse.FailCondition(exception.Message, HttpStatusCode.NotFound);
-                        _logger.LogError(exception.Message.ToString());
+                        _logger.LogError(JsonConvert.SerializeObject(exception));
                         break;
                     case BadRequestException badRequestException:
                         apiResponse = BaseApiResponse.FailCondition(badRequestException.Errors, exception.Message, HttpStatusCode.BadRequest);
-                        _logger.LogError(exception.Message.ToString());
-
-                          break;
+                        _logger.LogError(JsonConvert.SerializeObject(exception));   break;
 
                         //case UnHandledException:
                         default:
                         apiResponse = BaseApiResponse.FailCondition("System can't handle this operation, Try a few minutes later!", HttpStatusCode.BadRequest);
-                        _logger.LogError("testtt "+JsonConvert.SerializeObject(exception));
-
+                        _logger.LogError(JsonConvert.SerializeObject(exception));
                         break;
                 }
                 context.Response.ContentType = "application/json";

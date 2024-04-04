@@ -1,6 +1,6 @@
 ﻿using Core.Services;
-using System.Net.Mail;
 using System.Net;
+using System.Net.Mail;
 
 namespace Application.Services
 {

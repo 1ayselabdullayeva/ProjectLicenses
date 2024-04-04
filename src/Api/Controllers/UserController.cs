@@ -8,7 +8,7 @@ using System.Security.Claims;
 
 namespace Api.Controllers
 {
-    //[Authorize("Customer")]
+
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -18,7 +18,7 @@ namespace Api.Controllers
         {
             _userServices = userServices;
         }
-
+        [Authorize("Customer")]
         [HttpGet("GetUser")]
         public IActionResult GetById() 
        {
@@ -26,7 +26,7 @@ namespace Api.Controllers
             var response =_userServices.GetById(id);
             return Ok(response);
         }
-
+        [Authorize("Customer")]
         [HttpGet("GetLicenses")]
         public IActionResult GetByIdLicenses()
         {
@@ -35,6 +35,7 @@ namespace Api.Controllers
             return Ok(response);
 
         }
+        [Authorize("Admin")]
         [HttpPost("AddUser")]
         public async Task<IActionResult> AddUser(UserCreateDto request)
         {

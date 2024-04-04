@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Models.Entities;
-using System.ComponentModel;
 
 namespace DataAccessLayer.Configurations
 {
-	public class LicensesConfiguration : IEntityTypeConfiguration<Licenses>
+    public class LicensesConfiguration : IEntityTypeConfiguration<Licenses>
 	{
 		public void Configure(EntityTypeBuilder<Licenses> builder)
 		{

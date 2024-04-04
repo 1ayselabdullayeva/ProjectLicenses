@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 namespace Core.Repositories
 {
 
-	public interface IRepository<T> where T : class, new()
+    public interface IRepository<T> where T : class, new()
 	{
 		IQueryable<T> GetAll(Expression<Func<T, bool>> expression = null);
         Task<T> GetAsync(Expression<Func<T, bool>> filter = null, CancellationToken cancellationToken = default);

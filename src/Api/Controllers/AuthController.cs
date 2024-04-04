@@ -1,28 +1,14 @@
 ﻿using Application.FluentValidation;
-using Application.Services;
-using Core.Exceptions;
 using Core.Repositories.Specific;
 using Core.Services;
-using DataAccessLayer.Repositories;
-using FluentValidation;
-using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Models.DTOs.User.ForgotPassword;
 using Models.DTOs.User.Login;
-using Models.DTOs.User.Login.AddRefreshToken;
 using Models.DTOs.User.Login.UserRefreshTokenDto;
 using Models.DTOs.User.Register;
 using Models.Entities;
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
 using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Api.Controllers
 {
@@ -32,15 +18,12 @@ namespace Api.Controllers
     {
         private readonly IJWTManagerRepository _jWTManager;
         private readonly IJWTServices _jWTServices;
-        private readonly IRolesServices _rolesService;
-        private readonly IUserRepository _userRepository;
+ 
 
-        public AuthController(IJWTManagerRepository jWTManager, IJWTServices jWTServices, IRolesServices rolesService, IUserRepository userRepository)
+        public AuthController(IJWTManagerRepository jWTManager, IJWTServices jWTServices)
         {
             _jWTManager = jWTManager;
-            _jWTServices = jWTServices; ;
-            _rolesService = rolesService;
-            _userRepository = userRepository;
+            _jWTServices = jWTServices; 
         }
         [AllowAnonymous]
         [HttpPost]
@@ -118,7 +101,7 @@ namespace Api.Controllers
         public async Task<ActionResult> ForgotPassword(ForgotPasswordDto model)
         {
           
-            await _jWTManager.ForgotPassword(model, Request.Headers["origin"]);
+            await _jWTManager.ForgotPassword(model,Request.Headers["origin"]);
             return Ok();
         }
 
@@ -126,14 +109,13 @@ namespace Api.Controllers
         public IActionResult GetIdFromToken(string token)
         {
             try
-            {
-                
+            {                
                 var userId = _jWTManager.GetUserIdFromToken(token);
-                return Ok(userId);
+                return Ok();
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = "Failed to reset password." });
+                return BadRequest(new { message = "Invalid Token" });
             }
         }
 

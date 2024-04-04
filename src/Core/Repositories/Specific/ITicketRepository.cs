@@ -1,6 +1,4 @@
-﻿using Core.Repositories;
-using Models.DTOs;
-using Models.DTOs.Tickets.Create;
+﻿using Models.DTOs;
 using Models.Entities;
 
 namespace Core.Repositories.Specific

@@ -1,12 +1,10 @@
-﻿using Models.Entities;
-using Models.Enums;
-using System.ComponentModel.DataAnnotations;
+﻿using Models.Enums;
 
 namespace Models.DTOs.Tickets.Create
 {
-	public class TicketCreateDto
+    public class TicketCreateDto
 	{
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public string Subject { get; set; }
         public string Description { get; set; }
         public TicketType TicketType { get; set; }
