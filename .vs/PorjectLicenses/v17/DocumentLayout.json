@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\api\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|c:\\users\\hp\\desktop\\porjectlicenses\\src\\api\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|solutionrelative:src\\api\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,15 +11,15 @@
       "RelativeMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|solutionrelative:src\\api\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|c:\\users\\hp\\desktop\\porjectlicenses\\src\\application\\businesslogicinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\application\\businesslogicinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|solutionrelative:src\\application\\businesslogicinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|c:\\users\\hp\\desktop\\porjectlicenses\\src\\application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|solutionrelative:src\\application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|c:\\users\\hp\\desktop\\porjectlicenses\\src\\application\\services\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\application\\services\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|solutionrelative:src\\application\\services\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -27,11 +27,11 @@
       "RelativeMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|solutionrelative:src\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|c:\\users\\hp\\desktop\\porjectlicenses\\src\\application\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\application\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84F5E004-67B8-459B-8FB4-06EC536E4608}|src\\Application\\Application.csproj|solutionrelative:src\\application\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C77139EE-DA4D-46DC-9E05-F49B2D5F96AF}|src\\DataAccess\\DataAccess.csproj|c:\\users\\hp\\desktop\\porjectlicenses\\src\\dataaccess\\repositories\\jwtmanagerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C77139EE-DA4D-46DC-9E05-F49B2D5F96AF}|src\\DataAccess\\DataAccess.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\dataaccess\\repositories\\jwtmanagerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C77139EE-DA4D-46DC-9E05-F49B2D5F96AF}|src\\DataAccess\\DataAccess.csproj|solutionrelative:src\\dataaccess\\repositories\\jwtmanagerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -47,7 +47,7 @@
       "RelativeMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|solutionrelative:src\\api\\controllers\\licensescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|c:\\users\\hp\\desktop\\porjectlicenses\\src\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{F2BB3669-C7E5-4C24-8222-40DC8A473CA8}|src\\Api\\Api.csproj|solutionrelative:src\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
@@ -86,8 +86,7 @@
               "RelativeToolTip": "src\\Application\\BusinessLogicInjection.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T09:44:18.8Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-04T09:44:18.8Z"
             },
             {
               "$type": "Document",
@@ -99,8 +98,7 @@
               "RelativeToolTip": "src\\Application\\Services\\UserService.cs",
               "ViewState": "AQIAAEUAAAAAAAAAAAAAAFcAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T09:44:04.814Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-04T09:44:04.814Z"
             },
             {
               "$type": "Document",
@@ -112,8 +110,7 @@
               "RelativeToolTip": "src\\Application\\Services\\TicketService.cs",
               "ViewState": "AQIAAC0AAAAAAAAAAAAYwHcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T09:43:34.816Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-04T09:43:34.816Z"
             },
             {
               "$type": "Document",
@@ -125,8 +122,7 @@
               "RelativeToolTip": "src\\DataAccess\\Repositories\\JWTManagerRepository.cs",
               "ViewState": "AQIAAJ4AAAAAAAAAAAAswAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T08:53:54.869Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-04T08:53:54.869Z"
             },
             {
               "$type": "Document",
@@ -138,8 +134,7 @@
               "RelativeToolTip": "src\\Application\\Services\\JWTService.cs",
               "ViewState": "AQIAABYAAAAAAAAAAAAQwB8AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T08:53:54.881Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-04T08:53:54.881Z"
             },
             {
               "$type": "Document",
@@ -151,8 +146,7 @@
               "RelativeToolTip": "src\\Api\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-04-04T08:22:54.284Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-04T08:22:54.284Z"
             },
             {
               "$type": "Document",
@@ -164,8 +158,7 @@
               "RelativeToolTip": "src\\Api\\Program.cs",
               "ViewState": "AQIAABIAAAAAAAAAAAAAABkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T08:21:44.762Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-04T08:21:44.762Z"
             },
             {
               "$type": "Document",
@@ -177,8 +170,7 @@
               "RelativeToolTip": "src\\Api\\Controllers\\AuthController.cs",
               "ViewState": "AQIAAGUAAAAAAAAAAAAmwHIAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T08:15:23.419Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-04T08:15:23.419Z"
             },
             {
               "$type": "Document",
@@ -190,8 +182,7 @@
               "RelativeToolTip": "src\\Api\\Controllers\\LicensesController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T08:13:25.023Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-04T08:13:25.023Z"
             },
             {
               "$type": "Document",
@@ -215,8 +206,7 @@
               "RelativeToolTip": "src\\Api\\Controllers\\RolesController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T08:15:12.606Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-04T08:15:12.606Z"
             },
             {
               "$type": "Document",
@@ -226,7 +216,7 @@
               "RelativeDocumentMoniker": "src\\Api\\Controllers\\TicketController.cs",
               "ToolTip": "C:\\Users\\HP\\Desktop\\PorjectLicenses\\src\\Api\\Controllers\\TicketController.cs",
               "RelativeToolTip": "src\\Api\\Controllers\\TicketController.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAYwCgAAABVAAAA",
+              "ViewState": "AQIAACEAAAAAAAAAAAAYwC0AAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-04T08:15:07.864Z",
               "EditorCaption": ""
@@ -241,8 +231,7 @@
               "RelativeToolTip": "src\\Api\\Controllers\\UserController.cs",
               "ViewState": "AQIAACEAAAAAAAAAAAAAAD0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T07:52:53.253Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-04T07:52:53.253Z"
             }
           ]
         },
