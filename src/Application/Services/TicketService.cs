@@ -4,6 +4,7 @@ using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Models.DTOs;
 using Models.DTOs.Tickets.Create;
+using Models.DTOs.Tickets.Delete;
 using Models.DTOs.Tickets.Edit;
 using Models.DTOs.Tickets.GetAll;
 using Models.DTOs.Tickets.GetById;
@@ -45,6 +46,21 @@ namespace Business.Services
                 CreatedAt= request.CreatedAt,
             };
             return responseDto;
+        }
+
+        public TicketDeleteResponseDto DeleteTicket(int id)
+        {
+            var ticket = _ticketRepository.GetSingle( x=>x.Id== id);                
+             _ticketRepository.Remove(ticket);
+            _ticketRepository.Save();
+            var response = new TicketDeleteResponseDto
+            {
+                CreatedAt = ticket.CreatedAt,
+                Subject = ticket.Subject,
+                Description = ticket.Description,
+                UserId = ticket.UserId,
+            };
+            return response;
         }
 
         public TicketEditStatusResponseDto Edit(TicketEditStatusDto request)
@@ -115,6 +131,12 @@ namespace Business.Services
 
             return ticketsWithUser;
         }
+
+        public List<string> GetTicketStatus()
+        {
+            return Enum.GetNames(typeof(TicketStatus)).ToList();
+        }
+
         public List<string> GetTicketTypes()
         {
             return Enum.GetNames(typeof(TicketType)).ToList();

@@ -1,6 +1,9 @@
-﻿using Core.Repositories;
+﻿using Core.Exceptions;
+using Core.Repositories;
 using Core.Repositories.Specific;
 using Core.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Logging;
@@ -123,7 +126,7 @@ namespace DataAccess.Repositories
             JwtSecurityToken jwtSecurityToken = securityToken as JwtSecurityToken;
             if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new SecurityTokenException("Invalid token");
+                throw new BadRequestException("Invalid token");
             }
             else
             {
@@ -235,9 +238,10 @@ namespace DataAccess.Repositories
             var userid = int.Parse(jwtSecurityToken.Claims.First(x=>x.Type=="nameid").Value);
             if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new SecurityTokenException("Invalid token");
+                throw new BadRequestException("Invalid token");
             }
             return userid;
         }
+
     }
 }

@@ -30,15 +30,10 @@ namespace Api.Controllers
         [Route("Login")]
         public async Task<IActionResult> Login(UserLoginDto usersdata)
         {
-           try
-            {
+          
                 var tokens = _jWTServices.Login(usersdata);
                 return Ok(tokens);
-            }
-            catch (Exception e)
-            {
-                return BadRequest("Istifadeci tapilmadi");
-            }
+           
         }
         [AllowAnonymous]
         [HttpPost("register")]
@@ -78,15 +73,8 @@ namespace Api.Controllers
         [Route("get-token")]
         public ActionResult<List<UserAccessTokenDto>> GetTokenByRefreshToken(string refreshToken)
         {
-            try
-            {
                 var userRefreshTokenDto = _jWTManager.GetTokenByRefreshToken(refreshToken);
                 return Ok(userRefreshTokenDto);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = "Error" });
-            }
         }
 
         [HttpPost]
@@ -100,23 +88,16 @@ namespace Api.Controllers
         [HttpPost("forgot-password")]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordDto model)
         {
-          
-            await _jWTManager.ForgotPassword(model,Request.Headers["origin"]);
+          await _jWTManager.ForgotPassword(model,Request.Headers["origin"]);
             return Ok();
         }
 
         [HttpPost("getIdfromToken")]
         public IActionResult GetIdFromToken(string token)
-        {
-            try
-            {                
+        {          
                 var userId = _jWTManager.GetUserIdFromToken(token);
                 return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = "Invalid Token" });
-            }
+           
         }
 
     }

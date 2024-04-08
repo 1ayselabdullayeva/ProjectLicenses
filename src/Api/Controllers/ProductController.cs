@@ -11,9 +11,8 @@ using Models.Entities;
 using Newtonsoft.Json;
 
 
-[Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-   
     public class ProductController : ControllerBase
     {
         private readonly IProductServices _productService;
@@ -39,7 +38,7 @@ using Newtonsoft.Json;
         [HttpGet("PaginationProduct")]
         [Authorize("Admin")]
 
-        public ActionResult<List<ProductGetAllResponseDto>> GetProductPagingData([FromQuery] PagedParameters prodParam)
+        public ActionResult<List<ProductGetAllResponseDto>> GetProductPagingData([FromQuery] PagedParameters prodParam,string sortBy)
         {
             var products = _productRepository.GetProducts(prodParam);
 
@@ -57,7 +56,15 @@ using Newtonsoft.Json;
 
         
         var responese = _productService.GetProductPagingData(prodParam);
-            return responese;
+        switch (sortBy)
+        {
+            case "name":
+                responese = responese.OrderBy(p => p.ProductName).ToList();
+                break;
+            default:
+                break;
+        }
+        return responese;
         }
 
         [HttpPost("Create")]

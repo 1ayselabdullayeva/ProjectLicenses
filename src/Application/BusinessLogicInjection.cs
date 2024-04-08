@@ -19,13 +19,15 @@ namespace Application
             services.AddTransient<ITicketServices, TicketService>();
             services.AddTransient<IProductServices, ProductService>();
             services.AddTransient<ILicensesServices, LicensesService>();
-            services.AddTransient<IRolesServices, RolesService>();
+            services.AddTransient<IRolesServices, RolesService>();  
             services.AddTransient<IJWTServices, JWTService>();
+            services.AddTransient<IPermissionsServices,PermissionsService>();
             services.AddScoped<IEmailSenderServices, EmailSenderService>();
             services.AddScoped<IValidator<User>,UserValidator>();
             services.AddScoped<IValidator<Product>,ProductValidator>();
             services.AddScoped<IValidator<Ticket>, TicketValidator > ();
             services.AddScoped<IValidator<Licenses>, LicensesValidator>();
+
             #endregion
             return services;
         }

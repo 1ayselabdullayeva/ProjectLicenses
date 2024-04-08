@@ -1,4 +1,5 @@
 ﻿using Application.FluentValidation;
+using Business.Services;
 using Core.Repositories.Specific;
 using Core.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -64,7 +65,7 @@ namespace Api.Controllers
         [HttpGet("PaginationTicket")]
         [Authorize("Admin")]
 
-        public ActionResult<List<ProductGetAllResponseDto>> GetProductPagingData([FromQuery] PagedParameters prodParam)
+        public ActionResult<List<ProductGetAllResponseDto>> GetProductPagingData([FromQuery] PagedParameters prodParam,string sortBy)
         {
             var tickets = _ticketRepository.GetTickets(prodParam);
 
@@ -80,6 +81,19 @@ namespace Api.Controllers
 
             HttpContext.Response.Headers.Append("X-Pagination", JsonConvert.SerializeObject(metadata));
             var response = _ticketService.GetTicketsPagingData(prodParam);
+            switch (sortBy)
+            {
+                case "create":
+                    response = response.OrderBy(p => p.CreatedAt).ToList();
+                    break;
+                case "status":
+                    response = response.OrderBy(p => p.TicketStatus).ToList();
+                    break;
+                default:
+                    break;
+            }
+
+
             return Ok(response);
         }
         [HttpPost("CreateTicket")]
@@ -103,13 +117,26 @@ namespace Api.Controllers
             return Ok(response);
         }
 
-        [HttpGet]
-        [Route("types")]
+        [HttpGet("types")]
         [Authorize("AdminOrUser")]
         public IActionResult GetTicketTypes()
         {
             var types = _ticketService.GetTicketTypes();
             return Ok(types);
+        }
+        [HttpGet("status")]
+        [Authorize("AdminOrUser")]
+        public IActionResult GetTicketStatus()
+        {
+            var types = _ticketService.GetTicketStatus();
+            return Ok(types);
+        }
+        [HttpDelete("DeleteTicket")]
+        [Authorize("AdminOrUser")]
+        public IActionResult DeleteTicket(int id) 
+        { 
+            var response = _ticketService.DeleteTicket(id);
+            return Ok(response);
         }
     }
 }

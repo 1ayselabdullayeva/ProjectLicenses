@@ -2,11 +2,14 @@
 using Core.Exceptions;
 using Core.Repositories.Specific;
 using Core.Services;
+using MimeKit.Encodings;
+using Models.DTOs.Permissions.Get;
 using Models.DTOs.User.Login;
 using Models.DTOs.User.Register;
 using Models.Entities;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json.Nodes;
 namespace Application.Services
 {
     public class JWTService : IJWTServices
@@ -14,13 +17,15 @@ namespace Application.Services
         private readonly IRolesServices _rolesServices;
         private readonly IJWTManagerRepository _jwtManagerRepository;
         private readonly IEmailSenderServices _emailSenderServices;
+        private readonly IPermissionsServices _permissionsServices;
 
-        public JWTService(IUserRepository userRepository, IRolesServices rolesServices, IJWTManagerRepository jwtManagerRepository, IEmailSenderServices emailSenderServices)
+        public JWTService(IUserRepository userRepository, IRolesServices rolesServices, IJWTManagerRepository jwtManagerRepository, IEmailSenderServices emailSenderServices, IPermissionsServices permissionsServices)
         {
             _userRepository = userRepository;
             _rolesServices = rolesServices;
             _jwtManagerRepository = jwtManagerRepository;
             _emailSenderServices = emailSenderServices;
+            _permissionsServices = permissionsServices;
         }
         public void AddUserRefreshTokens(User user)
         {
@@ -46,26 +51,38 @@ namespace Application.Services
             }
         }
 
-        public Tokens Login(UserLoginDto usersdata)
+        public UserLoginResponseDto Login(UserLoginDto usersdata)
         {
-            var user = _userRepository.GetAll(u => u.Email == usersdata.Email.ToLower()).FirstOrDefault();
+            var user = _userRepository.GetSingle(u => u.Email == usersdata.Email.ToLower());
             if (user == null)
-                throw new UserNotFoundException();
+                throw new ResourceNotFoundException("Istifadeci movcud deyil");
             var hashedPasswordString = PasswordHasherDto.Hasher(usersdata.Password);
             if (user.Password != hashedPasswordString)
-                throw new UserNotFoundException();
+                throw new ResourceNotFoundException("Istifadeci movcud deyil");
 
             var userRoles = _rolesServices.GetRoleName(user.RolesId);
+            var userPermissions = _permissionsServices.GetPermissions(user.RolesId);
 
             var token = _jwtManagerRepository.GenerateJWTTokens(user.Id, user.FirstName, userRoles.RoleName, usersdata.RememberMe);
-            var c = new Tokens
+            var response = new UserLoginResponseDto
             {
                 AccessToken = token.AccessToken,
                 RefreshToken = token.RefreshToken,
-            };
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                CompanyName = user.CompanyName,
+                PhoneNumber = user.PhoneNumber,
+                Email = user.Email,
+                RolesId = user.RolesId,
+                Roles = new Models.DTOs.Roles.RoleWithPermissions.RoleWithPermissionsWithDto
+                {
+                    RoleName = userRoles.RoleName,
+                    Permissions = userPermissions.Select(p => new GetPermissionsResponseDto { PermissionName = p.PermissionName }).ToList()
+                }
+            }; 
 
             if (token == null)
-                throw new Exception("Failed to generate JWT token");
+                throw new BadRequestException("Failed to generate JWT token");
 
             User users = new User
             {
@@ -74,30 +91,24 @@ namespace Application.Services
             };
              AddUserRefreshTokens(users);
 
-            return token;
+            return response;
         }
 
     public void LogOut(int userId)
         {
-            var userTokens = _userRepository.GetAll(u => u.Id == userId);
-
-            foreach (var token in userTokens)
-            {
-              token.RefreshToken= null;
-                _userRepository.Edit(token);
-            }
-             _userRepository.Save();
+            var userTokens = _userRepository.GetSingle(u => u.Id == userId);
+            userTokens.RefreshToken= null;
+            _userRepository.Edit(userTokens);
+            _userRepository.Save();
         }
         public async Task<UserRegisterResponseDto> Register(UserRegisterDto userRegister)
         
         {
-            var user = _userRepository.GetAll(x => x.Email == userRegister.Email).ToList();
-            foreach (var item in user)
+
+            var user = _userRepository.GetSingle(x => x.Email == userRegister.Email, false);
+            if(user != null)
             {
-                if (item.Email == userRegister.Email)
-                {
-                    throw new Exception("Istifadeci sistemde movcuddur");
-                }
+                throw new BadRequestException("Istifadeci artiq sistemde movcuddur");
             };
             var defaultRole = _rolesServices.GetDefaultRole();
                 userRegister.RolesId = defaultRole.Id;

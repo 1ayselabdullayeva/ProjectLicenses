@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.DTOs;
 using Models.DTOs.Licenses.Create;
+using Models.DTOs.Licenses.Update;
 using Models.DTOs.Product.GetAll;
 using Newtonsoft.Json;
+using System.Globalization;
 using System.Security.Claims;
 
 namespace Api.Controllers
@@ -17,12 +19,10 @@ namespace Api.Controllers
     public class LicensesController : ControllerBase
     {
         private ILicensesServices _licensesServices;
-        private IUserRepository _userRepository;
         private ILicensesRepository _licensesRepository;
-        public LicensesController(ILicensesServices licensesServices, IUserRepository userRepository, ILicensesRepository licensesRepository)
+        public LicensesController(ILicensesServices licensesServices,  ILicensesRepository licensesRepository)
         {
             _licensesServices = licensesServices;
-            _userRepository = userRepository;
             _licensesRepository = licensesRepository;
         }
 
@@ -39,7 +39,7 @@ namespace Api.Controllers
         [HttpGet("PaginationLicenses")]
         [Authorize("Admin")]
 
-        public ActionResult<List<ProductGetAllResponseDto>> GetProductPagingData([FromQuery] PagedParameters prodParam)
+        public ActionResult<List<ProductGetAllResponseDto>> GetProductPagingData([FromQuery] PagedParameters prodParam,string sortBy)
         {
             var tickets = _licensesRepository.GetLicenses(prodParam);
 
@@ -55,6 +55,17 @@ namespace Api.Controllers
 
             HttpContext.Response.Headers.Append("X-Pagination", JsonConvert.SerializeObject(metadata));
             var response = _licensesServices.GetLicensesPagingData(prodParam);
+            switch (sortBy)
+            {
+                case "status":
+                    response = response.OrderBy(p => p.licenseStatus).ToList();
+                    break;
+                case "Expire":
+                    response = response.OrderBy(p => p.ExpireDate).ToList();
+                    break;
+                default:
+                    break;
+            }
             return Ok(response);
         }
 
@@ -103,5 +114,12 @@ namespace Api.Controllers
             return Ok(types);
         }
 
+        [HttpPut("UpdateStatus")]
+        [Authorize("Admin")]
+        public IActionResult Edit(LicensesUpdateStatusDto request)
+        {
+            var response = _licensesServices.Edit(request);
+            return Ok(response);    
+        }
     }
 }

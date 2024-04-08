@@ -1,6 +1,5 @@
 ﻿using Core.Repositories.Specific;
 using Core.Services;
-using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Models.DTOs;
 using Models.DTOs.Licenses.Create;
@@ -8,7 +7,6 @@ using Models.DTOs.Licenses.GetAll;
 using Models.DTOs.Licenses.GetById;
 using Models.DTOs.Licenses.GetByIdLicenses;
 using Models.DTOs.Licenses.Update;
-using Models.DTOs.Tickets.GetAll;
 using Models.Entities;
 using Models.Enums;
 
@@ -68,13 +66,25 @@ namespace Business.Services
           user => user.Id,
           (l, user) => new LicensesGetAllResponseDto
           {
+              ProductName = l.Product.ProductName,
               ActivationDate = l.ActivationDate,
               UserCount = l.UserCount,
               ExpireDate = l.ExpireDate,
               licenseStatus = l.LicenseStatus.ToString(),
               UserEmail = user.Email
-          })
+          }) 
          .ToList();
+            foreach (var license in licensesWithUser)
+            {
+                if (DateTime.Now > license.ExpireDate)
+                {
+                    var licenseToUpdate = _licensesRepository.GetSingle();
+                    licenseToUpdate.LicenseStatus = Models.Enums.LiscenseStatus.Expired;
+                    _licensesRepository.Edit(licenseToUpdate);
+                    _licensesRepository.Save();
+                    license.licenseStatus = "Expired";
+                }
+            }
             return licensesWithUser;
         }
         public List<LicensesGetAllResponseDto> GetLicensesPagingData([FromQuery] PagedParameters prodParam)
@@ -83,15 +93,44 @@ namespace Business.Services
                 .Join(_userRepository.GetAll(),
           l => l.UserId,
           user => user.Id,
-          (l, user) => new LicensesGetAllResponseDto
+          (l, user) => new { License = l, User = user })
+         .Join(_productRepository.GetAll(),
+          combined => combined.License.ProductId, // Örnek olarak License tablosundaki ProductId alanı ile Product tablosundaki Id alanını birleştirin
+          product => product.Id,
+          (combined, product) => new LicensesGetAllResponseDto
           {
-              ActivationDate = l.ActivationDate,
-              UserCount = l.UserCount,
-              ExpireDate = l.ExpireDate,
-              licenseStatus = l.LicenseStatus.ToString(),
-              UserEmail = user.Email
-          })
-         .ToList();
+              ProductName = product.ProductName, // Burada ProductName'e Product tablosundan ulaşıyorsunuz
+              ActivationDate = combined.License.ActivationDate,
+              UserCount = combined.License.UserCount,
+              ExpireDate = combined.License.ExpireDate,
+              licenseStatus = combined.License.LicenseStatus.ToString(),
+              UserEmail = combined.User.Email
+          }).ToList();
+
+
+
+
+         // => new LicensesGetAllResponseDto
+         // {
+         //     ProductName = l.Product.ProductName,
+         //     ActivationDate = l.ActivationDate,
+         //     UserCount = l.UserCount,
+         //     ExpireDate = l.ExpireDate,
+         //     licenseStatus = l.LicenseStatus.ToString(),
+         //     UserEmail = user.Email
+         // })
+         //.ToList();
+            foreach (var license in licensesWithUser)
+            {
+                if (DateTime.Now > license.ExpireDate)
+                {
+                    var licenseToUpdate = _licensesRepository.GetSingle();
+                    licenseToUpdate.LicenseStatus = Models.Enums.LiscenseStatus.Expired;
+                    _licensesRepository.Edit(licenseToUpdate);
+                    _licensesRepository.Save();
+                    license.licenseStatus = "Expired";
+                }
+            }
             return licensesWithUser;
         }
 
@@ -138,8 +177,6 @@ namespace Business.Services
             };
                 return response;
         }
-
-       
 
         public List<string> GetLicensesStatus()
         {

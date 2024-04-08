@@ -17,7 +17,6 @@ namespace DataAccessLayer
             {
                 options.UseNpgsql(configuration.GetConnectionString("Default"));
             });
-           
             services.AddAutoMapper(typeof(DataAccessInjection));
             #region Register Repositories
             services.AddScoped<ITicketRepository, TicketRepository>();
@@ -26,6 +25,7 @@ namespace DataAccessLayer
 			services.AddScoped<ILicensesRepository, LicensesRepository>();
 			services.AddScoped<IRolesRepository, RolesRepository>();
 			services.AddScoped<IJWTManagerRepository, JWTManagerRepository>();
+			services.AddScoped<IPermissionsRepository, PermissionsRepository>();
 			#endregion
 
 			return services;

@@ -1,6 +1,6 @@
 ﻿namespace Models.DTOs
 {
-    public class PagedParameters
+    public  class PagedParameters
     {
         const int maxPageSize = 50;
         public int PageNumber { get; set; } = 1;

@@ -39,9 +39,9 @@ namespace Api.Pipeline
                         break;
                     case BadRequestException badRequestException:
                         apiResponse = BaseApiResponse.FailCondition(badRequestException.Errors, exception.Message, HttpStatusCode.BadRequest);
-                        _logger.LogError(JsonConvert.SerializeObject(exception));   break;
+                        _logger.LogError(JsonConvert.SerializeObject(exception));   
+                        break;
 
-                        //case UnHandledException:
                         default:
                         apiResponse = BaseApiResponse.FailCondition("System can't handle this operation, Try a few minutes later!", HttpStatusCode.BadRequest);
                         _logger.LogError(JsonConvert.SerializeObject(exception));

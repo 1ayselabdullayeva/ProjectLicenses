@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Models.DTOs;
 using Models.DTOs.Tickets.Create;
+using Models.DTOs.Tickets.Delete;
 using Models.DTOs.Tickets.Edit;
 using Models.DTOs.Tickets.GetAll;
 using Models.DTOs.Tickets.GetById;
@@ -14,6 +15,10 @@ namespace Core.Services
 		 TicketEditStatusResponseDto Edit(TicketEditStatusDto request);
 		 List<TicketGetAllResponseDto> GetAll();
          List<TicketGetAllResponseDto> GetTicketsPagingData([FromQuery] PagedParameters prodParam);
-		List<string> GetTicketTypes();
+		 List<string> GetTicketTypes();
+         List<string> GetTicketStatus();
+         TicketDeleteResponseDto DeleteTicket(int id);
+
+
     }
 }

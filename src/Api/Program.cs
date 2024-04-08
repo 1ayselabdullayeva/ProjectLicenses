@@ -3,13 +3,19 @@ using Application;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Serialization;
 using NLog.Extensions.Logging;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddLogging(x=>x.AddNLog("nlog.config"));
 builder.Services.AddControllers().AddFluentValidation();
+//    .AddJsonOptions(options =>
+//{
+//options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+//});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddBusinessLogic(builder.Configuration);

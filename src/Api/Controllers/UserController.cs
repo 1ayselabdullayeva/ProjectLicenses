@@ -3,6 +3,7 @@ using Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.DTOs.User.Create;
+using Models.DTOs.User.Update;
 using Models.Entities;
 using System.Security.Claims;
 
@@ -58,5 +59,6 @@ namespace Api.Controllers
             var response = await _userServices.Create(request);
             return Ok(response);
         }
+       
     }
 }

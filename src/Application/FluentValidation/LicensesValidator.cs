@@ -10,7 +10,6 @@ namespace Application.FluentValidation
             RuleFor(x => x.UserCount).NotEmpty().NotNull();
             RuleFor(x=>x.ExpireDate).NotEmpty().NotNull();
             RuleFor(x=>x.ProductId).NotEmpty().NotNull();
-
         }
     }
 }

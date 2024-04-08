@@ -1,8 +1,10 @@
-﻿using Core.Repositories.Specific;
+﻿using Core.Exceptions;
+using Core.Repositories.Specific;
 using Core.Services;
 using Models.DTOs.User.Create;
 using Models.DTOs.User.GetById;
 using Models.DTOs.User.GetLicenses;
+using Models.DTOs.User.Update;
 using Models.Entities;
 using Models.Enums;
 
@@ -11,12 +13,10 @@ namespace Business.Services
     public class UserService : IUserServices
 	{
         private readonly IUserRepository _userRepository;
-        private readonly IRolesRepository _rolesRepository;
         private readonly ILicensesRepository _licenseRepository;
-        public UserService(IUserRepository userRepository, IRolesRepository rolesRepository, ILicensesRepository licenseRepository)
+        public UserService(IUserRepository userRepository, ILicensesRepository licenseRepository)
         {
             _userRepository = userRepository;
-            _rolesRepository = rolesRepository;
             _licenseRepository = licenseRepository;
         }
 
@@ -96,6 +96,31 @@ namespace Business.Services
             return responseDto;
 
         }
-           
+
+        public UserUpdateResponseDto UserEdit(int id, UserUpdateDto request)
+        {
+            var user = _userRepository.GetSingle(x=>x.Id == id);
+            if(user == null)
+            {
+                throw new ResourceNotFoundException();
+            }
+            user.FirstName = request.FirstName;
+            user.LastName = request.LastName;
+            user.Email = request.Email;
+            user.PhoneNumber = request.PhoneNumber;
+            user.CompanyName =  request.CompanyName;
+            _userRepository.Edit(user);
+            _userRepository.Save();
+            var response = new UserUpdateResponseDto
+            {
+                CompanyName = user.CompanyName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+            };
+            return response;
+
+        }
     }
 }

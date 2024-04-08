@@ -1,6 +1,7 @@
 ﻿using Core.Repositories;
 using Core.Repositories.Specific;
 using Microsoft.EntityFrameworkCore;
+using Models.DTOs.Roles.GetRoleName;
 using Models.Entities;
 
 namespace DataAccessLayer.Repositories
@@ -12,6 +13,8 @@ namespace DataAccessLayer.Repositories
 		public RolesRepository(DbContext dbContext) : base(dbContext)
 		{
 			_dbContext = dbContext;
+		
 		}
-	}
+        
+    }
 }
