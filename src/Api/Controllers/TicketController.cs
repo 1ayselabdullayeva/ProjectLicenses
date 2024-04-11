@@ -1,8 +1,7 @@
 ﻿using Application.FluentValidation;
-using Business.Services;
+using Core.Common.Utilities;
 using Core.Repositories.Specific;
 using Core.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.DTOs;
 using Models.DTOs.Product.GetAll;
@@ -28,7 +27,7 @@ namespace Api.Controllers
             _userRepository = userRepository;
         }
         [HttpGet("getbyid")]
-        [Authorize("Customer")]
+        [HasPermission("Ticket_Get_List")]
         public IActionResult GetTicketById()
         {
             var id = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
@@ -37,7 +36,7 @@ namespace Api.Controllers
         }
 
         [HttpPut("edit")]
-        [Authorize("Admin")]
+        [HasPermission("Ticket_Modify_Status")]
 
         public IActionResult EditTicketStatus([FromBody] TicketEditStatusDto request)
         {
@@ -54,7 +53,7 @@ namespace Api.Controllers
             return Ok(responseDto);
         }
 
-        [Authorize("Admin")]
+        [HasPermission("Tickets_Get_List")]
         [HttpGet("getAllTickets")]
         public IActionResult GetAllTickets()
         {
@@ -63,7 +62,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("PaginationTicket")]
-        [Authorize("Admin")]
+        [HasPermission("Tickets_Get_List")]
 
         public ActionResult<List<ProductGetAllResponseDto>> GetProductPagingData([FromQuery] PagedParameters prodParam,string sortBy)
         {
@@ -97,7 +96,7 @@ namespace Api.Controllers
             return Ok(response);
         }
         [HttpPost("CreateTicket")]
-        [Authorize("Customer")]
+        [HasPermission("Ticket_Create")]
         public async Task<IActionResult> Create(TicketCreateDto request) 
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
@@ -118,21 +117,21 @@ namespace Api.Controllers
         }
 
         [HttpGet("types")]
-        [Authorize("AdminOrUser")]
+        [HasPermission("Ticket_Get_List_Type")]
         public IActionResult GetTicketTypes()
         {
             var types = _ticketService.GetTicketTypes();
             return Ok(types);
         }
         [HttpGet("status")]
-        [Authorize("AdminOrUser")]
+        [HasPermission("Ticket_Get_List_Status")]
         public IActionResult GetTicketStatus()
         {
             var types = _ticketService.GetTicketStatus();
             return Ok(types);
         }
         [HttpDelete("DeleteTicket")]
-        [Authorize("AdminOrUser")]
+        [HasPermission("Ticket_Delete")]
         public IActionResult DeleteTicket(int id) 
         { 
             var response = _ticketService.DeleteTicket(id);

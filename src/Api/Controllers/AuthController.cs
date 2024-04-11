@@ -1,4 +1,5 @@
 ﻿using Application.FluentValidation;
+using Core.Common.Utilities;
 using Core.Repositories.Specific;
 using Core.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -25,7 +26,6 @@ namespace Api.Controllers
             _jWTManager = jWTManager;
             _jWTServices = jWTServices; 
         }
-        [AllowAnonymous]
         [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login(UserLoginDto usersdata)
@@ -35,7 +35,6 @@ namespace Api.Controllers
                 return Ok(tokens);
            
         }
-        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserRegisterDto userRegister)
         {
@@ -60,7 +59,7 @@ namespace Api.Controllers
         }
         [HttpPost]
         [Route("logout")]
-        [Authorize]
+        [HasPermission("User_LogOut")]
         public IActionResult Logout()
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);

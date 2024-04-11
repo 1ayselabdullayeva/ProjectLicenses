@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Models.DTOs.Permissions.Get;
 using Models.DTOs.User.ForgotPassword;
 using Models.DTOs.User.Login.UserRefreshTokenDto;
 using Models.Entities;
@@ -31,65 +32,64 @@ namespace DataAccess.Repositories
             _userRepository = userRepository;
         }
 
-        public Tokens GenerateJWTTokens(int id, string userName, string roleName, bool rememberMe)
+        public Tokens GenerateJWTTokens(int id, string userName, string roleName, List<GetPermissionsResponseDto> permissions, bool rememberMe)
         {
-            try
-            {
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var tokenKey = Encoding.UTF8.GetBytes(_configuration["Jwt:SigningKey"]);
-                var refreshkey = Encoding.UTF8.GetBytes(_configuration["Jwt1:RefreshKey"]);
+                var refreshKey = Encoding.UTF8.GetBytes(_configuration["Jwt1:RefreshKey"]);
+
+                var claims = new List<Claim>
+                  {
+            new Claim(ClaimTypes.NameIdentifier, id.ToString()),
+            new Claim(ClaimTypes.Name, userName),
+            new Claim(ClaimTypes.Role, roleName)
+                   };
+
+                foreach (var permission in permissions)
+                {
+                    claims.Add(new Claim("Permissions", permission.PermissionName));
+                }
+
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
-                    Subject = new ClaimsIdentity(new Claim[]
-                  {
-                   new Claim(ClaimTypes.NameIdentifier, id.ToString()),
-                   new Claim(ClaimTypes.Name, userName),
-                   new Claim(ClaimTypes.Role,roleName)
-                  }),
-                    Expires = DateTime.Now.AddDays(30),
+                    Subject = new ClaimsIdentity(claims),
+                    Expires = DateTime.UtcNow.AddDays(30), 
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
                 };
-                var refreshTokenDesc = new SecurityTokenDescriptor
+
+                var refreshTokenDescriptor = new SecurityTokenDescriptor
                 {
-
-                    Subject = new ClaimsIdentity(new Claim[]
-                  {
-                      new Claim(ClaimTypes.NameIdentifier, id.ToString()),
-                      new Claim(ClaimTypes.Name, userName),
-                      new Claim(ClaimTypes.Role, roleName)
-                  }),
-
-                    Expires = rememberMe ? DateTime.Now.AddDays(30) : DateTime.Now.AddDays(7),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(refreshkey), SecurityAlgorithms.HmacSha256Signature)
+                    Subject = new ClaimsIdentity(claims),
+                    Expires = rememberMe ? DateTime.UtcNow.AddDays(30) : DateTime.UtcNow.AddDays(7), 
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(refreshKey), SecurityAlgorithms.HmacSha256Signature)
                 };
 
-                var token = tokenHandler.CreateToken(tokenDescriptor);
-                var refreshToken = tokenHandler.CreateToken(refreshTokenDesc);
+                var accessToken = tokenHandler.CreateToken(tokenDescriptor);
+                var refreshToken = tokenHandler.CreateToken(refreshTokenDescriptor);
+
                 return new Tokens
                 {
-                    AccessToken = tokenHandler.WriteToken(token),
+                    AccessToken = tokenHandler.WriteToken(accessToken),
                     RefreshToken = tokenHandler.WriteToken(refreshToken)
                 };
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
         }
+
+
 
         public UserAccessTokenDto GetTokenByRefreshToken(string refreshToken)
         {
-              var principal = GetPrincipalFromExpiredToken(refreshToken);
-              var userId = principal.FindFirst(ClaimTypes.NameIdentifier).Value; 
-              var roleName = principal.FindFirst(ClaimTypes.Role).Value;
-              var username= principal.FindFirst(ClaimTypes.Name).Value;
-              var newAccessToken = GenerateJWTTokens(int.Parse(userId), username, roleName,false);
+            var principal = GetPrincipalFromExpiredToken(refreshToken);
+            var userId = principal.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var roleName = principal.FindFirst(ClaimTypes.Role).Value;
+            var username = principal.FindFirst(ClaimTypes.Name).Value;
+            var permissions = principal.Claims.Where(c => c.Type == "Permissions").Select(c => new GetPermissionsResponseDto { PermissionName = c.Value }).ToList(); 
+            var newAccessToken = GenerateJWTTokens(int.Parse(userId), username, roleName, permissions, false);
 
-                var response = new UserAccessTokenDto
-                {
-                    AccesToken = newAccessToken.AccessToken
-                };
-                return response;
+            var response = new UserAccessTokenDto
+            {
+                AccesToken = newAccessToken.AccessToken
+            };
+            return response;
         }
         public bool IsValid(string token)
         {
@@ -202,8 +202,6 @@ namespace DataAccess.Repositories
             if (!string.IsNullOrEmpty(origin))
             {
                 var resetUrl = $"{origin}/account/reset-password/{responseToken}";
-                //message = $@"<p>Please click the below link to reset your password, the link will be valid for 1 day:</p>
-                //     <p><a href=""{resetUrl}"">{resetUrl}</a></p>";
                 message = resetUrl;
             }
 

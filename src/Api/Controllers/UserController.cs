@@ -1,9 +1,8 @@
 ﻿using Application.FluentValidation;
+using Core.Common.Utilities;
 using Core.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.DTOs.User.Create;
-using Models.DTOs.User.Update;
 using Models.Entities;
 using System.Security.Claims;
 
@@ -19,7 +18,7 @@ namespace Api.Controllers
         {
             _userServices = userServices;
         }
-        [Authorize("Customer")]
+        [HasPermission("User_Get_List")]
         [HttpGet("GetUser")]
         public IActionResult GetById() 
        {
@@ -27,7 +26,8 @@ namespace Api.Controllers
             var response =_userServices.GetById(id);
             return Ok(response);
         }
-        [Authorize("Customer")]
+
+        [HasPermission("User_Licenses_Get_List")]
         [HttpGet("GetLicenses")]
         public IActionResult GetByIdLicenses()
         {
@@ -36,7 +36,7 @@ namespace Api.Controllers
             return Ok(response);
 
         }
-        [Authorize("Admin")]
+        [HasPermission("Admin_Create_User")]
         [HttpPost("AddUser")]
         public async Task<IActionResult> AddUser(UserCreateDto request)
         {

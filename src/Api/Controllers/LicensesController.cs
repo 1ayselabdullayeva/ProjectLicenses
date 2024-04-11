@@ -1,4 +1,5 @@
 ﻿using Application.FluentValidation;
+using Core.Common.Utilities;
 using Core.Repositories.Specific;
 using Core.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -28,7 +29,7 @@ namespace Api.Controllers
 
 
         [HttpGet("GetAllLicenses")]
-        [Authorize("Admin")]
+        [HasPermission("Licenses_Get_List")]
 
         public IActionResult GetAllLicenses()
         {
@@ -37,7 +38,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("PaginationLicenses")]
-        [Authorize("Admin")]
+        [HasPermission("Licenses_Get_List")]
 
         public ActionResult<List<ProductGetAllResponseDto>> GetProductPagingData([FromQuery] PagedParameters prodParam,string sortBy)
         {
@@ -70,7 +71,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("getLicenses")]
-        [Authorize("Customer")]
+        [HasPermission("License_GetById_list")]
         public IActionResult GetLicenses()
         {
             var id = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
@@ -79,7 +80,7 @@ namespace Api.Controllers
         }
         
         [HttpPost("Buy")]
-        [Authorize("Customer")]
+        [HasPermission("License_Create")]
         public async Task<IActionResult>CreateLicenses(LicensesCreateDto request)
         {
             var id = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
@@ -98,7 +99,7 @@ namespace Api.Controllers
             return Ok(response);
         }
         [HttpGet("GetByIdLicenses")]
-        [Authorize("Customer")]
+        [HasPermission("License_Get_Detal_List")]
         public IActionResult GetById(int LicensesId)
         {
             var id = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
@@ -107,15 +108,15 @@ namespace Api.Controllers
         }
 
         [HttpGet("types")]
-        [Authorize("AdminorUser")]
-        public IActionResult GetTicketTypes()
+        [HasPermission("License_Get_Status_List")]
+        public IActionResult GetLicenseStatus()
         {
             var types = _licensesServices.GetLicensesStatus();
             return Ok(types);
         }
 
         [HttpPut("UpdateStatus")]
-        [Authorize("Admin")]
+        [HasPermission("License_Update_Status")]
         public IActionResult Edit(LicensesUpdateStatusDto request)
         {
             var response = _licensesServices.Edit(request);

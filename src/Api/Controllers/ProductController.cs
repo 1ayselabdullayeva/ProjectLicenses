@@ -1,4 +1,5 @@
 ﻿using Application.FluentValidation;
+using Core.Common.Utilities;
 using Core.Repositories.Specific;
 using Core.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -25,8 +26,9 @@ using Newtonsoft.Json;
         _logger = logger;
     }
     
-        [Authorize("AdminOrUser")]
+
         [HttpGet("GetAllProducts")]
+        [HasPermission("Products_Get_List")]
         public IActionResult GetAll()
         {
         _logger.LogError("GetAll Products started");
@@ -36,9 +38,9 @@ using Newtonsoft.Json;
 
 
         [HttpGet("PaginationProduct")]
-        [Authorize("Admin")]
+        [HasPermission("Products_Get_List")]
 
-        public ActionResult<List<ProductGetAllResponseDto>> GetProductPagingData([FromQuery] PagedParameters prodParam,string sortBy)
+    public ActionResult<List<ProductGetAllResponseDto>> GetProductPagingData([FromQuery] PagedParameters prodParam,string sortBy)
         {
             var products = _productRepository.GetProducts(prodParam);
 
@@ -68,7 +70,7 @@ using Newtonsoft.Json;
         }
 
         [HttpPost("Create")]
-        [Authorize("Admin")]
+        [HasPermission("Product_Create")]
     public async Task<IActionResult> Create([FromBody] ProductCreateDto request)
         {
         ProductValidator pv= new ProductValidator();
@@ -85,15 +87,15 @@ using Newtonsoft.Json;
 
         }
         [HttpDelete("DeleteProduct")]
-        [Authorize("Admin")]
-        public IActionResult Delete(int id)
+        [HasPermission("Product_Delete")]
+    public IActionResult Delete(int id)
         {
             var product = _productService.Delete(id);
             return Ok(product);
         }
         [HttpPut("UpdateProduct")]
-        [Authorize("Admin")]
-        public IActionResult Update([FromBody]ProductUpdateDto request)
+        [HasPermission("Product_Update")]
+    public IActionResult Update([FromBody]ProductUpdateDto request)
         {
             ProductValidator pv = new ProductValidator();
             var validationResult = pv.Validate(new Product

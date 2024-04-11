@@ -22,6 +22,7 @@ namespace Application
             services.AddTransient<IRolesServices, RolesService>();  
             services.AddTransient<IJWTServices, JWTService>();
             services.AddTransient<IPermissionsServices,PermissionsService>();
+
             services.AddScoped<IEmailSenderServices, EmailSenderService>();
             services.AddScoped<IValidator<User>,UserValidator>();
             services.AddScoped<IValidator<Product>,ProductValidator>();

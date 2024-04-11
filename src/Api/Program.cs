@@ -1,7 +1,10 @@
 ﻿using Api.Pipeline;
 using Application;
+using Core.Authorization;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using NLog.Extensions.Logging;
@@ -18,6 +21,7 @@ builder.Services.AddControllers().AddFluentValidation();
 //});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddBusinessLogic(builder.Configuration);
 
 
@@ -61,12 +65,15 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.Zero
     };
 });
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("Admin", policy => policy.RequireClaim(ClaimTypes.Role, "Admin")); 
-    options.AddPolicy("Customer", policy => policy.RequireClaim(ClaimTypes.Role, "Customer"));
-    options.AddPolicy("AdminOrUser", policy =>policy.RequireRole("Admin", "Customer"));
-});
+
+builder.Services.AddSingleton<IAuthorizationPolicyProvider, PermissionAuthorizationPolicyProvider>();
+builder.Services.AddSingleton<IAuthorizationHandler, PermissionAuthorizationHandler>();
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("Admin", policy => policy.RequireClaim(ClaimTypes.Role, "Admin")); 
+//    options.AddPolicy("Customer", policy => policy.RequireClaim(ClaimTypes.Role, "Customer"));
+//    options.AddPolicy("AdminOrUser", policy =>policy.RequireRole("Admin", "Customer"));
+//});
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
@@ -83,6 +90,7 @@ app.UseCors(x => x
 
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 app.Run();
 app.UseMiddleware<RequestResponseLoggingMiddleware>();

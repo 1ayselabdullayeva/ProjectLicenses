@@ -1,4 +1,5 @@
-﻿using Core.Services;
+﻿using Core.Common.Utilities;
+using Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("getRoles")]
-        [Authorize("Admin")]
+        [HasPermission("Role_Get_List")]
         public IActionResult GetAllTickets()
         {
             var response = _rolesServices.GeTRole();

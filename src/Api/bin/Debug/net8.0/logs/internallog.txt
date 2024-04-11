@@ -1094,3 +1094,123 @@
 2024-04-08 15:00:46.8190 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
 2024-04-08 15:00:46.8329 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
 2024-04-08 15:00:46.8523 Info Configuration initialized.
+2024-04-08 22:25:19.3877 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-08 22:25:19.4246 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-08 22:25:19.4399 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-08 22:25:19.4399 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-08 22:25:19.4708 Info Configuration initialized.
+2024-04-08 22:26:26.4742 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-08 22:26:26.4973 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-08 22:26:26.5126 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-08 22:26:26.5252 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-08 22:26:26.5434 Info Configuration initialized.
+2024-04-08 22:29:19.4780 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-08 22:29:19.4987 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-08 22:29:19.5159 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-08 22:29:19.5274 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-08 22:29:19.5471 Info Configuration initialized.
+2024-04-08 23:55:34.7535 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-08 23:55:34.7918 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-08 23:55:34.8168 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-08 23:55:34.8313 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-08 23:55:34.8528 Info Configuration initialized.
+2024-04-09 00:05:12.2150 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 00:05:12.2316 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 00:05:12.2448 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 00:05:12.2554 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 00:05:12.2697 Info Configuration initialized.
+2024-04-09 00:06:19.3594 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 00:06:19.3803 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 00:06:19.3950 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 00:06:19.3950 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 00:06:19.4176 Info Configuration initialized.
+2024-04-09 00:08:45.0437 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 00:08:45.0624 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 00:08:45.0797 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 00:08:45.0797 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 00:08:45.1083 Info Configuration initialized.
+2024-04-09 09:56:28.3714 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 09:56:28.3955 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 09:56:28.4167 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 09:56:28.4314 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 09:56:28.4498 Info Configuration initialized.
+2024-04-09 10:05:18.0275 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 10:05:18.0443 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 10:05:18.0571 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 10:05:18.0680 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 10:05:18.0816 Info Configuration initialized.
+2024-04-09 10:09:43.0132 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 10:09:43.0284 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 10:09:43.0284 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 10:09:43.0491 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 10:09:43.0578 Info Configuration initialized.
+2024-04-09 10:10:18.9021 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 10:10:18.9205 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 10:10:18.9344 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 10:10:18.9473 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 10:10:18.9627 Info Configuration initialized.
+2024-04-09 10:16:15.9404 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 10:16:15.9582 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 10:16:15.9728 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 10:16:15.9845 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 10:16:15.9845 Info Configuration initialized.
+2024-04-09 10:20:55.1586 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 10:20:55.1762 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 10:20:55.1919 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 10:20:55.2071 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 10:20:55.2219 Info Configuration initialized.
+2024-04-09 10:23:02.4660 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 10:23:02.4835 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 10:23:02.4963 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 10:23:02.5061 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 10:23:02.5195 Info Configuration initialized.
+2024-04-09 10:27:31.8628 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 10:27:31.8913 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 10:27:31.9073 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 10:27:31.9073 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 10:27:31.9341 Info Configuration initialized.
+2024-04-09 10:33:17.3412 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 10:33:17.3621 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 10:33:17.3758 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 10:33:17.3875 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 10:33:17.3875 Info Configuration initialized.
+2024-04-09 10:34:02.5936 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 10:34:02.6113 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 10:34:02.6237 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 10:34:02.6237 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 10:34:02.6454 Info Configuration initialized.
+2024-04-09 10:36:33.5205 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 10:36:33.5327 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 10:36:33.5327 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 10:36:33.5555 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 10:36:33.5685 Info Configuration initialized.
+2024-04-09 11:36:20.5283 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 11:36:20.5524 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 11:36:20.5701 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 11:36:20.5840 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 11:36:20.6023 Info Configuration initialized.
+2024-04-09 11:48:28.7290 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 11:48:28.7584 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 11:48:28.7753 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 11:48:28.7899 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 11:48:28.8073 Info Configuration initialized.
+2024-04-09 12:54:32.9329 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 12:54:32.9596 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 12:54:32.9861 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 12:54:32.9861 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 12:54:33.0114 Info Configuration initialized.
+2024-04-09 13:51:29.7188 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-09 13:51:29.7368 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-09 13:51:29.7368 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-09 13:51:29.7540 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-09 13:51:29.7540 Info Configuration initialized.
+2024-04-10 22:41:41.2645 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-10 22:41:41.2820 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-10 22:41:41.2965 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-10 22:41:41.3066 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-10 22:41:41.3066 Info Configuration initialized.
+2024-04-11 23:08:07.1774 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-11 23:08:07.1774 Info Registered target NLog.Targets.FileTarget(Name=nlogfile)
+2024-04-11 23:08:07.1935 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-11 23:08:07.1935 Info Validating config: TargetNames=logfile, nlogfile, ConfigItems=46, FilePath=C:\Users\HP\Desktop\PorjectLicenses\src\Api\bin\Debug\net8.0\nlog.config
+2024-04-11 23:08:07.2156 Info Configuration initialized.

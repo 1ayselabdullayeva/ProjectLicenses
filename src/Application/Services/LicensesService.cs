@@ -79,7 +79,7 @@ namespace Business.Services
                 if (DateTime.Now > license.ExpireDate)
                 {
                     var licenseToUpdate = _licensesRepository.GetSingle();
-                    licenseToUpdate.LicenseStatus = Models.Enums.LiscenseStatus.Expired;
+                    licenseToUpdate.LicenseStatus = LiscenseStatus.Expired;
                     _licensesRepository.Edit(licenseToUpdate);
                     _licensesRepository.Save();
                     license.licenseStatus = "Expired";
@@ -95,31 +95,17 @@ namespace Business.Services
           user => user.Id,
           (l, user) => new { License = l, User = user })
          .Join(_productRepository.GetAll(),
-          combined => combined.License.ProductId, // Örnek olarak License tablosundaki ProductId alanı ile Product tablosundaki Id alanını birleştirin
+          combined => combined.License.ProductId, 
           product => product.Id,
           (combined, product) => new LicensesGetAllResponseDto
           {
-              ProductName = product.ProductName, // Burada ProductName'e Product tablosundan ulaşıyorsunuz
+              ProductName = product.ProductName, 
               ActivationDate = combined.License.ActivationDate,
               UserCount = combined.License.UserCount,
               ExpireDate = combined.License.ExpireDate,
               licenseStatus = combined.License.LicenseStatus.ToString(),
               UserEmail = combined.User.Email
           }).ToList();
-
-
-
-
-         // => new LicensesGetAllResponseDto
-         // {
-         //     ProductName = l.Product.ProductName,
-         //     ActivationDate = l.ActivationDate,
-         //     UserCount = l.UserCount,
-         //     ExpireDate = l.ExpireDate,
-         //     licenseStatus = l.LicenseStatus.ToString(),
-         //     UserEmail = user.Email
-         // })
-         //.ToList();
             foreach (var license in licensesWithUser)
             {
                 if (DateTime.Now > license.ExpireDate)

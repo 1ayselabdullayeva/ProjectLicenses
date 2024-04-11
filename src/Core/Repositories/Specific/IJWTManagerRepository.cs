@@ -1,4 +1,5 @@
-﻿using Models.DTOs.User.ForgotPassword;
+﻿using Models.DTOs.Permissions.Get;
+using Models.DTOs.User.ForgotPassword;
 using Models.DTOs.User.Login;
 using Models.DTOs.User.Login.UserRefreshTokenDto;
 using Models.Entities;
@@ -8,7 +9,7 @@ namespace Core.Repositories.Specific
 {
     public interface IJWTManagerRepository : IRepository<User>
     {
-        Tokens GenerateJWTTokens(int id, string name, string roleName,bool rememberMe);
+        Tokens GenerateJWTTokens(int id, string name, string roleName,List<GetPermissionsResponseDto> permissions,bool rememberMe);
         ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
         UserAccessTokenDto GetTokenByRefreshToken(string refreshToken);
         void ResetPassword(ResetPasswordDto model);

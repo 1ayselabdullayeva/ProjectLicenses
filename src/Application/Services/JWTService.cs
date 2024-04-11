@@ -4,6 +4,7 @@ using Core.Repositories.Specific;
 using Core.Services;
 using MimeKit.Encodings;
 using Models.DTOs.Permissions.Get;
+using Models.DTOs.Roles.RoleWithPermissions;
 using Models.DTOs.User.Login;
 using Models.DTOs.User.Register;
 using Models.Entities;
@@ -63,7 +64,7 @@ namespace Application.Services
             var userRoles = _rolesServices.GetRoleName(user.RolesId);
             var userPermissions = _permissionsServices.GetPermissions(user.RolesId);
 
-            var token = _jwtManagerRepository.GenerateJWTTokens(user.Id, user.FirstName, userRoles.RoleName, usersdata.RememberMe);
+            var token = _jwtManagerRepository.GenerateJWTTokens(user.Id, user.FirstName, userRoles.RoleName, userPermissions, usersdata.RememberMe);
             var response = new UserLoginResponseDto
             {
                 AccessToken = token.AccessToken,
@@ -74,10 +75,13 @@ namespace Application.Services
                 PhoneNumber = user.PhoneNumber,
                 Email = user.Email,
                 RolesId = user.RolesId,
-                Roles = new Models.DTOs.Roles.RoleWithPermissions.RoleWithPermissionsWithDto
+                Roles = new RoleWithPermissionsWithDto
                 {
                     RoleName = userRoles.RoleName,
-                    Permissions = userPermissions.Select(p => new GetPermissionsResponseDto { PermissionName = p.PermissionName }).ToList()
+                    Permissions = userPermissions.Select(p => new GetPermissionsResponseDto 
+                    {
+                        PermissionName = p.PermissionName 
+                    }).ToList()
                 }
             }; 
 
