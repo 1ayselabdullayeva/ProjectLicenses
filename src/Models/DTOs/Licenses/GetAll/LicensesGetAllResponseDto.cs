@@ -2,6 +2,7 @@
 {
     public class LicensesGetAllResponseDto
     {
+        public int Id { get; set; }
         public string ProductName { get; set; }
         public DateTime ActivationDate {  get; set; }
         public DateTime ExpireDate { get; set; }

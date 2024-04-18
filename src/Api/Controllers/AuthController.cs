@@ -2,7 +2,6 @@
 using Core.Common.Utilities;
 using Core.Repositories.Specific;
 using Core.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.DTOs.User.ForgotPassword;
 using Models.DTOs.User.Login;
@@ -30,10 +29,8 @@ namespace Api.Controllers
         [Route("Login")]
         public async Task<IActionResult> Login(UserLoginDto usersdata)
         {
-          
                 var tokens = _jWTServices.Login(usersdata);
                 return Ok(tokens);
-           
         }
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserRegisterDto userRegister)
@@ -90,13 +87,11 @@ namespace Api.Controllers
           await _jWTManager.ForgotPassword(model,Request.Headers["origin"]);
             return Ok();
         }
-
         [HttpPost("getIdfromToken")]
         public IActionResult GetIdFromToken(string token)
         {          
                 var userId = _jWTManager.GetUserIdFromToken(token);
                 return Ok();
-           
         }
 
     }

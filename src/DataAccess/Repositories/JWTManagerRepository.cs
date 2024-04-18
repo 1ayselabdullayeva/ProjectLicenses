@@ -2,8 +2,6 @@
 using Core.Repositories;
 using Core.Repositories.Specific;
 using Core.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Logging;
@@ -71,7 +69,7 @@ namespace DataAccess.Repositories
                 {
                     AccessToken = tokenHandler.WriteToken(accessToken),
                     RefreshToken = tokenHandler.WriteToken(refreshToken)
-                };
+                }; 
         }
 
 
@@ -243,3 +241,4 @@ namespace DataAccess.Repositories
 
     }
 }
+

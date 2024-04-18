@@ -66,6 +66,7 @@ namespace Business.Services
           user => user.Id,
           (l, user) => new LicensesGetAllResponseDto
           {
+              Id = l.Id,
               ProductName = l.Product.ProductName,
               ActivationDate = l.ActivationDate,
               UserCount = l.UserCount,
@@ -93,12 +94,14 @@ namespace Business.Services
                 .Join(_userRepository.GetAll(),
           l => l.UserId,
           user => user.Id,
-          (l, user) => new { License = l, User = user })
+          (l, user) =>
+          new { License = l, User = user })
          .Join(_productRepository.GetAll(),
           combined => combined.License.ProductId, 
           product => product.Id,
           (combined, product) => new LicensesGetAllResponseDto
           {
+              
               ProductName = product.ProductName, 
               ActivationDate = combined.License.ActivationDate,
               UserCount = combined.License.UserCount,

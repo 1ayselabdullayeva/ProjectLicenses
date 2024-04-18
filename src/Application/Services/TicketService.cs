@@ -73,6 +73,7 @@ namespace Business.Services
             {
                 Id = existingTicket.Id,
                 TicketStatus = existingTicket.TicketStatus,
+                UserId = existingTicket.UserId,
             };
         }
         public List<TicketGetAllResponseDto> GetAll()
@@ -101,6 +102,7 @@ namespace Business.Services
             foreach(var item in ticket)
             {
                 var response = new TicketGetByIDResponseDto {
+                    Id = item.Id,
                     CreatedAt = item.CreatedAt,
                     Description = item.Description,
                     Subject = item.Subject,

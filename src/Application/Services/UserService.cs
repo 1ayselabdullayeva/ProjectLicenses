@@ -22,6 +22,11 @@ namespace Business.Services
 
         public async Task<UserCreateResponseDto> Create(UserCreateDto request)
         {
+            var user = _userRepository.GetSingle(x => x.Email == request.Email, false);
+            if (user != null)
+            {
+                throw new BadRequestException("Istifadeci artiq sistemde movcuddur");
+            };
             var newProduct = new User
             {
                 FirstName = request.FirstName,

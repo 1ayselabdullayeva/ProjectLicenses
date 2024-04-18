@@ -6,6 +6,5 @@ namespace Models.DTOs.Tickets.Edit
     {
         public int Id { get; set; }
         public TicketStatus TicketStatus { get; set; }
-        public int UserId;
     }
 }

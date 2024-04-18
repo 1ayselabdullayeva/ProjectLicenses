@@ -40,15 +40,15 @@ namespace Api.Controllers
 
         public IActionResult EditTicketStatus([FromBody] TicketEditStatusDto request)
         {
-            TicketValidator tv= new TicketValidator();
-            var validationResult = tv.Validate(new Ticket
-            {
-                 TicketStatus= request.TicketStatus
-            });
-            if (!validationResult.IsValid)
-            {
-                return BadRequest(validationResult.Errors);
-            }
+            //TicketValidator tv = new TicketValidator();
+            //var validationResult = tv.Validate(new Ticket
+            //{
+            //    TicketStatus = request.TicketStatus
+            //});
+            //if (!validationResult.IsValid)
+            //{
+            //    return BadRequest(validationResult.Errors);
+            //}
             var responseDto = _ticketService.Edit(request);
             return Ok(responseDto);
         }
